@@ -11,6 +11,14 @@ app.get("/home", function(req, res){
     res.sendFile(__dirname + "/views/home.html");
 });
 
+app.get("", function(req, res){
+    res.redirect("/home")
+});
+
 app.get("/login", function(req, res){
     res.sendFile(__dirname + "/views/login.html");
+});
+
+app.get("/shop", function(req, res){
+    res.sendFile(__dirname + "/views/shop.html");
 });

@@ -5,13 +5,15 @@
   </head>
   <body>
       <h2>Bitte loggen Sie sich ein:</h2>
-      <p>
-        Nutzername: <input type="text" value="">
+      <form action="/shop">
+        <label for="user">Benutzername:</label><br>
+        <input type="text" name="user" value=""><br>
+        <label for="password">Passwort:</label><br>
+        <input type="password" name="password" value=""><br>
+        <input type="submit" value="Anmelden"> <!--href nicht nötig. Verarbeitung kommt in der Nächsten Vorlesung-->
         <br>
-        Passwort: <input type="password" value="">
-      </p>
-      <a href=""><input type="submit" value="Anmelden"></a> <!--href nicht nötig. Verarbeitung kommt in der Nächsten Vorlesung-->
-      <br>
+      </form>
+     
       <a href=/home>Zurück</a>
   </body>
 </html>
