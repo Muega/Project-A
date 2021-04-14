@@ -10,10 +10,19 @@
                   <td><%= produkte[i].id %></td>
                   <td><%= produkte[i].name %></td>
                   <td><%= produkte[i].preis %></td>
+                  <td>
+                    <form action="/delete/<%= produkte[i].id %>" method="POST">
+                        <button type="submit">Löschen</button>
+                    </form>
+                  </td>
+                  <td>
+                    <form action="/update/<%= produkte[i].id %>" method="POST">
+                        <button type="submit">Bearbeiten</button>
+                    </form>
+                  </td>
               </tr>
           <% } %>
       </table>
     <a href="/create">Neues Produkt hinzufügen</a>
-
   </body>
 </html>

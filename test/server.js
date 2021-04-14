@@ -111,6 +111,37 @@ app.post("/oncreate", function(req, res){
     db.run(
         `INSERT INTO produkte(name, preis) VALUES("${param_name}", ${param_preis})`,
         function(err){
+            res.redirect("/produktliste");
+        }
+    );
+});
+
+app.post("/delete/:id", function(req, res){
+    db.run(
+        `DELETE FROM produkte WHERE id = ${req.params.id}`,
+        function(err){
+            res.redirect("/produktliste");
+        }
+    );
+});
+
+app.post("/update/:id", function(req, res){
+    //Nach Datensazu mit id suchen und Werte an Formular übergeben
+    db.all(
+        `SELECT * FROM produkte WHERE id = ${req.params.id}`,
+        function(err, rows){
+            res.render("update", rows[0]);
+        }
+    );
+});
+
+app.post("/onupdate/:id", function(req, res){
+    const param_update_name = req.body.produktname;
+    const param_update_preis = req.body.produktpreis;
+
+    db.run(
+        `UPDATE produkte SET name = "${param_update_name}", preis = ${param_update_preis} WHERE id = ${req.params.id}`,
+        function(err){
             console.log(err);
             res.redirect("/produktliste");
         }
