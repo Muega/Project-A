@@ -1,0 +1,19 @@
+<!Doctype html>
+<html lang="de">
+  <head>
+    <title>Produkte</title>
+  </head>
+  <body>
+      <table border="1">
+          <% for(var i = 0; i<produkte.length; i++) { %>
+              <tr>
+                  <td><%= produkte[i].id %></td>
+                  <td><%= produkte[i].name %></td>
+                  <td><%= produkte[i].preis %></td>
+              </tr>
+
+          <% } %>
+      </table>
+
+  </body>
+</html>

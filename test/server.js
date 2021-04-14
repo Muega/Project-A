@@ -11,6 +11,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.engine(".ejs", require("ejs").__express);
 app.set("view engine", "ejs");
 
+//Initialisierung sqlite3
+const DATABASE = "shop.db";
+const sqlite3 = require("sqlite3").verbose();
+const db = new sqlite3.Database(DATABASE); 
+
 //Zugriff erlauben
 app.use(express.static(__dirname + "/public/.."));
 
@@ -82,4 +87,13 @@ app.post("/register_eingabe", function(req,res){
     console.log(benutzer);
 
     res.render("success", {"nutzername": nutzername, "aktion": "registriert"});
+});
+
+app.get("/produktliste", function(req, res){
+    db.all(
+        `SELECT * FROM produkte`,
+        function(err,rows){
+            res.render("produktliste", {"produkte": rows});
+        }
+    );
 });
