@@ -1,6 +1,6 @@
 /* 
 Initialisiert die Datenbank, wird aus sqlite3 heraus geladen mit: 
-> .real initialize_shop.sql
+> .read initialize_shop.sql
 */ 
 
 /* Tabelle produkte erzeugen */

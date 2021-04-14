@@ -97,3 +97,22 @@ app.get("/produktliste", function(req, res){
         }
     );
 });
+
+//Formular zum Hinzufügen eines Produktes
+app.get("/create", function(req, res){
+    res.render("create");
+});
+
+//POST-Request oncreate fügt Produkt zur Liste
+app.post("/oncreate", function(req, res){
+    const param_name = req.body.produktname;
+    const param_preis = req.body.produktpreis;
+
+    db.run(
+        `INSERT INTO produkte(name, preis) VALUES("${param_name}", ${param_preis})`,
+        function(err){
+            console.log(err);
+            res.redirect("/produktliste");
+        }
+    );
+});
