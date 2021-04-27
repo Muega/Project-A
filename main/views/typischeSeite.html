@@ -4,34 +4,80 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+   <!-- Hier versuche ich es Mal mit
+    Bootstrap: -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Das neueste kompilierte und minimierte CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+   <!-- Optionales Theme -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
     <title>Applezone Shop</title>
   </head>
 
   <body>
+      
+<header>
     <nav>
         <ul class="stick header-top"> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
         
             <li><a class="header-inhalt active" href="/shop">Home</a></li>
+        <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
+        weil sie nur von Admins/ Uns zugänglich sein sollen-->
             <li><a class="header-inhalt" href="/produktliste">Our Products</a></li>
             <li><a class="header-inhalt" href="/create">Create A Product</a></li>
             <li><a class="header-inhalt" href="">Vier</a></li>
             <li><a class="header-inhalt" href="">Fünf</a></li>
             <li><a class="header-inhalt" href="">Sechs</a></li>
             <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
+        <!--Hier Logout ODER Login | Registrieren -->    
             <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | <%= nutzername %><br></a></li>
             <li style="float:right"><a class="header-inhalt" href="/ueberuns">Über uns</a></li>
         
         </ul>
   </nav>
+</header> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+    
+<container class="container">
+    <section id="section1">
+            <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)-->
+            <h3>Welcome to Applezone!</h3>
+            <p>From Juicy to Crunchy - here you can find the Apple <span><em>you</em></span> deserve!</p>
+            <br>
+            <!-- -->
+    </section>
+</container>  
 
-  <br><br> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
-      
-  <section>
-          <h4>Welcome, <%= nutzername %>!</h4>
-          <br>
-          <%= aktion %>.<br> <!--Was ist das hier, bzw wo führt aktion hin? gez. Daria-->
-          <a href=/home>Home</a> <br>
-          <a href="/produktliste"><input type="button" value="Produktliste"></a> <br>
-  </section>
-  </body>
+    <section id="section2"> <!--hier könnte man eine Searchbar einbauen, um nach bestimmten Produkten zu suchen oder so--> 
+    </section>
+    
+<container class="container">
+    <section id="section3"> <!--Das wird die Main Section mit den Produkten-->
+        
+        <div class="thumbnail">
+            <img src="/public/Blue_Apple.jpg" class="card-image-top" style=" width: 20%;" alt="blue apple"> <!--hier hab ich vorerst den style so geändert, muss später anders werden-->
+            <div class="caption">
+                <h4>Blue Apple</h4>
+                <p>This unsusual Apple will change your life.</p>
+                <p>Price: <!--here probably add an ejs thing from the database--></p>
+                <p><a href="#" class="btn btn-primary" role="button">Love</a> <a href="#" class="btn btn-danger" role="button">Hate</a></p>
+            </div>
+        </div>
+
+        <div class="thumbnail">
+            <img src="/public/Blue_Apple.jpg" class="card-image-top" style=" width: 20%;" alt="blue apple"> <!--hier hab ich vorerst den style so geändert, muss später anders werden-->
+            <div class="caption">
+                <h4>Blue Apple</h4>
+                <p>This unsusual Apple will change your life.</p>
+                <p>Price: <!--here probably add an ejs thing from the database--></p>
+                <p><a href="#" class="btn btn-primary" role="button">Love</a> <a href="#" class="btn btn-danger" role="button">Hate</a></p>
+            </div>
+        </div>
+    </section>
+</container>
+
+</body>
 </html>
