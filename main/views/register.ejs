@@ -3,25 +3,32 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <title>Registrieren</title>
+    <title>Register</title>
   </head>
   <body>
     <container>
-      <h2>Bitte registireren Sie sich:</h2>
-      <form action="/register_eingabe" method="POST"> 
-        <p>
-          Nutzername: <input type="text" name="nutzername" required minlength="4" maxlength="16">
-          <br>
-          Email: <input type="text" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-          <br>
-          Passwort: <input type="password" name="passwort" required minlength="8" maxlength="32">
-          <br>
-          Passwort wiederholen: <input type="password" name="passwort_repeat" required minlength="8" maxlength="32">
-        </p>
-        <input type="submit" value="Registrieren">
-        <br> <%=nachricht%> <br>
-        <a href=/home>Zurück</a>
-      </form>
+      <h2>Please resgister:</h2>
+
+      <aside>
+        <p>cheesy quote here</p>
+      </aside>
+
+      <div class="dataForm"> <!--or some kind of class; maybe it should be the same as the login one-->
+        <form action="/register_eingabe" method="POST"> 
+          <p>
+            Username: <input type="text" name="nutzername" required minlength="4" maxlength="16">
+            <br>
+            Email: <input type="text" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            <br>
+            Password: <input type="password" name="passwort" required minlength="8" maxlength="32">
+            <br>
+            Repeat password: <input type="password" name="passwort_repeat" required minlength="8" maxlength="32">
+          </p>
+          <input type="submit" value="Register">
+          <br> <%=nachricht%> <br>
+          <a href=/home>Back</a>
+        </form>
+    </div>
     </container>
 
     <footer>

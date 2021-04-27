@@ -7,18 +7,26 @@
   </head>
   <body>
     <container>
-      <h2>Bitte loggen Sie sich ein:</h2>
-      <form action="/login_eingabe" method="POST"> 
-        <p>
-          Nutzername / Email: <input type="text" name="nutzername" required>
-          <br>
-          Passwort: <input type="password" name="passwort" required>
-        </p>
-        <input type="submit" value="Anmelden">
-        <br> <%=nachricht%> <br>
-        <a href=/home>Zurück</a>
-      </form> 
+      <h2>Please log in:</h2>
+
+      <aside>
+        <p>cheesy quote here</p>
+      </aside>
+
+      <div class="dataForm"> <!-- the same as the register one-->
+        <form action="/login_eingabe" method="POST"> 
+          <p>
+            Username or Email: <input type="text" name="nutzername" required>
+            <br>
+            Password: <input type="password" name="passwort" required>
+          </p>
+          <input type="submit" value="Log In">
+          <br> <%=nachricht%> <br>
+          <a href=/home>Back</a>
+        </form> 
+      </div>
     </container>
+
       <footer>
         <a href="/about">About Us</a>
         <br>
