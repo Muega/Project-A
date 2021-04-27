@@ -1,2 +1,69 @@
 <!DOCTYPE html>
 <!--Das wird die Warenkorb-Seite-->
+<html lang="de">
+
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+   <!-- Hier versuche ich es Mal mit
+    Bootstrap: -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Das neueste kompilierte und minimierte CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+   <!-- Optionales Theme -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <title>Applezone Cart</title>
+  </head>
+
+  <body> 
+<header>
+    <nav>
+        <ul class="stick header-top"> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+        
+            <li><a class="header-inhalt active" href="/shop">Home</a></li>
+        <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
+        weil sie nur von Admins/ Uns zugänglich sein sollen-->
+            <li><a class="header-inhalt" href="/produktliste">Our Products</a></li>
+            <li><a class="header-inhalt" href="/create">Create A Product</a></li>
+            <li><a class="header-inhalt" href="">Vier</a></li>
+            <li><a class="header-inhalt" href="">Fünf</a></li>
+            <li><a class="header-inhalt" href="">Sechs</a></li>
+            <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
+        <!--Hier Logout | Nutzername ODER Login | Register -->    
+            <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | <%= nutzername %><br></a></li>
+            <li style="float:right"><a class="header-inhalt" href="/ueberuns">About Us</a></li>
+        
+        </ul>
+  </nav>
+</header> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+    
+<container class="container">
+    <section id="section1">
+            <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)-->
+            <h3>Your Shopping Cart</h3>
+            <p>here you can see the list of items that are currently in your shopping cart</p>
+            <br>
+    </section>
+</container>  
+    
+<container class="container">
+    <section id="section3"> <!--Hier can man Die Warenkorb-Tabelle einfügen-->
+        <div>
+        
+        </div>
+    </section>
+</container>
+
+<footer>
+    <a>About Us</a>
+    <br>
+    <a>Terms of Service</a>
+    <br>
+    <p>Spring 2021</p>
+</footer>
+</body>
+</html>
