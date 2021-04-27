@@ -9,17 +9,50 @@ kein Zugriff auf Detail und Warenkorb -->
     </head>
     <body>
         <header>
-            <nav></nav>
-        </header>
-        <article>
-            <section>
-                <h3>Welcome to Applezone!</h3>
-                <p>as a guest, you may browse our apples and see if anything catches your interest</p>
+            <nav>
+                
+          </nav>
+        </header> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+            
+        <container class="container">
+
+            <section id="section1">
+                    <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)-->
+                    <h3>Welcome to Applezone!</h3>
+                    <p>From Juicy to Crunchy - here you can find the Apple <span><em>you</em></span> deserve!</p>
+                    <br>
+                    <p>as our guest, you may browse our apples and see if anything catches your interest</p>
+                    <!-- -->
             </section>
-            <aside>
-                <img src="/public/Blue_Apple.jpg">
-            </aside>
-        </article>
+        </container>  
+        
+            <section id="section2"> <!--hier könnte man eine Searchbar einbauen, um nach bestimmten Produkten zu suchen oder so--> 
+            <button type="button">Register <em>Today!</em></button> <!--Hab den button noch nicht funktional bekommen D.-->
+            </section>
+            <br>
+            
+        <container class="container">
+            <section id="section3"> <!--Das wird die Main Section mit den Produkten-->
+                
+                <div class="thumbnail">
+                    <img src="/public/Blue_Apple.jpg" class="card-image-top" style=" width: 20%;" alt="blue apple"> <!--hier hab ich vorerst den style so geändert, muss später anders werden-->
+                    <div class="caption">
+                        <h4>Blue Apple</h4>
+                        <p>This unsusual Apple will change your life.</p>
+                        <p>Price: <!--here probably add an ejs thing from the database--></p>
+                    </div>
+                </div>
+        
+                <div class="thumbnail">
+                    <img src="/public/Blue_Apple.jpg" class="card-image-top" style=" width: 20%;" alt="blue apple"> <!--hier hab ich vorerst den style so geändert, muss später anders werden-->
+                    <div class="caption">
+                        <h4>Blue Apple</h4>
+                        <p>This unsusual Apple will change your life.</p>
+                        <p>Price: <!--here probably add an ejs thing from the database--></p>
+                    </div>
+                </div>
+            </section>
+        </container>
 
         <footer>
             <a href="/about">About Us</a>
