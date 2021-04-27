@@ -57,6 +57,23 @@ app.get("/layout", function(req, res){
     res.sendFile(__dirname + "/views/typischeSeite.html");
 });
 
+//weitere Seiten (About Us, Warenkorb/Cart, shopGuest, Detail)
+app.get("/about", function(req, res){
+    res.sendFile(__dirname + "/views/aboutUs.html");
+});
+
+app.get("/warenkorb", function(req, res){
+    res.render("cart"); //hierzu muss man auf die Daten zugreifen etc.
+});
+
+app.get("/guest", function(req, res){
+    res.sendFile(__dirname + "/views/shopGuest.html");
+});
+
+app.get("/detail", function(req, res){ //die detailseiten würde ich vielleicht durchnummerieren? vllt sogar mit ID und ejs
+    res.sendFile(__dirname + "/views/detail.html");
+});
+
 //Produktliste
 app.get("/produktliste", function(req, res){
     db.all(
