@@ -4,23 +4,24 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <title>Viel Spaß</title>
+    <title>Applezone Shop</title>
   </head>
 
   <body>
     <nav>
-    <ul class="stick header-top"> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
-     
-      <li><a class="header-inhalt active" href="/shop">Home</a></li>
-      <li><a class="header-inhalt" href="/produktliste">Produktliste</a></li>
-      <li><a class="header-inhalt" href="/create">Create</a></li>
-      <li><a class="header-inhalt" href="">Vier</a></li>
-      <li><a class="header-inhalt" href="">Fünf</a></li>
-      <li><a class="header-inhalt" href="">Sechs</a></li>
-      <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
-      <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | <%= nutzername %><br></a></li>
-      <li style="float:right"><a class="header-inhalt" href="/ueberuns">Über uns</a></li>
-  </ul>
+        <ul class="stick header-top"> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+        
+            <li><a class="header-inhalt active" href="/shop">Home</a></li>
+            <li><a class="header-inhalt" href="/produktliste">Our Products</a></li>
+            <li><a class="header-inhalt" href="/create">Create A Product</a></li>
+            <li><a class="header-inhalt" href="">Vier</a></li>
+            <li><a class="header-inhalt" href="">Fünf</a></li>
+            <li><a class="header-inhalt" href="">Sechs</a></li>
+            <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
+            <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | <%= nutzername %><br></a></li>
+            <li style="float:right"><a class="header-inhalt" href="/ueberuns">Über uns</a></li>
+        
+        </ul>
   </nav>
 
   <br><br> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
@@ -28,8 +29,8 @@
   <section>
           <h4>Welcome, <%= nutzername %>!</h4>
           <br>
-          <%= aktion %>.<br> <!--Was ist das hier, bzw wo führt aktion hin? Daria-->
-          <a href=/home>Startseite</a> <br>
+          <%= aktion %>.<br> <!--Was ist das hier, bzw wo führt aktion hin? gez. Daria-->
+          <a href=/home>Home</a> <br>
           <a href="/produktliste"><input type="button" value="Produktliste"></a> <br>
   </section>
   </body>

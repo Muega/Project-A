@@ -52,6 +52,10 @@ app.get("/logout", function(req, res){
     res.redirect("/home");
 });
 
+//typische Seite Seitenlayout
+app.get("/layout", function(req, res){
+    res.sendFile(__dirname + "/views/typischeSeite.html");
+});
 
 //Produktliste
 app.get("/produktliste", function(req, res){
@@ -221,5 +225,5 @@ app.post("/onupdate/:id", function(req, res){
 
 //Server starten
 app.listen(3000, function(){
-    console.log("listining on 3000");
+    console.log("listening on 3000");
 });
