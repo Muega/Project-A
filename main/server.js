@@ -35,6 +35,10 @@ app.get("/home", function(req, res){
     res.render("home", {"nachricht": ""});
 });
 
+app.get("", function(req, res){
+    res.redirect("/home");
+});
+
 app.get("/login", function(req, res){
     res.render("login", {"nachricht": ""});
 });
