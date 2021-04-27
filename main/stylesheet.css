@@ -1,0 +1,59 @@
+body {
+    --padding-header: 14px 16px;
+}
+
+.header-top {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /*background-color: #333;*/
+    background: linear-gradient(#333, #333);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.stick {
+    position: fixed;
+}
+
+li {
+    float: left;
+}
+
+li .header-inhalt:not(.active) {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: var(--padding-header);
+    text-decoration: none;
+}
+
+li .header-inhalt:hover {
+    background: linear-gradient(#000, #333);
+}
+
+.active {
+    display: block;
+    color: #4287f5;
+    text-align: center;
+    padding: var(--padding-header);
+    text-decoration: none;
+    background: linear-gradient(#000, #333);
+}
+
+li .korbdesign:hover {
+    background: linear-gradient(#5cb1f2, #0070c9);
+}
+
+.korbdesign {
+    padding: 10px 10px;
+    display: block;
+    text-align: center;
+    background: linear-gradient(#42a1ec, #0070c9);
+}
+
+
+

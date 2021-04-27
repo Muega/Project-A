@@ -1,0 +1,27 @@
+<!Doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <title>Viel Spaß</title>
+  </head>
+  <body>
+    <ul class="stick header-top"> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+      <li><a class="header-inhalt active" href="/shop">Home</a></li>
+      <li><a class="header-inhalt" href="/produktliste">Produktliste</a></li>
+      <li><a class="header-inhalt" href="/create">Create</a></li>
+      <li><a class="header-inhalt" href="">Vier</a></li>
+      <li><a class="header-inhalt" href="">Fünf</a></li>
+      <li><a class="header-inhalt" href="">Sechs</a></li>
+      <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
+      <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | <%= nutzername %><br></a></li>
+      <li style="float:right"><a class="header-inhalt" href="/ueberuns">Über uns</a></li>
+  </ul><br><br> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+      <p>
+          Willkommen, <%= nutzername %>!<br>
+          <%= aktion %>.<br>
+          <a href=/home>Startseite</a> <br>
+          <a href="/produktliste"><input type="button" value="Produktliste"></a> <br>
+      </p>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!Doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <title>Produkt hinzufügen</title>
+  </head>
+  <body>
+    <form action="/oncreate" method="POST">
+        Name des Produktes: <br>
+        <input type="text" name="produktname" required><br>
+        Preis des Produktes: <br>
+        <input type="number" step="0.01" name="produktpreis" required><br>
+        Anzahl des Produktes: <br>
+        <input type="number" min="0" name="anzahl" required><br>
+        Knackigkeit des Produktes: <br>
+        <input type="number" min="0" max="100" name="knackig" required><br>
+        Farbe des Produktes: <br>
+        <input type="text" min="0" name="farbe" required><br>
+        Gewicht des Produktes: <br>
+        <input type="number" min="0" step="0.01" name="gewicht" required><br>
+        Saftigkeit des Produktes: <br>
+        <input type="number" min="0" max="100" name="saft" required><br>
+        <br>
+        <input type="checkbox" id="versteckt" name="versteckt" value="1"> 
+        <label for="versteckt">Versteckten?</label>
+        <br><br>
+        <button type="submit">Produkt hinzufügen</button>
+    </form>
+  </body>
+</html>

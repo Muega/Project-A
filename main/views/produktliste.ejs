@@ -1,0 +1,45 @@
+<!Doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <title>Produkte</title>
+  </head>
+  <body>
+      <table border="1">
+        <td>ID</td>
+        <td>Name</td>
+        <td>Preis</td>
+        <td>Anzahl</td>
+        <td>Knackigkeit</td>
+        <td>Versteckt?</td>
+        <td>Farbe</td>
+        <td>Gewicht</td>
+        <td>Saftigkeit</td>
+          <% for(var i = 0; i<produkte.length; i++) { %>
+              <tr>
+                  <td><%= produkte[i].id %></td>
+                  <td><%= produkte[i].name %></td>
+                  <td><%= produkte[i].preis %></td>
+                  <td><%= produkte[i].anzahl %></td>
+                  <td><%= produkte[i].knackig %></td>
+                  <td><%= produkte[i].versteckt %></td>
+                  <td><%= produkte[i].farbe %></td>
+                  <td><%= produkte[i].gewicht %></td>
+                  <td><%= produkte[i].saft %></td>
+                  <td>
+                    <form action="/delete/<%= produkte[i].id %>" method="POST">
+                        <button type="submit">Löschen</button>
+                    </form>
+                  </td>
+                  <td>
+                    <form action="/update/<%= produkte[i].id %>" method="POST">
+                        <button type="submit">Bearbeiten</button>
+                    </form>
+                  </td>
+              </tr>
+          <% } %>
+      </table>
+    <a href="/create">Neues Produkt hinzufügen</a>
+  </body>
+</html>

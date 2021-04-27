@@ -1,0 +1,28 @@
+1. sqlite3 [name].db zum Anlegen der Datei
+2. .databases zum anzeigen 
+3. CREATE TABLE produkte (
+    **Enter
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    **Enter
+    name TEXT NOT NULL,
+    **Enter
+    preis NUMERIC);
+    **Enter
+4. .tables zeigt Tabellen an
+5. INSERT INTO produkte
+    **Enter
+    (name, preis)
+    **Enter
+    VALUES
+    **Enter
+    ("USB-Stick", 19.99);
+    **Enter
+6. SELECT * FROM produkte zeigt alles in Tabelle an 
+7. .quit beende sqlite
+8. .sqlite3 [name].db um Datei erneut zu öffnen
+9. UPDATE produkte SET ändert einen Datensatz
+10. DELETE FROM löscht Datensätze
+
+
+Admin-Account:
+admin, applejuice, admin@applezone.com
