@@ -21,7 +21,7 @@ app.use(express.static(__dirname + "/public/.."));
 
 //Server starten
 app.listen(3000, function(){
-    console.log("listining on 3000");
+    console.log("listening on 3000");
 });
 
 app.get("/home", function(req, res){
