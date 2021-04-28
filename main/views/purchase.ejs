@@ -1,0 +1,190 @@
+<!--Auf dieser Seite füllt man die Zahlungsinformationen aus und kauft-->
+<!--Die Seite ist mainly aufgebaut aus Section 3, in der das Formular in zwei Teilen (Billing address, Payment method) geteilt ist und einem -->
+<!--aside, indem die Produkte später gezeigt werden.-->
+<!Doctype html>
+<html lang="de">
+
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+   <!-- Hier versuche ich es Mal mit
+    Bootstrap: -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Das neueste kompilierte und minimierte CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+   <!-- Optionales Theme -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <title>Checkout</title>
+  </head>
+
+    <body>
+      
+        <header>
+            <nav>
+                <ul class="stick header-top"> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+                
+                    <li><a class="header-inhalt active" href="/shop">Home</a></li>
+                <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
+                weil sie nur von Admins/ Uns zugänglich sein sollen-->
+                    <li><a class="header-inhalt" href="/produktliste">Our Products</a></li>
+                    <li><a class="header-inhalt" href="/create">Create A Product</a></li>
+                    <li><a class="header-inhalt" href="">Vier</a></li>
+                    <li><a class="header-inhalt" href="">Fünf</a></li>
+                    <li><a class="header-inhalt" href="">Sechs</a></li>
+                    <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
+                <!--Hier Logout | Nutzername ODER Login | Register -->    
+                    <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | nutzername<br></a></li>
+                    <li style="float:right"><a class="header-inhalt" href="/ueberuns">About Us</a></li>
+                
+                </ul>
+        </nav>
+        </header> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+            
+        <container class="container">
+            <section id="section1">
+                    <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)-->
+            </section>
+        </container>  
+
+            <section id="section2"> <!--hier könnte man eine Searchbar einbauen, um nach bestimmten Produkten zu suchen oder so--> 
+            </section>
+            
+        <!--Main Section mit dem ganzen Formular -->
+        <container>
+            <section id="section3"> 
+                <form action="/zahlungsinformationen" method="post"></form>
+
+                    <!--Teil 1 -->
+                    <h2>Billing address</h2>
+                    <br>
+                    <br>
+                    
+                    <label for="firstName">First name*</label>
+                    <input type="text" name="firstName" required>
+                    <label for="name">Last name*</label>
+                    <input type="text" name="name" required><br>
+                    <label for="email">Email*</label>
+                    <input type="email" name="email" required><br>
+                    <label for="name">Company name</label>
+                    <input type="text" name="company" required><br>
+                    <label for="street">Street*</label>
+                    <input type="text" name="street" required>
+                    <label for="streetNr">House Number*</label>
+                    <input type="text" name="streetNr" required><br>
+                    <label for="city">City*</label>
+                    <input type="text" name="city" required>
+                    <label for="zip">Postal/ ZIP*</label>
+                    <input type="text" name="zip" required><br>
+                    <label for="country">Country*</label>
+                    <select name="country" required>
+                        <option value="germany">Germany</option>
+                    </select>
+                    <p>* required</p>
+                    
+                    <!--Teil 2-->
+                    <h2>Payment method</h2>
+                    <br>
+                    <br>
+                    <label for="payment">Visa</label>
+                    <input type="radio" name="payment" required>
+                    <label for="payment">Master Card</label>
+                    <input type="radio" name="payment" required>
+                    <label for="payment">American Express</label>
+                    <input type="radio" name="payment" required><br>
+                    <label for="cc_name">Cardholders Name</label><label for="cc_number">Credit Card Number</label><br>
+                    <input type="text" name="cc_name" required><input type="text" name="cc_number" required><br>
+                    <label for="cc_exp">Credit Card Exp. Date</label><label for="cvc">CVC</label><br>
+                    <select name="cc_exp_mo" required>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <select name="cc_exp_yr" required>
+                        <option>2021</option>
+                        <option>2022</option>
+                        <option>2023</option>
+                        <option>2024</option>
+                        <option>2025</option>
+                        <option>2026</option>
+                        <option>2027</option>
+                        <option>2028</option>
+                        <option>2029</option>
+                        <option>2030</option>
+                        <option>2031</option>
+                    </select>
+                    <input type="text" name="cvc"><br>
+                    <input type="checkbox" name="agb" required>
+                        <p>I read Applezones <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">Conditions of Use & Sale</a><br> and am willing to accept.
+                        </p>
+                    <input type="checkbox" name="advertisement" required>
+                        <p>I want to receive really annoying regular daily mails<br>about very random apple news.
+                        </p>
+                    <input type="checkbox" name="disclaimer" required>
+                    <p>
+                        I understood, that this is not an actual website, but a <br>
+                        university project made by students of the <a href="https://www.haw-hamburg.de/studium/studiengaenge-a-z/studiengaenge-detail/course/courses/show/media-systems/Studieninteressierte/">HAW Hamburg - Media Systems 2</a> course.
+                    </p>
+                    <br>
+                    <button type="submit">Complete and Pay</button>
+
+                
+                </form>
+                
+            </section>
+            
+        </container>
+
+        <!--Aside mit einer Produkteübersicht und Disclaimern, das rechts hovern soll-->
+        <container>
+            <aside>
+
+                <h4>Ihre Produkte:</h4>
+                <br>
+                <ul>
+                    <!-- let sum = 0 -->
+                    <!--for(product of cart){-->
+                        
+                    <li><!-- =product.anzahl, product.name%>--></li> <!--Keine Ahnung wie die Syntax geht wenn man einen String in ejs zusammenfügen will-->
+                    <!--sum+=product.price;-->
+                    <!-- } -->
+
+
+                </ul>
+
+                <p>Total: <!--sum;-->€</p>
+
+                <a href="/produktliste">Shop more</a><a href="/cart">Back to cart</a>
+
+                <br>
+                <br>
+                <p>The purchase will be completed with the confirmation <br>
+                    sent to you by email.</p>
+
+                <p>
+                    DISCLAIMER!!! YOU WONT RECEIVE ANY REAL APPLES. <br>DONT PROVIDE ANY REAL PERSONAL DATA TO THIS WEBSITE!!! 
+                </p>
+                </aside>
+        </container>
+
+        <footer>
+            <a href="/about">About Us</a>
+            <br>
+            <a href="/about"> Terms of Service</a> <!--Hier wird man noch das scrollen zu der richtigen section hinzufügen müssen-->
+            <br>
+            <p>Spring 2021</p>
+        </footer>
+    </body>
+</html>

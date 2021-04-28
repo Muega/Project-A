@@ -56,18 +56,28 @@ app.get("/logout", function(req, res){
     res.redirect("/home");
 });
 
+
+
+
 //typische Seite Seitenlayout
 app.get("/layout", function(req, res){
     res.sendFile(__dirname + "/views/typischeSeite.html");
 });
 
-//weitere Seiten (About Us, Warenkorb/Cart, shopGuest, Detail)
+//weitere Seiten (About Us, Warenkorb/Cart, Purchase, Completion, shopGuest, Detail)
 app.get("/about", function(req, res){
     res.sendFile(__dirname + "/views/aboutUs.html");
 });
 
 app.get("/warenkorb", function(req, res){
     res.render("cart"); //hierzu muss man auf die Daten zugreifen etc.
+});
+
+app.get("/purchase", function(req,res){ //kann nicht ohne Produkte aufgerufen werden!!
+    res.render("purchase"); //Hier müssen die Produktdaten übergeben werden 
+})
+app.get("/completion", function(req, res){
+    res.sendFile(__dirname + "/views/completion.html");
 });
 
 app.get("/guest", function(req, res){
@@ -97,7 +107,7 @@ app.get("/shop", function(req, res){
 });
 
 
-//Login-Formular
+//Login POST-Formular
 app.post("/login_eingabe", function(req,res){
     const nutzername = req.body.nutzername; 
     const passwort = req.body.passwort;
@@ -122,7 +132,7 @@ app.post("/login_eingabe", function(req,res){
     );
 });
 
-//Registier-Formular
+//Registier POST-Formular
 app.post("/register_eingabe", function(req,res){
     const nutzername = req.body.nutzername; 
     const passwort = req.body.passwort;

@@ -1,0 +1,108 @@
+<!--Diese Seite kommt nach Abschluss des Kaufes-->
+<!--Auf dieser Seite füllt man die Zahlungsinformationen aus und kauft-->
+<!--Die Seite ist mainly aufgebaut aus Section 3, in der das Formular in zwei Teilen (Billing address, Payment method) geteilt ist und einem -->
+<!--aside, indem die Produkte später gezeigt werden.-->
+<!Doctype html>
+<html lang="de">
+
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+   <!-- Hier versuche ich es Mal mit
+    Bootstrap: -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Das neueste kompilierte und minimierte CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+   <!-- Optionales Theme -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <title>Checkout</title>
+  </head>
+
+    <body>
+        <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+        <header>
+            <nav>
+                <ul class="stick header-top"> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+                
+                    <li><a class="header-inhalt active" href="/shop">Home</a></li>
+                <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
+                weil sie nur von Admins/ Uns zugänglich sein sollen-->
+                    <li><a class="header-inhalt" href="/produktliste">Our Products</a></li>
+                    <li><a class="header-inhalt" href="/create">Create A Product</a></li>
+                    <li><a class="header-inhalt" href="">Vier</a></li>
+                    <li><a class="header-inhalt" href="">Fünf</a></li>
+                    <li><a class="header-inhalt" href="">Sechs</a></li>
+                    <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
+                <!--Hier Logout | Nutzername ODER Login | Register -->    
+                    <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | nutzername<br></a></li>
+                    <li style="float:right"><a class="header-inhalt" href="/ueberuns">About Us</a></li>
+                
+                </ul>
+        </nav>
+        </header> 
+          
+        <!--oberer Abstand-->
+        <container class="container">
+            <section id="section1">
+                    <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)-->
+            </section>
+        </container>  
+
+        <!--hier könnte man eine Searchbar einbauen, um nach bestimmten Produkten zu suchen oder so--> 
+        <container>
+            <section id="section2"> 
+            </section>
+        </container>
+        
+        
+        <!--Section 3: Überschrift -->
+        <container>
+            <section id="section3"> 
+                <h1>Purchase successful! (Disclaimer: this was not a real purchase)</h1>
+            </section>
+            
+        </container>
+
+        <!--Section 4: Mittelteil der Seite mit divs der verschiedenen Bilder/ Texte-->
+        <container>
+            <section id="section4">
+                <div>
+                    <img src="" alt="Linkes Bild">
+                </div>
+                <div>
+                    <img src="" alt="Rechtsoben Bild">
+                </div>
+                <div>
+                    <h4>Soon on Applezone</h4>
+                    <p>
+                        Pears - Get our finest red pears! <br>
+                        Now, it's just a matter of time. <br>
+                        Come by soon to check it out!
+                    </p>
+                </div>
+                <div>
+                    <img src="" alt="Untenrechts Bild">
+                </div>
+            <section>
+        </container>
+
+        <!--Section 5: Die drei Links unten-->
+        <container>
+            <section id="section5">
+                <a href="/shop">Back to shop</a><a href="/aboutApples">Learn more about apples</a><a href="/about">Learn more about us</a>
+            </section>
+        </container>
+
+        <footer>
+            <a href="/about">About Us</a>
+            <br>
+            <a href="/about"> Terms of Service</a> <!--Hier wird man noch das scrollen zu der richtigen section hinzufügen müssen-->
+            <br>
+            <p>Spring 2021</p>
+        </footer>
+    </body>
+</html>
