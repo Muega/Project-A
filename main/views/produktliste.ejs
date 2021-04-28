@@ -6,38 +6,67 @@
     <title>Produkte</title>
   </head>
   <body>
-      <table border="1">
-        <td>ID</td>
-        <td>Name</td>
-        <td>Preis</td>
-        <td>Anzahl</td>
-        <td>Knackigkeit</td>
-        <td>Versteckt?</td>
-        <td>Farbe</td>
-        <td>Gewicht</td>
-        <td>Saftigkeit</td>
-          <% for(var i = 0; i<produkte.length; i++) { %>
-              <tr>
-                  <td><%= produkte[i].id %></td>
-                  <td><%= produkte[i].name %></td>
-                  <td><%= produkte[i].preis %></td>
-                  <td><%= produkte[i].anzahl %></td>
-                  <td><%= produkte[i].knackig %></td>
-                  <td><%= produkte[i].versteckt %></td>
-                  <td><%= produkte[i].farbe %></td>
-                  <td><%= produkte[i].gewicht %></td>
-                  <td><%= produkte[i].saft %></td>
-                  <td>
-                    <form action="/delete/<%= produkte[i].id %>" method="POST">
-                        <button type="submit">Löschen</button>
-                    </form>
-                  </td>
-                  <td>
-                    <form action="/update/<%= produkte[i].id %>" method="POST">
-                        <button type="submit">Bearbeiten</button>
-                    </form>
-                  </td>
-              </tr>
+
+    <header>
+      <nav>
+          <ul class="stick header-top"> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+          
+              <li><a class="header-inhalt" href="/shop">Home</a></li>
+          <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
+          weil sie nur von Admins/ Uns zugänglich sein sollen-->
+              <li><a class="header-inhalt active" href="/produktliste">Our Products</a></li>
+              <li><a class="header-inhalt" href="/create">Create A Product</a></li>
+              <li><a class="header-inhalt" href="">Vier</a></li>
+              <li><a class="header-inhalt" href="">Fünf</a></li>
+              <li><a class="header-inhalt" href="">Sechs</a></li>
+              <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
+          <!--Hier Logout | Nutzername ODER Login | Register -->    
+              <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | nutzername<br></a></li>
+              <li style="float:right"><a class="header-inhalt" href="/about">About Us</a></li>
+          
+          </ul>
+      </nav>
+    </header> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+    
+    <!--oberer Abstand-->
+    <container class="container">
+      <section id="section1">
+          <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)-->
+      </section>
+    </container> 
+
+    <table border="1">
+      <td>ID</td>
+      <td>Name</td>
+      <td>Preis</td>
+      <td>Anzahl</td>
+      <td>Knackigkeit</td>
+      <td>Versteckt?</td>
+      <td>Farbe</td>
+      <td>Gewicht</td>
+      <td>Saftigkeit</td>
+        <% for(var i = 0; i<produkte.length; i++) { %>
+            <tr>
+                <td><%= produkte[i].id %></td>
+                <td><%= produkte[i].name %></td>
+                <td><%= produkte[i].preis %></td>
+                <td><%= produkte[i].anzahl %></td>
+                <td><%= produkte[i].knackig %></td>
+                <td><%= produkte[i].versteckt %></td>
+                <td><%= produkte[i].farbe %></td>
+                <td><%= produkte[i].gewicht %></td>
+                <td><%= produkte[i].saft %></td>
+                <td>
+                  <form action="/delete/<%= produkte[i].id %>" method="POST">
+                      <button type="submit">Löschen</button>
+                  </form>
+                </td>
+                <td>
+                  <form action="/update/<%= produkte[i].id %>" method="POST">
+                      <button type="submit">Bearbeiten</button>
+                  </form>
+                </td>
+            </tr>
           <% } %>
       </table>
     <a href="/create">Neues Produkt hinzufügen</a>

@@ -69,8 +69,13 @@ app.get("/about", function(req, res){
     res.sendFile(__dirname + "/views/aboutUs.html");
 });
 
-app.get("/warenkorb", function(req, res){
-    res.render("cart"); //hierzu muss man auf die Daten zugreifen etc.
+app.get("/warenkorb", function(req, res){ //hierzu muss man auf die Daten zugreifen etc.
+    if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
+        return res.render("cart", {"nutzername": "Guest", "aktion": ""}); 
+    }else{
+        return res.render("cart", {"nutzername": req.session.sessionValue, "aktion": ""});
+    }
+    
 });
 
 app.get("/purchase", function(req,res){ //kann nicht ohne Produkte aufgerufen werden!!
@@ -100,7 +105,7 @@ app.get("/produktliste", function(req, res){
 
 app.get("/shop", function(req, res){
     if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
-        return res.render("shop", {"nutzername": "Unbekannter Benutzer", "aktion": ""}); 
+        return res.render("shop", {"nutzername": "Guest", "aktion": ""}); 
     }else{
         return res.render("shop", {"nutzername": req.session.sessionValue, "aktion": ""});
     }

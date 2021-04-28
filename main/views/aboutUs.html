@@ -7,18 +7,49 @@
 
     Our Story
 
+    About Apples
+
     Customer Service 
 
     Impressum | Terms of Service
 -->
 <html>
     <head>
-
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <title>About Applezone</title>
     </head>
     <body>
+         <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
         <header>
-            <nav></nav>
+            <nav>
+                <ul class="stick header-top">
+                
+                    <li><a class="header-inhalt" href="/shop">Home</a></li>
+                <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
+                weil sie nur von Admins/ Uns zugänglich sein sollen-->
+                    <li><a class="header-inhalt" href="/produktliste">Our Products</a></li>
+                    <li><a class="header-inhalt" href="/create">Create A Product</a></li>
+                    <li><a class="header-inhalt" href="">Vier</a></li>
+                    <li><a class="header-inhalt" href="">Fünf</a></li>
+                    <li><a class="header-inhalt" href="">Sechs</a></li>
+                    <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
+                <!--Hier Logout | Nutzername ODER Login | Register -->    
+                    <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | nutzername<br></a></li>
+                    <li style="float:right"><a class="header-inhalt active" href="/about">About Us</a></li>
+                
+                </ul>
+            </nav>
         </header>
+          
+          <!--oberer Abstand-->
+        <container class="container">
+            <section id="section1">
+                <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)-->
+            </section>
+        </container>
+
+
         <article>
             <section>
                 <h3>ABOUT US</h3>
