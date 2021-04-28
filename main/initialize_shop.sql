@@ -10,7 +10,7 @@ CREATE TABLE produkte (
     preis NUMERIC,
     anzahl NUMERIC INTEGER,
     knackig NUMERIC INTEGER, /* Knackigkeit 1 - 100*/
-    versteckt BOOLEAN,  /* Versrecktes Produkt? */
+    versteckt BOOLEAN,  /* Verstecktes Produkt? */
     farbe TEXT NOT NULL, /* Farbe Rot, Blau ...*/
     gewicht NUMERIC, /* Gewicht */
     saft TEXT NOT NULL /* Saftigkeit 1- 100 */
