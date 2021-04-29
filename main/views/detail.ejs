@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <!--Das wird die basic Detailansicht-Seite-->
-<html>
+<html lang="de">
     <head>
-        
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
         <title>Apple X</title>
     </head>
     <body>
-        <header>
-            <nav></nav>
-        </header>
+        
 
         <container>
         <article>
+            <h2><%= name %></h2>
             <section>
-                <img width="45%" src="/public/Blue_Apple.jpg">
+                <img width="400px" src="<%= bild %>">
             </section>
             <section>
-                <h3>Appple X</h3>
-                <p>the best Apple of all the Apples</p>
+                <h3>Costs: <%= preis %></h3>
+                <p>In stock: <%= anzahl %></p>
+                <p>Crispness: <%= knackig %> </p>
+                <p>Juiciness <%= saft %></p>
+                <p>Color: <%= farbe %></p>
+                <p>weight: <%= gewicht %></p>
             </section>
             <aside></aside>
         </article>

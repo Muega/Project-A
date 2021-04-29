@@ -21,7 +21,7 @@
               <li><a class="header-inhalt" href="">Sechs</a></li>
               <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
           <!--Hier Logout | Nutzername ODER Login | Register -->    
-              <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | nutzername<br></a></li>
+              <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | <%= nutzername %><br></a></li>
               <li style="float:right"><a class="header-inhalt" href="/about">About Us</a></li>
           
           </ul>
@@ -37,6 +37,7 @@
 
     <table border="1">
       <td>ID</td>
+      <td>Bild(temp)</td>
       <td>Name</td>
       <td>Preis</td>
       <td>Anzahl</td>
@@ -48,6 +49,7 @@
         <% for(var i = 0; i<produkte.length; i++) { %>
             <tr>
                 <td><%= produkte[i].id %></td>
+                <td><form action="/detail/<%= produkte[i].id %>" method="POST"><input type="image" src="<%= produkte[i].bild %>" width="150" alt="Empty"></form></td>
                 <td><%= produkte[i].name %></td>
                 <td><%= produkte[i].preis %></td>
                 <td><%= produkte[i].anzahl %></td>

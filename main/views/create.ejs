@@ -22,7 +22,7 @@
               <li><a class="header-inhalt" href="">Sechs</a></li>
               <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
           <!--Hier Logout | Nutzername ODER Login | Register -->    
-              <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | nutzername<br></a></li>
+              <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | <%= nutzername %><br></a></li>
               <li style="float:right"><a class="header-inhalt" href="/about">About Us</a></li>
           
           </ul>
@@ -51,6 +51,16 @@
         <input type="number" min="0" step="0.01" name="gewicht" required><br>
         Saftigkeit des Produktes: <br>
         <input type="number" min="0" max="100" name="saft" required><br>
+        Bild hinzufügen(URL): <br>
+        <input type="text" name="bild"><br>
+        --test--<br>
+        Bild hinzufügen(Drag&Drop):
+        <div class="drop-zone">                                                     <!-- Das hier ist der Drag&Drop code(in server.js findet ihr den Code bei der /post von /oncreate)-->
+          <span class="drop-zone__prompt">Drop file here or click to upload</span>  <!--funktioniert noch nicht aber sieht schon cool aus :D-->
+          <input type="file" name="bild" class="drop-zone--input">
+
+        </div>                                                                      <!-- bis hier-->
+        --test--<br>
         <br>
         <input type="checkbox" id="versteckt" name="versteckt" value="1"> 
         <label for="versteckt">Versteckten?</label>

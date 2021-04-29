@@ -13,7 +13,8 @@ CREATE TABLE produkte (
     versteckt BOOLEAN,  /* Verstecktes Produkt? */
     farbe TEXT NOT NULL, /* Farbe Rot, Blau ...*/
     gewicht NUMERIC, /* Gewicht */
-    saft TEXT NOT NULL /* Saftigkeit 1- 100 */
+    saft TEXT NOT NULL, /* Saftigkeit 1- 100 */
+    bild TEXT /* src="(den link zum Bild als STRING in database)"*/
 );
 
 CREATE TABLE benutzer (

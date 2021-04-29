@@ -48,7 +48,11 @@ app.get("/register", function(req, res){
 });
 
 app.get("/create", function(req, res){
-    res.render("create");
+    if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
+        return res.render("create", {"nutzername": "Guest", "aktion": ""}); 
+    }else{
+        return res.render("create", {"nutzername": req.session.sessionValue, "aktion": ""});
+    }
 });
 
 app.get("/logout", function(req, res){
@@ -66,7 +70,11 @@ app.get("/layout", function(req, res){
 
 //weitere Seiten (About Us, Warenkorb/Cart, Purchase, Completion, shopGuest, Detail)
 app.get("/about", function(req, res){
-    res.sendFile(__dirname + "/views/aboutUs.html");
+    if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
+        return res.render("aboutUs", {"nutzername": "Guest", "aktion": ""}); 
+    }else{
+        return res.render("aboutUs", {"nutzername": req.session.sessionValue, "aktion": ""});
+    }
 });
 
 app.get("/warenkorb", function(req, res){ //hierzu muss man auf die Daten zugreifen etc.
@@ -79,7 +87,11 @@ app.get("/warenkorb", function(req, res){ //hierzu muss man auf die Daten zugrei
 });
 
 app.get("/purchase", function(req,res){ //kann nicht ohne Produkte aufgerufen werden!!
-    res.render("purchase"); //Hier müssen die Produktdaten übergeben werden 
+    if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
+        return res.render("purchase", {"nutzername": "Guest", "aktion": ""}); 
+    }else{
+        return res.render("purchase", {"nutzername": req.session.sessionValue, "aktion": ""});
+    } //Hier müssen die Produktdaten übergeben werden 
 })
 app.get("/completion", function(req, res){
     res.sendFile(__dirname + "/views/completion.html");
@@ -89,18 +101,23 @@ app.get("/guest", function(req, res){
     res.sendFile(__dirname + "/views/shopGuest.html");
 });
 
-app.get("/detail", function(req, res){ //die detailseiten würde ich vielleicht durchnummerieren? vllt sogar mit ID und ejs
-    res.sendFile(__dirname + "/views/detail.html");
-});
-
 //Produktliste
 app.get("/produktliste", function(req, res){
-    db.all(
-        `SELECT * FROM produkte`,
-        function(err,rows){
-            res.render("produktliste", {"produkte": rows}); //Produktlisten Array an produktliste.ejs übergeben
-        }
-    );
+    if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
+        db.all(
+            `SELECT * FROM produkte`,
+            function(err,rows){
+                res.render("produktliste", {"produkte": rows, "nutzername": "Guest", "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
+            }
+        );
+    }else{
+        db.all(
+            `SELECT * FROM produkte`,
+            function(err,rows){
+                res.render("produktliste", {"produkte": rows, "nutzername": req.session.sessionValue, "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
+            }
+            );
+    } 
 });
 
 app.get("/shop", function(req, res){
@@ -110,6 +127,17 @@ app.get("/shop", function(req, res){
         return res.render("shop", {"nutzername": req.session.sessionValue, "aktion": ""});
     }
 });
+
+//Detail von einem Produkt
+app.post("/detail/:id", function(req, res){
+    db.all(
+        `SELECT * FROM produkte WHERE id = ${req.params.id}`,
+        function(err, rows){
+            res.render("detail", rows[0]);
+        }
+    );
+});
+
 
 
 //Login POST-Formular
@@ -200,14 +228,24 @@ app.post("/oncreate", function(req, res){
     const param_farbe = req.body.farbe;
     const param_gewicht = req.body.gewicht;
     const param_saft = req.body.saft;
+    const param_bild = req.body.bild;
+
+    //code für die Drag&Drop funktion.(funktioniert noch nicht)
+    //document.querySelectorAll(".drop-zone--input").forEach(InputElement => {
+    //    const dropZoneElement = InputElement.className(".drop-zone");
+
+    //    dropZoneElement.addEventListener("dragover" , e => {
+    //        dropZoneElement.classList.add("drop-zone--over");
+    //    });
+    //});
 
     if(param_versteckt == undefined){
         param_versteckt = 0;//Sonst ist versteckt undifinied und die Tabelle kann nicht geupdated werden.
     }
 
     db.run(
-        `INSERT INTO produkte(name, preis, anzahl, knackig, versteckt, farbe, gewicht, saft) VALUES(
-            "${param_name}", ${param_preis}, ${param_anzahl}, ${param_knackig}, ${param_versteckt}, "${param_farbe}", ${param_gewicht}, ${param_saft})`,
+        `INSERT INTO produkte(name, preis, anzahl, knackig, versteckt, farbe, gewicht, saft, bild) VALUES(
+            "${param_name}", ${param_preis}, ${param_anzahl}, ${param_knackig}, ${param_versteckt}, "${param_farbe}", ${param_gewicht}, ${param_saft}, "${param_bild}")`,
         function(err){
             res.redirect("/produktliste");
         }
@@ -244,6 +282,7 @@ app.post("/onupdate/:id", function(req, res){
     const param_farbe = req.body.farbe;
     const param_gewicht = req.body.gewicht;
     const param_saft = req.body.saft;
+    const param_bild = req.body.bild;
 
     if(param_versteckt == undefined){
         param_versteckt = "0"; //Sonst ist versteckt undifinied und die Tabelle kann nicht geupdated werden.
@@ -251,9 +290,9 @@ app.post("/onupdate/:id", function(req, res){
 
     db.run( //Hier werden die werte aus der Liste geupdatet
         `UPDATE produkte SET name = "${param_update_name}", preis = ${param_update_preis}, anzahl =  ${param_anzahl}, 
-        knackig =  ${param_knackig}, versteckt =  ${param_versteckt}, farbe = "${param_farbe}", gewicht = ${param_gewicht}, saft = ${param_saft} WHERE id = ${req.params.id}`,
+        knackig =  ${param_knackig}, versteckt =  ${param_versteckt}, farbe = "${param_farbe}", gewicht = ${param_gewicht}, saft = ${param_saft}, bild = "${param_bild}" WHERE id = ${req.params.id}`,
         function(err){
-            console.log(param_update_name, param_update_preis, param_anzahl, param_knackig, param_versteckt, param_farbe, param_gewicht, param_saft);
+            console.log(param_update_name, param_update_preis, param_anzahl, param_knackig, param_versteckt, param_farbe, param_gewicht, param_saft, param_bild);
             res.redirect("/produktliste");
         }
     );
