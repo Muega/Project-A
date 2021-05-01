@@ -3,6 +3,7 @@ Initialisiert die Datenbank, wird aus sqlite3 heraus geladen mit:
 > .read initialize_shop.sql
 */ 
 
+
 /* Tabelle produkte erzeugen */
 CREATE TABLE produkte (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
