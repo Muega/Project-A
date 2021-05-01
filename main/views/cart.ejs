@@ -54,9 +54,46 @@
     <section id="section3"> <!--Hier can man Die Warenkorb-Tabelle einfügen-->
         <div>
 
-            <table style="width: 85%">
+            <table  style="width: 90%; border-width: 5px; border-style: double;">
                 <tr>
-                    
+                    <th>pic</th> <!--Hier kommt das Bild-->
+                    <th>Name</th> <!---->
+                    <th>Details</th> <!-- Hier kommt scheinbar ein Link zur Detailseite?-->
+                    <th>Unit price</th> <!--Einzelpreis-->
+                    <th>Number of apples</th> <!--Anzahl-->
+                    <th>Intermediate price</th> <!--Total prize x Number of Apples, vllt kann man hier ne Funktion schreiben-->
+                    <th>Total price</th>
+                </tr>
+                <tr>
+                    <td>
+                    <img style="width: 40px" src="/public/Blue_Apple.jpg">
+                    </td>
+                    <td>
+                    parameter für name <!-- <%=  %> -->
+                    </td>
+                    <td>
+                    link zur detailpage des produktes <a href="detail.ejs"> Name des Produktes<!-- <%= %> --> </a>
+                    </td>
+                    <td>
+                    parameter für Einzelpreis <!-- <%=  %> -->
+                    </td>
+                    <td>
+                     z.B. 20
+                    </td>
+                    <td>
+                     für jede Reihe: unit price * number of apples
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>total price: sum of all intermediate prices</td>
                 </tr>
             </table>
         
