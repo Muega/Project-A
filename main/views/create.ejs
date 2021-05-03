@@ -36,7 +36,9 @@
       </section>
     </container> 
 
-    <form action="/oncreate" method="POST">
+    <form action="/oncreate" method="POST" enctype="multipart/form-data"> <!--form braucht bei allen Einträgen labels-->
+        <input type="hidden" name="MAX_FILE_SIZE" value="8388608" />  <!--Uploadlimit-->
+      
         Name des Produktes: <br>
         <input type="text" name="produktname" required><br>
         Preis des Produktes: <br>
@@ -51,16 +53,17 @@
         <input type="number" min="0" step="0.01" name="gewicht" required><br>
         Saftigkeit des Produktes: <br>
         <input type="number" min="0" max="100" name="saft" required><br>
-        Bild hinzufügen(URL): <br>
-        <input type="text" name="bild"><br>
-        --test--<br>
+        <label for="bild">Bild hinzufügen (max. 8mb):</label><br>
+        <input type="file" accept="image/jpeg, image/jpg, image/png" name="bild" id="bild"><br>
+        <!-- --test--<br>
         Bild hinzufügen(Drag&Drop):
-        <div class="drop-zone">                                                     <!-- Das hier ist der Drag&Drop code(in server.js findet ihr den Code bei der /post von /oncreate)-->
-          <span class="drop-zone__prompt">Drop file here or click to upload</span>  <!--funktioniert noch nicht aber sieht schon cool aus :D-->
-          <input type="file" name="bild" class="drop-zone--input">
+        <div class="drop-zone">                                                     Das hier ist der Drag&Drop code(in server.js findet ihr den Code bei der /post von /oncreate)
+          <span class="drop-zone__prompt">Drop file here or click to upload</span>  funktioniert noch nicht aber sieht schon cool aus :D
+          <input type="" name="bild2" class="drop-zone--input">
 
-        </div>                                                                      <!-- bis hier-->
-        --test--<br>
+        </div>                                                                      
+        --test--<br>                                                                bis hier-->
+
         <br>
         <input type="checkbox" id="versteckt" name="versteckt" value="1"> 
         <label for="versteckt">Versteckten?</label>

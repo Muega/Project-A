@@ -4,34 +4,81 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <title>Viel Spaß</title>
+
+   <!-- Hier versuche ich es Mal mit
+    Bootstrap: -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Das neueste kompilierte und minimierte CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+   <!-- Optionales Theme -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <title>Applezone Shop</title>
   </head>
 
   <body>
-    <nav>
-    <ul class="stick header-top"> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
-     
-      <li><a class="header-inhalt active" href="/shop">Home</a></li>
-      <li><a class="header-inhalt" href="/produktliste">Produktliste</a></li>
-      <li><a class="header-inhalt" href="/create">Create</a></li>
-      <li><a class="header-inhalt" href="">Vier</a></li>
-      <li><a class="header-inhalt" href="">Fünf</a></li>
-      <li><a class="header-inhalt" href="">Sechs</a></li>
-      <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
-      <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | <%= nutzername %><br></a></li>
-      <li style="float:right"><a class="header-inhalt" href="/about">About Us</a></li>
-  </ul>
-  </nav>
+    <header>
+      <nav>
+          <ul class="stick header-top"> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+          
+              <li><a class="header-inhalt active" href="/shop">Home</a></li>
+          <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
+          weil sie nur von Admins/ Uns zugänglich sein sollen-->
+              <li><a class="header-inhalt" href="/produktliste">Edit products</a></li>
+              <li><a class="header-inhalt" href="/create">Create A Product</a></li>
+              <li><a class="header-inhalt" href="">Vier</a></li>
+              <li><a class="header-inhalt" href="">Fünf</a></li>
+              <li><a class="header-inhalt" href="">Sechs</a></li>
+              <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
+          <!--Hier Logout | Nutzername ODER Login | Register -->    
+              <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | <%=nutzername%><br></a></li>
+              <li style="float:right"><a class="header-inhalt" href="/ueberuns">About Us</a></li>
+          
+          </ul>
+      </nav>
+    </header> 
+    
+  <!--oberer Abstand-->
+  <container class="container">
+      <section id="section1">
+              <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)-->
+      </section>
+  </container> 
 
-  <br><br> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+  <!--Seitenüberschrift-->
+  <container class="container">
+    <section id="section2">
+      <br>
+      <%= aktion %>.<br> <!--Was ist das hier, bzw wo führt aktion hin? Daria-->
+        <h3>Welcome to Applezone <%= nutzername %>!</h3>
+        <p>From Juicy to Crunchy - here you can find the Apple <span><em>you</em></span> deserve!</p>
+        <br>
+    </section>
+</container>  
+
+
+<container class="container">
+  <section id="section3"> <!--Das wird die Main Section mit den Produkten-->
       
-  <section>
-          <h4>Welcome, <%= nutzername %>!</h4>
-          <br>
-          <%= aktion %>.<br> <!--Was ist das hier, bzw wo führt aktion hin? Daria-->
-          <a href="/">Startseite</a> <br>
-          <a href="/produktliste"><input type="button" value="Produktliste"></a> <br>
+    <!-- Diese for-Schleife liest alle Produkte in dem Bootstraplayout aus-->
+    <% for(product of produkte){ %>
+      <% if(product.versteckt == true){ continue;}%> <!--Versteckte überspringen-->
+      <div class="thumbnail">
+          <img src=<%=product.bild%> class="card-image-top" style=" width: 20%;" alt="apple pic"> <!--hier hab ich vorerst den style so geändert, muss später anders werden-->
+          <div class="caption">
+              <h4><%=product.name%></h4>
+              <p>This unsusual Apple will change your life.</p>
+              <p>Price: <%=product.preis%>€</p>
+              <p><a href="#" class="btn btn-primary" role="button">Love</a> <a href="#" class="btn btn-danger" role="button">Hate</a></p>
+          </div>
+      </div>
+    <% }%>
   </section>
+</container>
+
+
 
   <footer>
     <a href="/about">About Us</a>

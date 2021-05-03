@@ -8,6 +8,7 @@ story steht für den Beschreibungstext;
 im Moment fehlt noch im Instert Into das Bild (außer beim Blue Apple);
 Die Namen sind noch nicht nach Farbe benannt;
 */
+/* MEEGA geilo M. */
 
 CREATE TABLE produkt (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 

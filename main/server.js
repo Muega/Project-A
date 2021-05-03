@@ -27,6 +27,10 @@ app.use(session({
 //Initialisierung bcrypt
 const bcrypt = require('bcrypt');
 
+//Initialisierung express-fileupload
+const fileUpload = require('express-fileupload');
+app.use(fileUpload());
+
 //Initialisierung Cookies
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
@@ -128,10 +132,20 @@ app.get("/produktliste", function(req, res){
 
 app.get("/shop", function(req, res){
     if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
-        return res.render("shop", {"nutzername": "Guest", "aktion": ""}); 
+        db.all(
+            `SELECT * FROM produkte`,
+            function(err,rows){
+                res.render("shop", {"produkte": rows, "nutzername": "Guest", "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
+            }
+        );
     }else{
-        return res.render("shop", {"nutzername": req.session.sessionValue, "aktion": ""});
-    }
+        db.all(
+            `SELECT * FROM produkte`,
+            function(err,rows){
+                res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue, "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
+            }
+        );
+    } 
 });
 
 //Detail von einem Produkt
@@ -150,7 +164,7 @@ app.post("/detail/:id", function(req, res){
 app.post("/login_eingabe", function(req,res){
     const nutzername = req.body.nutzername; 
     const passwort = req.body.passwort;
-
+    let loggedIn = false;
     db.all(
         `SELECT * FROM (
             SELECT benutzername,passwort,email FROM benutzer
@@ -163,15 +177,22 @@ app.post("/login_eingabe", function(req,res){
                     const sessionValue = rows[element].benutzername; 
                     req.session.sessionValue = sessionValue;
                     console.log(rows);
-                    return res.render("shop", {"nutzername": req.session.sessionValue, "aktion": "Sie haben sich erfolgreich angemeldet"});
+                    loggedIn = true;
+                    db.all(`SELECT * FROM produkte`, function(err, rows){
+                        return res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue, "aktion": "Sie haben sich erfolgreich angemeldet"});
+                        
+                    });
+                    break;
                 };
             };
+            if(!loggedIn){
             return res.render("login", {"nachricht": "Falsches Passwort oder Benutzername!"});
+            }
         }
     );
 });
 
-//Registier POST-Formular
+//Register POST-Formular
 app.post("/register_eingabe", function(req,res){
     const nutzername = req.body.nutzername; 
     const passwort = req.body.passwort;
@@ -234,7 +255,13 @@ app.post("/oncreate", function(req, res){
     const param_farbe = req.body.farbe;
     const param_gewicht = req.body.gewicht;
     const param_saft = req.body.saft;
-    const param_bild = req.body.bild;
+    
+    //Bild hinzufügen
+    console.log(req.files)
+    const param_bild = req.files.bild;
+    const param_bild_path = "/public/" + Date.now() + param_bild.name // Bildpath bekommt Zeitstempel
+    
+    param_bild.mv(__dirname + param_bild_path); //Bild wird in /public/ path gelegt
 
     //code für die Drag&Drop funktion.(funktioniert noch nicht)
     //document.querySelectorAll(".drop-zone--input").forEach(InputElement => {
@@ -251,7 +278,7 @@ app.post("/oncreate", function(req, res){
 
     db.run(
         `INSERT INTO produkte(name, preis, anzahl, knackig, versteckt, farbe, gewicht, saft, bild) VALUES(
-            "${param_name}", ${param_preis}, ${param_anzahl}, ${param_knackig}, ${param_versteckt}, "${param_farbe}", ${param_gewicht}, ${param_saft}, "${param_bild}")`,
+            "${param_name}", ${param_preis}, ${param_anzahl}, ${param_knackig}, ${param_versteckt}, "${param_farbe}", ${param_gewicht}, ${param_saft}, "${param_bild_path}")`,
         function(err){
             res.redirect("/produktliste");
         }
@@ -270,7 +297,7 @@ app.post("/delete/:id", function(req, res){
 
 //UPDATE Produkt
 app.post("/update/:id", function(req, res){
-    //Nach Datensazu mit id suchen und Werte an Formular übergeben
+    //Nach Datensatz mit id suchen und Werte an Formular übergeben
     db.all(
         `SELECT * FROM produkte WHERE id = ${req.params.id}`,
         function(err, rows){
@@ -279,6 +306,7 @@ app.post("/update/:id", function(req, res){
     );
 });
 
+//Muss bearbeitet werden, alte Bilder werden nicht gelöscht
 app.post("/onupdate/:id", function(req, res){
     const param_update_name = req.body.produktname;
     const param_update_preis = req.body.produktpreis;
@@ -288,7 +316,12 @@ app.post("/onupdate/:id", function(req, res){
     const param_farbe = req.body.farbe;
     const param_gewicht = req.body.gewicht;
     const param_saft = req.body.saft;
-    const param_bild = req.body.bild;
+    
+    //Bild datei
+    const param_bild = req.files.bild;
+    const param_bild_path = "/public/" + Date.now() + param_bild.name // Bildpath bekommt Zeitstempel
+    
+    param_bild.mv(__dirname + param_bild_path); //Bild wird in /public/ path gelegt
 
     if(param_versteckt == undefined){
         param_versteckt = "0"; //Sonst ist versteckt undifinied und die Tabelle kann nicht geupdated werden.
@@ -296,9 +329,9 @@ app.post("/onupdate/:id", function(req, res){
 
     db.run( //Hier werden die werte aus der Liste geupdatet
         `UPDATE produkte SET name = "${param_update_name}", preis = ${param_update_preis}, anzahl =  ${param_anzahl}, 
-        knackig =  ${param_knackig}, versteckt =  ${param_versteckt}, farbe = "${param_farbe}", gewicht = ${param_gewicht}, saft = ${param_saft}, bild = "${param_bild}" WHERE id = ${req.params.id}`,
+        knackig =  ${param_knackig}, versteckt =  ${param_versteckt}, farbe = "${param_farbe}", gewicht = ${param_gewicht}, saft = ${param_saft}, bild = "${param_bild_path}" WHERE id = ${req.params.id}`,
         function(err){
-            console.log(param_update_name, param_update_preis, param_anzahl, param_knackig, param_versteckt, param_farbe, param_gewicht, param_saft, param_bild);
+            console.log(param_update_name, param_update_preis, param_anzahl, param_knackig, param_versteckt, param_farbe, param_gewicht, param_saft, param_bild_path);
             res.redirect("/produktliste");
         }
     );
