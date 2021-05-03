@@ -27,6 +27,10 @@ app.use(session({
 //Initialisierung bcrypt
 const bcrypt = require('bcrypt');
 
+//Initialisierung Cookies
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
 //Zugriff erlauben
 app.use(express.static(__dirname + "/public/.."));
 
@@ -97,9 +101,11 @@ app.get("/completion", function(req, res){
     res.sendFile(__dirname + "/views/completion.html");
 });
 
+/* shopGuest ist deleted
 app.get("/guest", function(req, res){
     res.sendFile(__dirname + "/views/shopGuest.html");
 });
+*/
 
 //Produktliste
 app.get("/produktliste", function(req, res){
