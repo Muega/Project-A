@@ -256,12 +256,18 @@ app.post("/oncreate", function(req, res){
     const param_gewicht = req.body.gewicht;
     const param_saft = req.body.saft;
     
-    //Bild hinzufügen
-    console.log(req.files)
-    const param_bild = req.files.bild;
-    const param_bild_path = "/public/" + Date.now() + param_bild.name // Bildpath bekommt Zeitstempel
+    let param_bild_path;
+    //Bild datei
+        //If Abrage, ob Bild übergeben wurde
+    if(req.files != null){
     
-    param_bild.mv(__dirname + param_bild_path); //Bild wird in /public/ path gelegt
+        
+            const param_bild = req.files.bild;
+            param_bild_path = "/public/" + Date.now() + param_bild.name // Bildpath bekommt Zeitstempel
+        
+            param_bild.mv(__dirname + param_bild_path); //Bild wird in /public/ path gelegt
+        }
+
 
     //code für die Drag&Drop funktion.(funktioniert noch nicht)
     //document.querySelectorAll(".drop-zone--input").forEach(InputElement => {
@@ -308,6 +314,7 @@ app.post("/update/:id", function(req, res){
 
 //Muss bearbeitet werden, alte Bilder werden nicht gelöscht
 app.post("/onupdate/:id", function(req, res){
+    const product_id = parseInt(req.body.id);
     const param_update_name = req.body.produktname;
     const param_update_preis = req.body.produktpreis;
     const param_anzahl = req.body.anzahl;
@@ -317,15 +324,27 @@ app.post("/onupdate/:id", function(req, res){
     const param_gewicht = req.body.gewicht;
     const param_saft = req.body.saft;
     
+    let param_bild_path;
+
     //Bild datei
-    const param_bild = req.files.bild;
-    const param_bild_path = "/public/" + Date.now() + param_bild.name // Bildpath bekommt Zeitstempel
+      //If Abfrage, ob Parameter übergeben wurde   ////// Im else statement wird leider der param_bild_path zu {} statt aus den alten path aus der Datenbank zu nehmen...
+    if(req.files != null){
     
-    param_bild.mv(__dirname + param_bild_path); //Bild wird in /public/ path gelegt
+        const param_bild = req.files.bild;
+        param_bild_path = "/public/" + Date.now() + param_bild.name // Bildpath bekommt Zeitstempel
+    
+        param_bild.mv(__dirname + param_bild_path); //Bild wird in /public/ path gelegt
+    }else{
+        console.log(product_id);
+        console.log(db.get(`SELECT bild FROM produkte WHERE id = ${product_id}`));
+        param_bild_path = db.get(`SELECT bild FROM produkte WHERE id = ${product_id}`);
+    }
 
     if(param_versteckt == undefined){
         param_versteckt = "0"; //Sonst ist versteckt undifinied und die Tabelle kann nicht geupdated werden.
     }
+
+    
 
     db.run( //Hier werden die werte aus der Liste geupdatet
         `UPDATE produkte SET name = "${param_update_name}", preis = ${param_update_preis}, anzahl =  ${param_anzahl}, 
