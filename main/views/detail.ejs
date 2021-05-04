@@ -11,17 +11,17 @@
 
         <container>
         <article>
-            <h2><%= name %></h2>
+            <h2><%=produkte[0].name%></h2>
             <section>
-                <img width="400px" src="<%= bild %>">
+                <img width="400px" src="<%= produkte[0].bild %>">
             </section>
             <section>
-                <h3>Costs: <%= preis %></h3>
-                <p>In stock: <%= anzahl %></p>
-                <p>Crispness: <%= knackig %> </p>
-                <p>Juiciness: <%= saft %></p>
-                <p>Color: <%= farbe %></p>
-                <p>weight: <%= gewicht %></p>
+                <h3>Costs: <%=produkte[0].preis%></h3>
+                <p>In stock: <%=produkte[0].anzahl%></p>
+                <p>Crispness: <%=produkte[0].knackig%> </p>
+                <p>Juiciness: <%=produkte[0].saft%></p>
+                <p>Color: <%=produkte[0].farbe%></p>
+                <p>weight: <%=produkte[0].gewicht%></p>
             </section>
             <aside></aside>
         </article>

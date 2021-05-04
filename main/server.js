@@ -160,7 +160,7 @@ app.get("/detail/:id", function(req, res){
             console.log(err);
             console.log(rows);
 
-            res.render("detail", rows[0]); 
+            res.render("detail", {"produkte": rows}); 
         } 
     );
 });
