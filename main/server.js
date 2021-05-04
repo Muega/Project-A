@@ -154,13 +154,13 @@ app.get("/detail/:id", function(req, res){
     const param_id = req.params.id;
 
     db.all(
-        `SELECT * FROM produkte WHERE id = ${param_id}`,
+        `SELECT * FROM produkte WHERE id = ${param_id}`, //er mag etwas an diesem param_id nicht
         function(err, rows){
 
             console.log(err);
             console.log(rows);
 
-            res.render("detail", rows[0]);
+            res.render("detail", rows[0]); 
         } 
     );
 });
