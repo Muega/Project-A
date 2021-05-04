@@ -149,14 +149,14 @@ app.get("/shop", function(req, res){
 });
 
 //Detail von einem Produkt
-app.post("/detail/:id", function(req, res){
+app.get("/detail/:id", function(req, res){
 
     const param_id = req.params.id;
 
     db.all(
         `SELECT * FROM produkte WHERE id = ${param_id}`,
         function(err, rows){
-            
+
             console.log(err);
             console.log(rows);
 
