@@ -161,7 +161,7 @@ app.get("/detail/:id", function(req, res){
             console.log(rows);
 
             res.render("detail", rows[0]);
-        }
+        } 
     );
 });
 
