@@ -21,25 +21,43 @@
   <body>
       
 <header>
-    <nav>
-        <ul class="stick header-top"> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+
+            <div class="navbar-header"></div>
+
+            <ul class="nav navbar-nav"> 
+
+                <!--Das ist der Teil des Buttons, der collapsed wird-->
+                <button type="button" class="navbar-brand" data-toggle="collapse" data-target="#dieseNav" style="margin: 5px; width: 65px; height: 40px; color:grey">
+                    <span class="icon-bar"></span><br> <!--That doesn't work for some reason? So I'll just change the color-->
+                    <span class="icon-bar"></span><br>
+                </button>
+                           
+                <li class=""><a href="/shop"><strong>Home</strong></a></li>
+                <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
+                weil sie nur von Admins/ Uns zugänglich sein sollen-->
+                <li><a href=""><strong>Our Apples</strong></a></li>
+                <!--Hiier eine Liste mit allen einzelnen Detailseiten, collapsed-->
+                
+                <li><a href="/warenkorb"><strong>Shopping Cart</strong></a></li>
+                <li><a href="/about">About Us</a></li>
+                <!--Hiier eine Liste mit allen einzelnen Paragraphen auf der About Us Seite, collapsed-->
+                <li><a href="/about">Customer Service</a></li> <!--Scroll to Customer Service Automatically-->
+                
+                <li><a href="">Update an Apple</a></li> <!--Admins only! -->
+                <li><a href="">Create an Apple</a></li> <!--Admins only! -->
         
-            <li><a class="header-inhalt active" href="/shop">Home</a></li>
-        <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
-        weil sie nur von Admins/ Uns zugänglich sein sollen-->
-            <li><a class="header-inhalt" href="/produktliste">Our Products</a></li>
-            <li><a class="header-inhalt" href="/create">Create A Product</a></li>
-            <li><a class="header-inhalt" href="">Vier</a></li>
-            <li><a class="header-inhalt" href="">Fünf</a></li>
-            <li><a class="header-inhalt" href="">Sechs</a></li>
-            <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
-        <!--Hier Logout | Nutzername ODER Login | Register -->    
-            <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | nutzername <br></a></li>
-            <li style="float:right"><a class="header-inhalt" href="/ueberuns">About Us</a></li>
-        
-        </ul>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="20" height="20" style="border-radius: 5%;"></a></li>
+                <!--Hier Logout | Nutzername ODER Login | Register -->    
+                <li style="float:right"><a  href="/Logout">Logout | nutzername<br></a></li>
+            </ul>
+        </div>
   </nav>
-</header> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+</header>
     
 <container class="container">
     <section id="section1">
@@ -73,7 +91,7 @@
                 <h4>Blue Apple</h4>
                 <p>This unsusual Apple will change your life.</p>
                 <p>Price: <!--here probably add an ejs thing from the database--></p>
-                <p><a href="#" class="btn btn-primary" role="button">Love</a> <a href="#" class="btn btn-danger" role="button">Hate</a></p>
+                <p><a href="#" class="btn btn-primary" role="button">view details</a> <a href="#" class="btn btn-success" role="button">put in cart</a></p>
             </div>
         </div>
     </section>
