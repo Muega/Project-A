@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+   <!-- <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
 
    <!-- Hier versuche ich es Mal mit
     Bootstrap: -->
@@ -13,8 +13,10 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
    <!-- Optionales Theme -->
+   <!--
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
+   -->
+   
     <title>Applezone Shop</title>
   </head>
 
@@ -24,32 +26,35 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
 
-            <div class="navbar-header"></div>
-
-            <ul class="nav navbar-nav"> 
-
+            <div class="navbar-header">
                 <!--Das ist der Teil des Buttons, der collapsed wird-->
-                <button type="button" class="navbar-brand" data-toggle="collapse" data-target="#dieseNav" style="margin: 5px; width: 65px; height: 40px; color:grey">
-                    <span class="icon-bar"></span><br> <!--That doesn't work for some reason? So I'll just change the color-->
-                    <span class="icon-bar"></span><br>
+                <button type="button" class="navbar-toggle, navbar-brand" data-toggle="collapse" data-target="#myNavbar" style="margin: 5px; width: 65px; height: 40px; color:grey">
                 </button>
-                           
-                <li class=""><a href="/shop"><strong>Home</strong></a></li>
-                <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
-                weil sie nur von Admins/ Uns zugänglich sein sollen-->
-                <li><a href=""><strong>Our Apples</strong></a></li>
-                <!--Hiier eine Liste mit allen einzelnen Detailseiten, collapsed-->
-                
-                <li><a href="/warenkorb"><strong>Shopping Cart</strong></a></li>
-                <li><a href="/about">About Us</a></li>
-                <!--Hiier eine Liste mit allen einzelnen Paragraphen auf der About Us Seite, collapsed-->
-                <li><a href="/about">Customer Service</a></li> <!--Scroll to Customer Service Automatically-->
-                
-                <li><a href="">Update an Apple</a></li> <!--Admins only! -->
-                <li><a href="">Create an Apple</a></li> <!--Admins only! -->
-        
-            </ul>
+              
 
+                <ul class="nav navbar-nav collapse navbar-collapse" id="myNavbar">
+                    <!--Das sind die Sachen, die collapsed sind :) -->
+                    <li class=""><a href="/shop"><strong>Home</strong></a></li>
+                    <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
+                    weil sie nur von Admins/ Uns zugänglich sein sollen-->
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><strong>Our Apples <span class="caret"></span></strong></a></li>
+                    <!--Hiier eine Liste mit allen einzelnen Detailseiten, collapsed-->
+                        <ul class="dropdown-menu">
+                            <li><a href="/detail/1">First Apple</a></li>
+                            <li><a href="/detail/2">Second Apple</a></li>
+                            <li><a href="/detail/2">Third Apple</a></li>
+                        </ul>
+                    
+                    <li><a href="/warenkorb"><strong>Shopping Cart</strong></a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <!--Hiier eine Liste mit allen einzelnen Paragraphen auf der About Us Seite, collapsed-->
+                    <li><a href="/about">Customer Service</a></li> <!--Scroll to Customer Service Automatically-->
+                    
+                    <li><a href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
+                    <li><a href="/create">Create an Apple</a></li> <!--Admins only! -->
+                </ul>
+            </div>
+          
             <ul class="nav navbar-nav navbar-right">
                 <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="20" height="20" style="border-radius: 5%;"></a></li>
                 <!--Hier Logout | Nutzername ODER Login | Register -->    
