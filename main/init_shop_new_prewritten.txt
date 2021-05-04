@@ -69,3 +69,21 @@ VALUES ("Zitronenapfel", 66, 50, "green", 160, 1.80, 177, 0, "Zitronenapfel mean
 
 INSERT INTO produkt (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, bild, story) 
 VALUES ("Blue Apple", 15, 90, "blue", 170, 1.99, 42, 0, "src="/public/Blue_Apple.jpg", The Blue Apple is our original creation. We promise it will change your life. Try it today!" );
+
+/* 
+Die Benutzer / Administrator müssen auch Initialisiert werden L.
+*/
+
+CREATE TABLE benutzer (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    benutzername TEXT NOT NULL,
+    passwort TEXT NOT NULL,
+    email TEXT NOT NULL
+);
+
+CREATE TABLE administrator (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    benutzername TEXT NOT NULL,
+    passwort TEXT NOT NULL,
+    email TEXT NOT NULL
+);
