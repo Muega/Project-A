@@ -31,7 +31,7 @@
               <li><a class="header-inhalt" href="">Vier</a></li>
               <li><a class="header-inhalt" href="">Fünf</a></li>
               <li><a class="header-inhalt" href="">Sechs</a></li>
-              <li style="float:right"><a href="/warenkorb"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
+              <li style="float:right"><a href="/cart"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
           <!--Hier Logout | Nutzername ODER Login | Register -->    
               <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | <%=nutzername%><br></a></li>
               <li style="float:right"><a class="header-inhalt" href="/ueberuns">About Us</a></li>
@@ -72,7 +72,7 @@
               <h4><%=product.name%></h4>
               <p>This unsusual Apple will change your life.</p>
               <p>Price: <%=product.preis%>€</p>
-              <p><a href="detail/" class="btn btn-primary" role="button">view details</a> <a href="/warenkorb" class="btn btn-success" role="button">put in cart</a></p>
+              <p><form method="POST"><a href="detail/<%=product.id%>" class="btn btn-primary" role="button">view details</a> </form> <a href="/cart" class="btn btn-success" role="button">put in cart</a></p>
               <!--Bei Link zum Detail fehlt die id, weil das Probleme bereitet D.-->
             </div>
       </div>

@@ -69,8 +69,6 @@ app.get("/logout", function(req, res){
 });
 
 
-
-
 //typische Seite Seitenlayout
 app.get("/layout", function(req, res){
     res.sendFile(__dirname + "/views/typischeSeite.html");
@@ -85,7 +83,7 @@ app.get("/about", function(req, res){
     }
 });
 
-app.get("/warenkorb", function(req, res){ //hierzu muss man auf die Daten zugreifen etc.
+app.get("/cart", function(req, res){ //hierzu muss man auf die Daten zugreifen etc.
     if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
         return res.render("cart", {"nutzername": "Guest", "aktion": ""}); 
     }else{
@@ -151,10 +149,8 @@ app.get("/shop", function(req, res){
 //Detail von einem Produkt
 app.get("/detail/:id", function(req, res){
 
-    const param_id = req.params.id;
-
     db.all(
-        `SELECT * FROM produkte WHERE id = ${param_id}`, //er mag etwas an diesem param_id nicht
+        `SELECT * FROM produkte WHERE id = ${req.params.id}`, //er mag etwas an diesem param_id nicht
         function(err, rows){
 
             console.log(err);
@@ -262,18 +258,20 @@ app.post("/oncreate", function(req, res){
     const param_farbe = req.body.farbe;
     const param_gewicht = req.body.gewicht;
     const param_saft = req.body.saft;
-    
-    let param_bild_path;
+    let param_bild_path = req.files;
+
+
     //Bild datei
         //If Abrage, ob Bild übergeben wurde
     if(req.files != null){
-    
+            const param_bild = param_bild_path;
+            param_bild_path = "/public/" + Date.now() + param_bild.bild.name // Bildpath bekommt Zeitstempel
         
-            const param_bild = req.files.bild;
-            param_bild_path = "/public/" + Date.now() + param_bild.name // Bildpath bekommt Zeitstempel
-        
-            param_bild.mv(__dirname + param_bild_path); //Bild wird in /public/ path gelegt
-        }
+            param_bild.bild.mv(__dirname + param_bild_path); //Bild wird in /public/ path gelegt
+    }else{
+        param_bild_path = "/public/NoImageFound.jpg";
+    }
+    console.log(param_bild_path);
 
 
     //code für die Drag&Drop funktion.(funktioniert noch nicht)
@@ -330,37 +328,49 @@ app.post("/onupdate/:id", function(req, res){
     const param_farbe = req.body.farbe;
     const param_gewicht = req.body.gewicht;
     const param_saft = req.body.saft;
-    
-    let param_bild_path;
+    let param_bild_path = req.files;
 
-    //Bild datei
-      //If Abfrage, ob Parameter übergeben wurde   ////// Im else statement wird leider der param_bild_path zu {} statt aus den alten path aus der Datenbank zu nehmen...
-    if(req.files != null){
-    
-        const param_bild = req.files.bild;
-        param_bild_path = "/public/" + Date.now() + param_bild.name // Bildpath bekommt Zeitstempel
-    
-        param_bild.mv(__dirname + param_bild_path); //Bild wird in /public/ path gelegt
-    }else{
-        console.log(product_id);
-        console.log(db.get(`SELECT bild FROM produkte WHERE id = ${product_id}`));
-        param_bild_path = db.get(`SELECT bild FROM produkte WHERE id = ${product_id}`);
-    }
 
     if(param_versteckt == undefined){
         param_versteckt = "0"; //Sonst ist versteckt undifinied und die Tabelle kann nicht geupdated werden.
     }
 
+    //Bild datei
+    //If Abfrage, ob Parameter übergeben wurde   ////// Im else statement wird leider der param_bild_path zu {} statt aus den alten path aus der Datenbank zu nehmen...
+    if(param_bild_path != null){
+        const param_bild = req.files.bild;
+        param_bild_path = "/public/" + Date.now() + param_bild.name // Bildpath bekommt Zeitstempel
     
+        param_bild.mv(__dirname + param_bild_path); //Bild wird in /public/ path gelegt
 
-    db.run( //Hier werden die werte aus der Liste geupdatet
-        `UPDATE produkte SET name = "${param_update_name}", preis = ${param_update_preis}, anzahl =  ${param_anzahl}, 
-        knackig =  ${param_knackig}, versteckt =  ${param_versteckt}, farbe = "${param_farbe}", gewicht = ${param_gewicht}, saft = ${param_saft}, bild = "${param_bild_path}" WHERE id = ${req.params.id}`,
-        function(err){
-            console.log(param_update_name, param_update_preis, param_anzahl, param_knackig, param_versteckt, param_farbe, param_gewicht, param_saft, param_bild_path);
-            res.redirect("/produktliste");
-        }
-    );
+        db.run( //Hier werden die werte aus der Liste geupdatet
+            `UPDATE produkte SET name = "${param_update_name}", preis = ${param_update_preis}, anzahl =  ${param_anzahl}, 
+            knackig =  ${param_knackig}, versteckt =  ${param_versteckt}, farbe = "${param_farbe}", gewicht = ${param_gewicht}, saft = ${param_saft}, bild = "${param_bild_path}" WHERE id = ${req.params.id}`,
+            function(err){
+                console.log(param_update_name, param_update_preis, param_anzahl, param_knackig, param_versteckt, param_farbe, param_gewicht, param_saft, param_bild_path);
+                res.redirect("/produktliste");
+            }
+        );
+
+    }else{
+        db.all(`SELECT bild FROM produkte WHERE id = ${product_id}`,
+            function(err, rows){
+                param_bild_path = rows[0].bild;
+
+                db.run( //Hier werden die werte aus der Liste geupdatet
+                    `UPDATE produkte SET name = "${param_update_name}", preis = ${param_update_preis}, anzahl =  ${param_anzahl}, 
+                    knackig =  ${param_knackig}, versteckt =  ${param_versteckt}, farbe = "${param_farbe}", gewicht = ${param_gewicht}, saft = ${param_saft}, bild = "${param_bild_path}" WHERE id = ${req.params.id}`,
+                    function(err){
+                        console.log(param_update_name, param_update_preis, param_anzahl, param_knackig, param_versteckt, param_farbe, param_gewicht, param_saft, param_bild_path);
+                        res.redirect("/produktliste");
+                    }
+                );
+                
+            }
+        );
+    };
+
+    console.log(param_bild_path);
 });
 
 //Server starten
