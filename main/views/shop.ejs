@@ -34,7 +34,7 @@
               <li style="float:right"><a href="/cart"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="26" height="26"></a></li>
           <!--Hier Logout | Nutzername ODER Login | Register -->    
               <li style="float:right"><a class="header-inhalt" href="/Logout">Logout | <%=nutzername%><br></a></li>
-              <li style="float:right"><a class="header-inhalt" href="/ueberuns">About Us</a></li>
+              <li style="float:right"><a class="header-inhalt" href="/about">About Us</a></li>
           
           </ul>
       </nav>
@@ -56,6 +56,7 @@
         <h3>Welcome to Applezone <%= nutzername %>!</h3>
         <p>From Juicy to Crunchy - here you can find the Apple <span><em>you</em></span> deserve!</p>
         <br>
+        <% if(nutzername == "Guest"){ %><div style="text-align: center;"><h3>Want to buy something? <a href="/register">REGISTER NOW!</a></h3></div><% }%>
     </section>
 </container>  
 
@@ -72,8 +73,9 @@
               <h4><%=product.name%></h4>
               <p>This unsusual Apple will change your life.</p>
               <p>Price: <%=product.preis%>€</p>
-              <p><form method="POST"><a href="detail/<%=product.id%>" class="btn btn-primary" role="button">view details</a> </form> <a href="/cart" class="btn btn-success" role="button">put in cart</a></p>
-              <!--Bei Link zum Detail fehlt die id, weil das Probleme bereitet D.-->
+              <% if(nutzername != "Guest"){ %><p><form action="detail/<%=product.id%>" method="POST"><input type="submit" value="view details" class="btn btn-primary" /> </form> <a href="/cart" class="btn btn-success" role="button">put in cart</a></p><% }%>
+              <% if(nutzername == "Guest"){ %><p>Add to cart? <a href="/register">only for user</a></p><% }%>
+              <!--Bei Link zum Detail fehlt die id, weil das Probleme bereitet D.--><!--Die detail Probleme sind endgültig gefixt -Stefko mefko -->
             </div>
       </div>
     <% }%>

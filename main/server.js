@@ -147,8 +147,9 @@ app.get("/shop", function(req, res){
 });
 
 //Detail von einem Produkt
-app.get("/detail/:id", function(req, res){
+app.post("/detail/:id", function(req, res){
 
+    
     db.all(
         `SELECT * FROM produkte WHERE id = ${req.params.id}`, //er mag etwas an diesem param_id nicht
         function(err, rows){
@@ -156,7 +157,7 @@ app.get("/detail/:id", function(req, res){
             console.log(err);
             console.log(rows);
 
-            res.render("detail", {"produkte": rows}); 
+            res.render("detail", {"produkte" : rows}); 
         } 
     );
 });
