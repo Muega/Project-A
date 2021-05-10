@@ -49,8 +49,8 @@ VALUES ("Karakuchi Apple", 777, 112, "invisible", 10, 6.66, 360, 0, "This myster
 INSERT INTO produkte (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, story) 
 VALUES ("Royal GALA Apple", 90, 90, "red", 210, 1.20, 160, 0, "The Royal GALA Apple is especially delicious." );
 
-INSERT INTO produkte (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, story) 
-VALUES ("Pink Lady Apple", 65, 85, "red", 180, 1.40, 170, 0, "The Pink Lady Apple will charm you." );
+INSERT INTO produkte (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, bild, story) 
+VALUES ("Pink Lady Apple", 65, 85, "red", 180, 1.40, 170, 0, "src="/public/Blue_Apple.jpg", "The Pink Lady Apple will charm you." );
 
 INSERT INTO produkte (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, story) 
 VALUES ("Granny Smith Apple", 90, 80, "green", 208, 1.25, 55, 0, "This lil granny is a sour one." );
