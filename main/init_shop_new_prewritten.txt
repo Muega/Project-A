@@ -26,12 +26,12 @@ CREATE TABLE produkte (
 
 INSERT INTO produkte (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, story) 
 VALUES ("Horneburger Pfannkuchen", 85, 20, "green", 180, 0.99, 200, 0, "This is a wonderful crunchy green apple." );
-INSERT INTO produkt (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, story) 
+INSERT INTO produkte (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, story) 
 VALUES ("Horneburger Pfannkuchen", 85, 20, "red", 180, 0.99, 230, 0, "This is a wonderful crunchy red apple." );
 
 INSERT INTO produkte (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, story) 
 VALUES ("Kaiser Wilhelm", 35, 65, "green", 210, 1.20, 380, 0, "The Kaiser Wilhelm is a powerful apple." );
-INSERT INTO produkt (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, story) 
+INSERT INTO produkte (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, story) 
 VALUES ("Kaiser Wilhelm", 35, 65, "red", 210, 1.20, 290, 0, "The Kaiser Wilhelm is a powerful apple." );
 
 INSERT INTO produkte (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, story) 
@@ -40,8 +40,8 @@ VALUES ("Martens Apfel", 40, 70, "red", 200, 1.40, 255, 0, "The Martens Apfel is
 INSERT INTO produkte (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, story) 
 VALUES ("Nashi-Birne", 20, 80, "yellow", 230, 1.90, 205, 0, "The Nashi-Birne is a juicy apple-pear from Japan." );
 
-INSERT INTO produkte (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, story) 
-VALUES ("Herzapfel", 55, 70, "red", 190, 1.30, 310, 0, "The Herzapfel will make you fall in love with summer again." );
+INSERT INTO produkte (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, bild, story) 
+VALUES ("Herzapfel", 55, 70, "red", 190, 1.30, 310, 0, "src="/public/redApple.jpg","The Herzapfel will make you fall in love with summer again." );
 
 INSERT INTO produkte (name, knackig, saftig, farbe, gewicht, preis, anzahl, versteckt, story) 
 VALUES ("Karakuchi Apple", 777, 112, "invisible", 10, 6.66, 360, 0, "This mysterious apple will change your perspective on life." );
@@ -78,8 +78,14 @@ CREATE TABLE benutzer (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
     benutzername TEXT NOT NULL,
     passwort TEXT NOT NULL,
-    email TEXT NOT NULL
+    email TEXT NOT NULL,
+    rolle BOOLEAN
 );
+
+/* 
+
+    Boolean für Admin oder Benutzer ??? 
+    also keine Tabelle Administrator 
 
 CREATE TABLE administrator (
     id INTEGER PRIMARY KEY AUTOINCREMENT, 
@@ -87,3 +93,5 @@ CREATE TABLE administrator (
     passwort TEXT NOT NULL,
     email TEXT NOT NULL
 );
+
+*/
