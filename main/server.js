@@ -168,7 +168,7 @@ app.post("/detail/:id", function(req, res){
 app.post("/login_eingabe", function(req,res){
     const nutzername = req.body.nutzername; 
     const passwort = req.body.passwort;
-    let loggedIn = false;
+    let loggedIn = false;                                               //Ohne die boolean mit if - Abfrage wird 2 Male gerendert und es gibt einen Fehler
     db.all(
         `SELECT * FROM (
             SELECT benutzername,passwort,email FROM benutzer
@@ -181,7 +181,7 @@ app.post("/login_eingabe", function(req,res){
                     const sessionValue = rows[element].benutzername; 
                     req.session.sessionValue = sessionValue;
                     console.log(rows);
-                    loggedIn = true;
+                    loggedIn = true;                                            
                     db.all(`SELECT * FROM produkte`, function(err, rows){
                         return res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue, "aktion": "Sie haben sich erfolgreich angemeldet"});
                         
@@ -319,6 +319,7 @@ app.post("/update/:id", function(req, res){
 });
 
 //Muss bearbeitet werden, alte Bilder werden nicht gelöscht
+//POST Onupdate
 app.post("/onupdate/:id", function(req, res){
     const product_id = parseInt(req.body.id);
     const param_update_name = req.body.produktname;
