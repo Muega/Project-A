@@ -59,7 +59,7 @@ app.get("/create", function(req, res){
     if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
         return res.render("create", {"nutzername": "Guest", "aktion": ""}); 
     }else{
-        return res.render("create", {"nutzername": req.session.sessionValue, "aktion": ""});
+        return res.render("create", {"nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""});
     }
 });
 
@@ -79,7 +79,7 @@ app.get("/about", function(req, res){
     if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
         return res.render("aboutUs", {"nutzername": "Guest", "aktion": ""}); 
     }else{
-        return res.render("aboutUs", {"nutzername": req.session.sessionValue, "aktion": ""});
+        return res.render("aboutUs", {"nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""});
     }
 });
 
@@ -87,7 +87,7 @@ app.get("/cart", function(req, res){ //hierzu muss man auf die Daten zugreifen e
     if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
         return res.render("cart", {"nutzername": "Guest", "aktion": ""}); 
     }else{
-        return res.render("cart", {"nutzername": req.session.sessionValue, "aktion": ""});
+        return res.render("cart", {"nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""});
     }
     
 });
@@ -96,7 +96,7 @@ app.get("/purchase", function(req,res){ //kann nicht ohne Produkte aufgerufen we
     if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
         return res.render("purchase", {"nutzername": "Guest", "aktion": ""}); 
     }else{
-        return res.render("purchase", {"nutzername": req.session.sessionValue, "aktion": ""});
+        return res.render("purchase", {"nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""});
     } //Hier müssen die Produktdaten übergeben werden 
 })
 app.get("/completion", function(req, res){
@@ -122,7 +122,7 @@ app.get("/produktliste", function(req, res){
         db.all(
             `SELECT * FROM produkte`,
             function(err,rows){
-                res.render("produktliste", {"produkte": rows, "nutzername": req.session.sessionValue, "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
+                res.render("produktliste", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
             }
             );
     } 
@@ -140,7 +140,7 @@ app.get("/shop", function(req, res){
         db.all(
             `SELECT * FROM produkte`,
             function(err,rows){
-                res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue, "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
+                res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
             }
         );
     } 
@@ -169,21 +169,17 @@ app.post("/login_eingabe", function(req,res){
     const passwort = req.body.passwort;
     let loggedIn = false;                                               //Ohne die boolean mit if - Abfrage wird 2 Male gerendert und es gibt einen Fehler
     db.all(
-        `SELECT * FROM (
-            SELECT benutzername,passwort,email FROM benutzer
-            UNION ALL
-            SELECT benutzername,passwort,email FROM administrator)`,
+        `SELECT benutzername,passwort,email,rolle FROM benutzer`,
         function(err, rows){
             for (const element in rows){
                 if ((rows[element].benutzername == nutzername && bcrypt.compareSync(passwort, rows[element].passwort)) || (rows[element].email == nutzername && bcrypt.compareSync(passwort, rows[element].passwort))){
                     console.log(`${nutzername} wurde angemeldet`);
                     const sessionValue = rows[element].benutzername; 
-                    req.session.sessionValue = sessionValue;
-                    console.log(rows);
+                    req.session.sessionValue = {"sessionNutzer": sessionValue, "rolle": rows[element].rolle};
                     loggedIn = true;                                            
                     db.all(`SELECT * FROM produkte`, function(err, rows){
-                        return res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue, "aktion": "Sie haben sich erfolgreich angemeldet"});
-                        
+                        console.log(err);
+                        return res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": "Sie haben sich erfolgreich angemeldet"});
                     });
                     break;
                 };
@@ -212,10 +208,7 @@ app.post("/register_eingabe", function(req,res){
             return res.render("register", {"nachricht": "Passwörter stimmen nicht überein."});
         };
         db.all(
-            `SELECT * FROM (
-                SELECT benutzername, email FROM benutzer
-                UNION ALL
-                SELECT benutzername, email FROM administrator)`,
+            `SELECT benutzername, email, rolle FROM benutzer`,
             function(err, rows){
                 for (const element in rows){
                     if (rows[element].benutzername == nutzername){
@@ -230,12 +223,19 @@ app.post("/register_eingabe", function(req,res){
                 //Erfolgreich
                 const hash = bcrypt.hashSync(passwort, 10);
                 db.run(
-                    `INSERT INTO benutzer (benutzername, passwort, email) VALUES("${nutzername}", "${hash}", "${email}")`, //Insert into benutzer
+                    `INSERT INTO benutzer (benutzername, passwort, email, rolle) VALUES("${nutzername}", "${hash}", "${email}", ${0})`, //Insert into benutzer
                     function(err){
                         console.log(`${nutzername} hat sich registriert`);
                         const sessionValue = req.body.nutzername; 
-                        req.session.sessionValue = sessionValue;
-                        return res.render("shop", {"nutzername": req.session.sessionValue, "aktion": "Sie haben sich erfolgreich registriert"});
+                        req.session.sessionValue = {"sessionNutzer": sessionValue, "rolle": 0};
+                        db.all(
+                            `SELECT * FROM produkte`, 
+                            function(err, rows){
+                                console.log(err);
+                                return res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": "Sie haben sich erfolgreich registriert"});
+                            }
+                        );
+                        //return res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": "Sie haben sich erfolgreich registriert"});
                     }
                 );
             }
@@ -257,8 +257,9 @@ app.post("/oncreate", function(req, res){
     let param_versteckt = req.body.versteckt;
     const param_farbe = req.body.farbe;
     const param_gewicht = req.body.gewicht;
-    const param_saft = req.body.saft;
+    const param_saft = req.body.saftig;
     let param_bild_path = req.files;
+    const param_story = req.body.story;
 
 
     //Bild datei
@@ -288,8 +289,8 @@ app.post("/oncreate", function(req, res){
     }
 
     db.run(
-        `INSERT INTO produkte(name, preis, anzahl, knackig, versteckt, farbe, gewicht, saft, bild) VALUES(
-            "${param_name}", ${param_preis}, ${param_anzahl}, ${param_knackig}, ${param_versteckt}, "${param_farbe}", ${param_gewicht}, ${param_saft}, "${param_bild_path}")`,
+        `INSERT INTO produkte(name, preis, anzahl, knackig, versteckt, farbe, gewicht, saftig, bild, story) VALUES(
+            "${param_name}", ${param_preis}, ${param_anzahl}, ${param_knackig}, ${param_versteckt}, "${param_farbe}", ${param_gewicht}, ${param_saft}, "${param_bild_path}", "${param_story}")`,
         function(err){
             res.redirect("/produktliste");
         }
@@ -328,7 +329,8 @@ app.post("/onupdate/:id", function(req, res){
     let param_versteckt = req.body.versteckt;
     const param_farbe = req.body.farbe;
     const param_gewicht = req.body.gewicht;
-    const param_saft = req.body.saft;
+    const param_saft = req.body.saftig;
+    const param_story = req.body.story;
     let param_bild_path = req.files;
 
 
@@ -339,6 +341,7 @@ app.post("/onupdate/:id", function(req, res){
     //Bild datei
     //If Abfrage, ob Parameter übergeben wurde   ////// Im else statement wird leider der param_bild_path zu {} statt aus den alten path aus der Datenbank zu nehmen...
     if(param_bild_path != null){
+        console.log("Es wurde ein neues Bild hochgeladen");
         const param_bild = req.files.bild;
         param_bild_path = "/public/" + Date.now() + param_bild.name // Bildpath bekommt Zeitstempel
     
@@ -346,23 +349,26 @@ app.post("/onupdate/:id", function(req, res){
 
         db.run( //Hier werden die werte aus der Liste geupdatet
             `UPDATE produkte SET name = "${param_update_name}", preis = ${param_update_preis}, anzahl =  ${param_anzahl}, 
-            knackig =  ${param_knackig}, versteckt =  ${param_versteckt}, farbe = "${param_farbe}", gewicht = ${param_gewicht}, saft = ${param_saft}, bild = "${param_bild_path}" WHERE id = ${req.params.id}`,
+            knackig =  ${param_knackig}, versteckt =  ${param_versteckt}, farbe = "${param_farbe}", gewicht = ${param_gewicht}, saftig = ${param_saft}, bild = "${param_bild_path}", story = "${param_story}" WHERE id = ${req.params.id}`,
             function(err){
-                console.log(param_update_name, param_update_preis, param_anzahl, param_knackig, param_versteckt, param_farbe, param_gewicht, param_saft, param_bild_path);
+                console.log(err);
+                console.log(param_update_name, param_update_preis, param_anzahl, param_knackig, param_versteckt, param_farbe, param_gewicht, param_saft, param_bild_path, param_story);
                 res.redirect("/produktliste");
             }
         );
 
     }else{
+        console.log("Es wurde kein neues Bild hochgeladen");
         db.all(`SELECT bild FROM produkte WHERE id = ${product_id}`,
             function(err, rows){
                 param_bild_path = rows[0].bild;
 
                 db.run( //Hier werden die werte aus der Liste geupdatet
                     `UPDATE produkte SET name = "${param_update_name}", preis = ${param_update_preis}, anzahl =  ${param_anzahl}, 
-                    knackig =  ${param_knackig}, versteckt =  ${param_versteckt}, farbe = "${param_farbe}", gewicht = ${param_gewicht}, saft = ${param_saft}, bild = "${param_bild_path}" WHERE id = ${req.params.id}`,
+                    knackig =  ${param_knackig}, versteckt =  ${param_versteckt}, farbe = "${param_farbe}", gewicht = ${param_gewicht}, saftig = ${param_saft}, bild = "${param_bild_path}", story = "${param_story}" WHERE id = ${req.params.id}`,
                     function(err){
-                        console.log(param_update_name, param_update_preis, param_anzahl, param_knackig, param_versteckt, param_farbe, param_gewicht, param_saft, param_bild_path);
+                        console.log(err);
+                        console.log(param_update_name, param_update_preis, param_anzahl, param_knackig, param_versteckt, param_farbe, param_gewicht, param_saft, param_bild_path, param_story);
                         res.redirect("/produktliste");
                     }
                 );
@@ -370,8 +376,6 @@ app.post("/onupdate/:id", function(req, res){
             }
         );
     };
-
-    console.log(param_bild_path);
 });
 
 //Server starten

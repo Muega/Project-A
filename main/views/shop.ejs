@@ -56,7 +56,11 @@
         <h3>Welcome to Applezone <%= nutzername %>!</h3>
         <p>From Juicy to Crunchy - here you can find the Apple <span><em>you</em></span> deserve!</p>
         <br>
-        <% if(nutzername == "Guest"){ %><div style="text-align: center;"><h3>Want to buy something? <a href="/register">REGISTER NOW!</a></h3></div><% }%>
+        <% if(nutzername == "Guest"){ %>
+        <div style="text-align: center;">
+          <h3>Want to buy something? <a href="/register">REGISTER NOW!</a></h3>
+          <p><a href="/login">or Login</a></p>
+        </div><% }%>
     </section>
 </container>  
 
@@ -71,10 +75,15 @@
           <img src=<%=product.bild%> class="card-image-top" style=" width: 20%;" alt="apple pic"> <!--hier hab ich vorerst den style so geändert, muss später anders werden-->
           <div class="caption">
               <h4><%=product.name%></h4>
-              <p>This unsusual Apple will change your life.</p>
+              <p><%=product.story%></p>
               <p>Price: <%=product.preis%>€</p>
+              <p>Available: <%=product.anzahl%></p>
+              <p>Crispyness: <%=product.knackig%>%</p>
+              <p>Juicyness: <%=product.saftig%>%</p>
+              <p>Color: <%=product.farbe%></p>
+              <p>Weight: <%=product.gewicht%>g</p>
               <% if(nutzername != "Guest"){ %><p><form action="detail/<%=product.id%>" method="POST"><input type="submit" value="view details" class="btn btn-primary" /> </form> <a href="/cart" class="btn btn-success" role="button">put in cart</a></p><% }%>
-              <% if(nutzername == "Guest"){ %><p>Add to cart? <a href="/register">only for user</a></p><% }%>
+              <% if(nutzername == "Guest"){ %><p>Add to cart? <a href="/login">Login</a></p><% }%>
               <!--Bei Link zum Detail fehlt die id, weil das Probleme bereitet D.--><!--Die detail Probleme sind endgültig gefixt -Stefko mefko -->
             </div>
       </div>

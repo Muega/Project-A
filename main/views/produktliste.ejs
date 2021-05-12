@@ -51,13 +51,14 @@
                 <td><%= produkte[i].id %></td>
                 <td><form action="/detail/<%=produkte[i].id%>" method="POST"><input type="image" src="<%= produkte[i].bild %>" width="150" alt="Empty"></form></td>
                 <td><%= produkte[i].name %></td>
-                <td><%= produkte[i].preis %></td>
-                <td><%= produkte[i].anzahl %></td>
-                <td><%= produkte[i].knackig %></td>
+                <td><%= produkte[i].preis %>€</td>
+                <td><%= produkte[i].anzahl %> Stk.</td>
+                <td><%= produkte[i].knackig %>%</td>
                 <td><%= produkte[i].versteckt %></td>
                 <td><%= produkte[i].farbe %></td>
-                <td><%= produkte[i].gewicht %></td>
-                <td><%= produkte[i].saft %></td>
+                <td><%= produkte[i].gewicht %>g</td>
+                <td><%= produkte[i].saftig %>%</td>
+                <td><%= produkte[i].story %></td>
                 <td>
                   <form action="/delete/<%= produkte[i].id %>" method="POST">
                       <button type="submit">Löschen</button>
