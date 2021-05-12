@@ -44,7 +44,7 @@ app.get("/home", function(req, res){
 });
 
 app.get("", function(req, res){
-    res.redirect("/home");
+    res.redirect("/shop");
 });
 
 app.get("/login", function(req, res){
@@ -161,7 +161,6 @@ app.post("/detail/:id", function(req, res){
         } 
     );
 });
-
 
 
 //Login POST-Formular
