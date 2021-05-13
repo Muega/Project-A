@@ -85,9 +85,9 @@ app.get("/about", function(req, res){
 
 app.get("/cart", function(req, res){ //hierzu muss man auf die Daten zugreifen etc.
     if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
-        return res.render("cart", {"nutzername": "Guest", "aktion": ""}); 
+        return res.render("cart", {"nutzername": "Guest", "aktion": "", "cartCookie": req.cookies.cart}); 
     }else{
-        return res.render("cart", {"nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""});
+        return res.render("cart", {"nutzername": req.session.sessionValue.sessionNutzer, "aktion": "", "cartCookie": req.cookies.cart});
     }
     
 });
@@ -115,14 +115,14 @@ app.get("/produktliste", function(req, res){
         db.all(
             `SELECT * FROM produkte`,
             function(err,rows){
-                res.render("produktliste", {"produkte": rows, "nutzername": "Guest", "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
+                res.render("produktliste", {"produkte": rows, "nutzername": "Guest", "aktion": "", "cartCookie": req.cookies.cart}); //Produktlisten Array an produktliste.ejs übergeben
             }
         );
     }else{
         db.all(
             `SELECT * FROM produkte`,
             function(err,rows){
-                res.render("produktliste", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
+                res.render("produktliste", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": "", "cartCookie": req.cookies.cart}); //Produktlisten Array an produktliste.ejs übergeben
             }
             );
     } 
@@ -130,17 +130,20 @@ app.get("/produktliste", function(req, res){
 
 app.get("/shop", function(req, res){
     if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
+        var fruits = ['Apple','Bannana'];
+        res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
         db.all(
             `SELECT * FROM produkte`,
             function(err,rows){
-                res.render("shop", {"produkte": rows, "nutzername": "Guest", "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
+                res.render("shop", {"produkte": rows, "nutzername": "Guest", "aktion": "", "cartCookie": req.cookies.cart}); //Produktlisten Array an produktliste.ejs übergeben
             }
         );
     }else{
+         // Frage mich ob diese else unnötig ist weil die wird garnicht benutzt, sondern die von Log in und Register-Eingabe!!
         db.all(
             `SELECT * FROM produkte`,
             function(err,rows){
-                res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
+                res.render("shop", {"produkte": rows, "cartCookie": req.cookies.cart, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
             }
         );
     } 
@@ -168,6 +171,8 @@ app.post("/login_eingabe", function(req,res){
     const nutzername = req.body.nutzername; 
     const passwort = req.body.passwort;
     let loggedIn = false;                                               //Ohne die boolean mit if - Abfrage wird 2 Male gerendert und es gibt einen Fehler
+    let fruits = [];
+    res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
     db.all(
         `SELECT benutzername,passwort,email,rolle FROM benutzer`,
         function(err, rows){
@@ -179,7 +184,7 @@ app.post("/login_eingabe", function(req,res){
                     loggedIn = true;                                            
                     db.all(`SELECT * FROM produkte`, function(err, rows){
                         console.log(err);
-                        return res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": "Sie haben sich erfolgreich angemeldet"});
+                        return res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": "Sie haben sich erfolgreich angemeldet", "cartCookie": req.cookies.cart});
                     });
                     break;
                 };
@@ -197,6 +202,8 @@ app.post("/register_eingabe", function(req,res){
     const passwort = req.body.passwort;
     const passwort_repeat = req.body.passwort_repeat;
     const email = req.body.email;
+    var fruits = ['Apple','Bannana'];
+    res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
 
     if (nutzername != "" && passwort != ""){
         if (passwort.length > 32 || passwort.length < 8){
@@ -232,7 +239,7 @@ app.post("/register_eingabe", function(req,res){
                             `SELECT * FROM produkte`, 
                             function(err, rows){
                                 console.log(err);
-                                return res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": "Sie haben sich erfolgreich registriert"});
+                                return res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": "Sie haben sich erfolgreich registriert", "lol": req.cookies.cart});
                             }
                         );
                         //return res.render("shop", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": "Sie haben sich erfolgreich registriert"});
@@ -376,6 +383,32 @@ app.post("/onupdate/:id", function(req, res){
             }
         );
     };
+});
+
+//Ist die funktion für den put in cart button
+app.post("/addcart/:id", function(req,res) {
+    //nimmt alten cookie wert und zwischenspeichert ihn
+    fruits = req.cookies.cart;
+    //fügt in die liste vom cookie neuen wert hinzu
+    //fruits.push("apple");
+    let test;
+    db.all(  //holt die werte von dem apfel ()
+        `SELECT * FROM produkte WHERE id = ${req.params.id}`,
+        function(err, rows){
+            console.log(err);
+            test = rows;
+            console.log(test);//müssen das objekt irgendwie aus der callback methode kriegen!
+            
+        } 
+    );
+    fruits.push(test);
+    
+    //versuche irgendwie die werte ausgeben zu lassen
+    console.log(fruits);
+        
+    //überschreibt alten cookie mit dem wert vom alten + das hinzugefügte!
+    res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
+    res.redirect("/shop");
 });
 
 //Server starten

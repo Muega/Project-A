@@ -61,6 +61,8 @@
           <h3>Want to buy something? <a href="/register">REGISTER NOW!</a></h3>
           <p><a href="/login">or Login</a></p>
         </div><% }%>
+        <!--TESTWEISE UM COOKIE HIER EINZUBLENDEN-->
+        <h3><%= cartCookie %></h3>
     </section>
 </container>  
 
@@ -82,7 +84,8 @@
               <p>Juicyness: <%=product.saftig%>%</p>
               <p>Color: <%=product.farbe%></p>
               <p>Weight: <%=product.gewicht%>g</p>
-              <% if(nutzername != "Guest"){ %><p><form action="detail/<%=product.id%>" method="POST"><input type="submit" value="view details" class="btn btn-primary" /> </form> <a href="/cart" class="btn btn-success" role="button">put in cart</a></p><% }%>
+              <% if(nutzername != "Guest"){ %><p><form action="detail/<%=product.id%>" method="POST"><input type="submit" value="view details" class="btn btn-primary" /> </form>
+              <form action="addcart/<%=product.id%>" method="POST"> <input type="submit" value="put in cart" class="btn btn-success" /> </form></p><% }%>
               <% if(nutzername == "Guest"){ %><p>Add to cart? <a href="/login">Login</a></p><% }%>
               <!--Bei Link zum Detail fehlt die id, weil das Probleme bereitet D.--><!--Die detail Probleme sind endgültig gefixt -Stefko mefko -->
             </div>
