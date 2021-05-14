@@ -27,41 +27,47 @@
         <div class="container-fluid">
 
             <div class="navbar-header">
-                <!-- Das hier soll der Button sein, mit dem Man Dinge Collapsen kann-->
-                <!-- <button type="button" class="btn navbar-toggle dropdown-toggle navbar-brand" data-toggle="dropdown" data-target="#myNavbar" style="margin: 5px; width: 65px; height: 40px; background-color:gray"> </button> -->
-              
-                <ul class="nav navbar-nav">
-                    <!--Das sind die Sachen, die collapsed sein sollen... -->
-
-                    <li class="dropdown nav-item"><a  class="dropdown-toggle nav-link" data-toggle="dropdown" id="navID"><strong>BUTTON</strong></a> <!--Das müsste jetzt der erste Dropdown-Link sein?-->
-                  
-                    <li class="nav-item"><a class="nav-link" href="/shop"><strong>Home</strong></a></li>
-
-                        <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" data-toggle="dropdown" id="insideNAV1"><strong>Our Apples <span class="caret"></span></strong></a>
-                        <!--Hier eine Liste mit allen einzelnen Detailseiten, dropdown-->
-                            
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/detail/1">First Apple</a>
-                                <a class="dropdown-item" href="/detail/2">Second Apple</a>
-                                <a class="dropdown-item" href="/detail/2">Third Apple</a>
-                            </div>
-                        </li> <!--Das li umarmt nur diesen Äpfel-Teil-->
-
-                    <li class="nav-item"><a  class="nav-link" href="/cart"><strong>Shopping Cart</strong></a></li> <!--Kann auch gelöscht werden wegen Warenkorb Icon, aber nicht alle checken das.-->
-                    <li class="nav-item"><a  class="nav-link" href="/about">About Us</a></li>
-                    <!--Hiier eine Liste mit allen einzelnen Paragraphen auf der About Us Seite, collapsed-->
-                    <li class="nav-item"><a  class="nav-link" href="/about#cs">Customer Service</a></li> <!--Scroll to Customer Service Automatically-->
-                    
-                    <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
-                    weil sie nur von Admins/ Uns zugänglich sein sollen-->
-                    <li class="nav-item"><a  class="nav-link" href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
-                    <li class="nav-item"><a  class="nav-link" href="/create">Create an Apple</a></li> <!--Admins only! -->
+                <!-- Das hier soll der Button sein, mit dem Man Dinge Öffnen kann kann; kriege ihn nicht funktionsfähig. -->
+                <button type="button" class="btn navbar-brand" data-target="#demo" data-toggle="collapse" style="margin: 5px; width: 65px; height: 40px; background-color:gray"> </button>
                 
-                </li> <!-- Die Dropdown-Überschrift "Home" "umarmt" alles-->
+                <ul class="nav navbar-nav nav-pills">
+                    <!--Das sind die Sachen, die im Dropdown sein sollen... -->
+
+                    <!--
+                    <li class="dropdown nav-item"><a  class="dropdown-toggle nav-link" data-toggle="dropdown" id="navID"><strong>BUTTON</strong></a>  Das müsste jetzt der erste Dropdown-Link sein?
+                    <div class="dropdown-menu"> 
+                    -->
+
+                        <li class="nav-item"><a class="nav-link" href="/shop"><strong>Home</strong></a></li> <!--It works if I only have the link <a> with class "dropdown-item"-->
+
+                           
+                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown"><strong>Our Apples <span class="caret"></span></strong></a>
+                               
+                                <!--Hier eine Liste mit allen einzelnen Detailseiten, dropdown; Ich weiß nicht warum das nicht funktionieren will :(-->
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/detail/1">First Apple</a>
+                                    <a class="dropdown-item" href="/detail/2">Second Apple</a>
+                                    <a class="dropdown-item" href="/detail/2">Third Apple</a>
+                               </div>
+                         </li> <!--Das li umarmt nur diesen Äpfel-Teil-->
+                        
+
+                        <li class="nav-item"><a  class="nav-link" href="/cart"><strong>Shopping Cart</strong></a></li> <!--Kann auch gelöscht werden wegen Warenkorb Icon, aber nicht alle checken das.-->
+                        <li class="nav-item"><a  class="nav-link" href="/about">About Us</a></li>
+                        <!--Hiier eine Liste mit allen einzelnen Paragraphen auf der About Us Seite, collapsed-->
+                        <li class="nav-item"><a  class="nav-link" href="/about#cs">Customer Service</a></li> <!--Scroll to Customer Service Automatically-->
+                        
+                        <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
+                        weil sie nur von Admins/ Uns zugänglich sein sollen-->
+                        <li class="nav-item"><a  class="nav-link" href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
+                        <li class="nav-item"><a  class="nav-link" href="/create">Create an Apple</a></li> <!--Admins only! -->
+                    
+                    <!-- 
+                    </div>
+                    </li> Die Dropdown-Überschrift "Home" "umarmt" alles-->
                 
                 </ul>
-
-                
 
             </div>
           
@@ -73,6 +79,8 @@
         </div>
   </nav>
 </header>
+
+
     
 <container class="container">
     <section id="section1">
@@ -85,6 +93,15 @@
 </container>  
 
     <section id="section2"> <!--hier könnte man eine Searchbar einbauen, um nach bestimmten Produkten zu suchen oder so--> 
+    
+        <button type="button" data-target="#demo" data-toggle="collapse">Collapse Button</button>
+                <div class="collapse" id="demo">
+                Collapsible content <br>
+                More content <br>
+                Loads of content <br>
+                </div>
+
+                <!--Okay this just full-on doesn't work? Seems to not have to do with any formatting either. I fucking hate it. -->
     </section>
     
 <container class="container">
