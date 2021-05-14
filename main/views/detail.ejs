@@ -4,15 +4,22 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+        <!-- Hier versuche ich es Mal mit Bootstrap: -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Das neueste kompilierte und minimierte CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
         <title>Apple X</title>
     </head>
     <body>
         
 
         <container>
-        <article>
+        <article class="container-fluid">
+            <section class="col-6">
             <h2><%=produkte[0].name%></h2>
-            <section>
                 <img width="400px" src="<%= produkte[0].bild %>">
             </section>
             <section>
@@ -27,12 +34,18 @@
         </article>
         </container>
 
+        <!--Habe ne class und Breite für den Footer hinzugefügt-->
         <footer>
-            <a href="/about">About Us</a>
-            <br>
-            <a href="/about">Terms of Service</a>
-            <br>
-            <p>Spring 2021</p>
+            <div class="bottom-footer">
+                <div class="col-md-12"> 
+                    <ul class="footer-nav">
+                        <a href="/about">About Us</a><br>
+                        <a href="/about#terms"> Terms of Service</a> <br>
+                        <p>Spring 2021</p> <br>
+                    </ul>
+                </div>
+            </div>
         </footer>
+    
     </body>
 </html>
