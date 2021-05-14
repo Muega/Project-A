@@ -82,7 +82,7 @@
 
 
     
-<container class="container">
+<container class="col">
     <section id="section1">
             <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)-->
             <h3>Welcome to Applezone!</h3>
@@ -104,7 +104,7 @@
                 <!--Okay this just full-on doesn't work? Seems to not have to do with any formatting either. I fucking hate it. -->
     </section>
     
-<container class="container">
+<container class="container-fluid">
     <section id="section3"> <!--Das wird die Main Section mit den Produkten-->
         
         <div class="thumbnail">
@@ -126,6 +126,30 @@
                 <p><a href="#" class="btn btn-primary" role="button">view details</a> <a href="#" class="btn btn-success" role="button">put in cart</a></p>
             </div>
         </div>
+
+        <!--Here come the actual apples!-->
+
+        <% for(product of produkte){ %>
+            <% if(product.versteckt == true){ continue;}%> <!--Versteckte überspringen-->
+            <div class="thumbnail col-sm-3"> <!--Hier werden die Praktisch in Reihen aufgeteilt-->
+                <img src=<%=product.bild%> class="card-image-top" style=" width: 20%;" alt="apple pic"> <!--hier hab ich vorerst den style so geändert, muss später anders werden-->
+                <div class="caption">
+                    <h4><%=product.name%></h4>
+                    <p><%=product.story%></p>
+                    <p>Price: <%=product.preis%>€</p>
+                    <p>Available: <%=product.anzahl%></p>
+                    <p>Crispyness: <%=product.knackig%>%</p>
+                    <p>Juicyness: <%=product.saftig%>%</p>
+                    <p>Color: <%=product.farbe%></p>
+                    <p>Weight: <%=product.gewicht%>g</p>
+                    <% if(nutzername != "Guest"){ %><p><form action="detail/<%=product.id%>" method="POST"><input type="submit" value="view details" class="btn btn-primary" /> </form>
+                    <form action="addcart/<%=product.id%>" method="POST"> <input type="submit" value="put in cart" class="btn btn-success" /> </form></p><% }%>
+                    <% if(nutzername == "Guest"){ %><p>Add to cart? <a href="/login">Login</a></p><% }%>
+                    <!--Bei Link zum Detail fehlt die id, weil das Probleme bereitet D.--><!--Die detail Probleme sind endgültig gefixt -Stefko mefko -->
+                  </div>
+            </div>
+          <% }%>
+
     </section>
 </container>
 
