@@ -34,10 +34,10 @@
 
                 <ul class="nav navbar-nav collapse navbar-collapse" id="myNavbar">
                     <!--Das sind die Sachen, die collapsed sind :) -->
-                    <li class=""><a href="/shop"><strong>Home</strong></a></li>
+                    <li class="nav-item"><a href="/shop"><strong>Home</strong></a></li>
                     <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
                     weil sie nur von Admins/ Uns zugänglich sein sollen-->
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><strong>Our Apples <span class="caret"></span></strong></a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><strong>Our Apples <span class="caret"></span></strong></a></li>
                     <!--Hiier eine Liste mit allen einzelnen Detailseiten, collapsed-->
                         <ul class="dropdown-menu">
                             <li><a href="/detail/1">First Apple</a></li>
@@ -45,20 +45,20 @@
                             <li><a href="/detail/2">Third Apple</a></li>
                         </ul>
                     
-                    <li><a href="/cart"><strong>Shopping Cart</strong></a></li>
-                    <li><a href="/about">About Us</a></li>
+                    <li class="nav-item"><a href="/cart"><strong>Shopping Cart</strong></a></li>
+                    <li class="nav-item"><a href="/about">About Us</a></li>
                     <!--Hiier eine Liste mit allen einzelnen Paragraphen auf der About Us Seite, collapsed-->
-                    <li><a href="/about">Customer Service</a></li> <!--Scroll to Customer Service Automatically-->
+                    <li class="nav-item"><a href="/about#cs">Customer Service</a></li> <!--Scroll to Customer Service Automatically-->
                     
-                    <li><a href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
-                    <li><a href="/create">Create an Apple</a></li> <!--Admins only! -->
+                    <li class="nav-item"><a href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
+                    <li class="nav-item"><a href="/create">Create an Apple</a></li> <!--Admins only! -->
                 </ul>
             </div>
           
             <ul class="nav navbar-nav navbar-right">
                 <li style="float:right"><a href="/cart"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="20" height="20" style="border-radius: 5%;"></a></li>
                 <!--Hier Logout | Nutzername ODER Login | Register -->    
-                <li style="float:right"><a  href="/Logout">Logout | nutzername<br></a></li>
+                <li style="float:right"><a  href="/Logout">Logout | <%=nutzername%><br></a></li>
             </ul>
         </div>
   </nav>

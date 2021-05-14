@@ -68,10 +68,32 @@ app.get("/logout", function(req, res){
     res.redirect("/home");
 });
 
-
+/*
 //typische Seite Seitenlayout
 app.get("/layout", function(req, res){
-    res.sendFile(__dirname + "/views/typischeSeite.html");
+    res.sendFile(__dirname + "/views/layout.html");
+});
+*/ //alte Art und Weise, unten ersetzt
+// um "layout" als EJS zu initialisieren, hab ich einfach den Code von "shop" kopiert:
+app.get("/layout", function(req, res){
+    if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
+        var fruits = ['Apple','Bannana'];
+        res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
+        db.all(
+            `SELECT * FROM produkte`,
+            function(err,rows){
+                res.render("layout", {"produkte": rows, "nutzername": "Guest", "aktion": "", "cartCookie": req.cookies.cart}); //Produktlisten Array an produktliste.ejs übergeben
+            }
+        );
+    }else{
+         // Frage mich ob diese else unnötig ist weil die wird garnicht benutzt, sondern die von Log in und Register-Eingabe!!
+        db.all(
+            `SELECT * FROM produkte`,
+            function(err,rows){
+                res.render("layout", {"produkte": rows, "cartCookie": req.cookies.cart, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
+            }
+        );
+    } 
 });
 
 //weitere Seiten (About Us, Warenkorb/Cart, Purchase, Completion, shopGuest, Detail)
