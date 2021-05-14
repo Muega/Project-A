@@ -44,6 +44,8 @@ li .header-inhalt:hover {
     background: linear-gradient(#000, #333);
 }
 
+/* Der Korb funktioniert in der neuen Leiste, also ist das redundant. D.
+
 li .korbdesign:hover {
     background: linear-gradient(#5cb1f2, #0070c9);
 }
@@ -54,6 +56,9 @@ li .korbdesign:hover {
     text-align: center;
     background: linear-gradient(#42a1ec, #0070c9);
 }
+*/
+
+/* Was ist ein Drop-Zone? D. */
 
 .drop-zone {
     max-width: 100px;
@@ -101,9 +106,29 @@ li .korbdesign:hover {
     text-align: center;
 }
 
-/* Here starts Darias experiment */
+/* Here starts Darias experiment: MAIN SHOP CONTAINER */
 
 .thumbnail {
     padding: 5px;
 }
 
+.caption {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.card-image-top {
+    width: 20%;
+}
+
+/* FOOTER ORT */
+
+.footer-nav {
+    background-color:dimgrey;
+    padding: 15px;
+    padding-bottom: 0px;
+}
+
+.footer-nav a {
+    color: grey;
+    text-decoration: none;
+}

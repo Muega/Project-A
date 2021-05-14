@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
-   <!-- <link rel="stylesheet" type="text/css" href="stylesheet.css"> -->
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
    <!-- Hier versuche ich es Mal mit
     Bootstrap: -->
@@ -12,7 +12,6 @@
    <!-- Das neueste kompilierte und minimierte CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-   <!-- Optionales Theme -->
    <!--
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
    -->
@@ -131,8 +130,8 @@
 
         <% for(product of produkte){ %>
             <% if(product.versteckt == true){ continue;}%> <!--Versteckte überspringen-->
-            <div class="thumbnail col-sm-3"> <!--Hier werden die Praktisch in Reihen aufgeteilt-->
-                <img src=<%=product.bild%> class="card-image-top" style=" width: 20%;" alt="apple pic"> <!--hier hab ich vorerst den style so geändert, muss später anders werden-->
+            <div class="thumbnail col-md-"> <!--Hier werden die Praktisch in Reihen aufgeteilt-->
+                <img src=<%=product.bild%> class="card-image-top" alt="apple pic">
                 <div class="caption">
                     <h4><%=product.name%></h4>
                     <p><%=product.story%></p>
@@ -153,12 +152,19 @@
     </section>
 </container>
 
+<!--Habe ne class und Breite für den Footer hinzugefügt-->
 <footer>
-    <a href="/about">About Us</a>
-    <br>
-    <a href="/about"> Terms of Service</a> <!--Hier wird man noch das scrollen zu der richtigen section hinzufügen müssen-->
-    <br>
-    <p>Spring 2021</p>
+    <div class="bottom-footer">
+        <div class="col-md-12"> 
+            <ul class="footer-nav">
+                <a href="/about">About Us</a><br>
+                
+                <a href="/about#terms"> Terms of Service</a> <br>
+            
+                <p>Spring 2021</p> <br>
+            </ul>
+        </div>
+    </div>
 </footer>
 </body>
 </html>
