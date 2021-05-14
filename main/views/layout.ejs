@@ -27,32 +27,42 @@
         <div class="container-fluid">
 
             <div class="navbar-header">
-                <!--Das ist der Teil des Buttons, der collapsed wird-->
-                <button type="button" class="navbar-toggle, navbar-brand" data-toggle="collapse" data-target="#myNavbar" style="margin: 5px; width: 65px; height: 40px; color:grey">
-                </button>
+                <!-- Das hier soll der Button sein, mit dem Man Dinge Collapsen kann-->
+                <!-- <button type="button" class="btn navbar-toggle dropdown-toggle navbar-brand" data-toggle="dropdown" data-target="#myNavbar" style="margin: 5px; width: 65px; height: 40px; background-color:gray"> </button> -->
               
+                <ul class="nav navbar-nav">
+                    <!--Das sind die Sachen, die collapsed sein sollen... -->
 
-                <ul class="nav navbar-nav collapse navbar-collapse" id="myNavbar">
-                    <!--Das sind die Sachen, die collapsed sind :) -->
-                    <li class="nav-item"><a href="/shop"><strong>Home</strong></a></li>
+                    <li class="dropdown nav-item"><a  class="dropdown-toggle nav-link" data-toggle="dropdown" id="navID"><strong>BUTTON</strong></a> <!--Das müsste jetzt der erste Dropdown-Link sein?-->
+                  
+                    <li class="nav-item"><a class="nav-link" href="/shop"><strong>Home</strong></a></li>
+
+                        <li class="dropdown nav-item"><a class="dropdown-toggle nav-link" data-toggle="dropdown" id="insideNAV1"><strong>Our Apples <span class="caret"></span></strong></a>
+                        <!--Hier eine Liste mit allen einzelnen Detailseiten, dropdown-->
+                            
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/detail/1">First Apple</a>
+                                <a class="dropdown-item" href="/detail/2">Second Apple</a>
+                                <a class="dropdown-item" href="/detail/2">Third Apple</a>
+                            </div>
+                        </li> <!--Das li umarmt nur diesen Äpfel-Teil-->
+
+                    <li class="nav-item"><a  class="nav-link" href="/cart"><strong>Shopping Cart</strong></a></li> <!--Kann auch gelöscht werden wegen Warenkorb Icon, aber nicht alle checken das.-->
+                    <li class="nav-item"><a  class="nav-link" href="/about">About Us</a></li>
+                    <!--Hiier eine Liste mit allen einzelnen Paragraphen auf der About Us Seite, collapsed-->
+                    <li class="nav-item"><a  class="nav-link" href="/about#cs">Customer Service</a></li> <!--Scroll to Customer Service Automatically-->
+                    
                     <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
                     weil sie nur von Admins/ Uns zugänglich sein sollen-->
-                    <li class="nav-item dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><strong>Our Apples <span class="caret"></span></strong></a></li>
-                    <!--Hiier eine Liste mit allen einzelnen Detailseiten, collapsed-->
-                        <ul class="dropdown-menu">
-                            <li><a href="/detail/1">First Apple</a></li>
-                            <li><a href="/detail/2">Second Apple</a></li>
-                            <li><a href="/detail/2">Third Apple</a></li>
-                        </ul>
-                    
-                    <li class="nav-item"><a href="/cart"><strong>Shopping Cart</strong></a></li>
-                    <li class="nav-item"><a href="/about">About Us</a></li>
-                    <!--Hiier eine Liste mit allen einzelnen Paragraphen auf der About Us Seite, collapsed-->
-                    <li class="nav-item"><a href="/about#cs">Customer Service</a></li> <!--Scroll to Customer Service Automatically-->
-                    
-                    <li class="nav-item"><a href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
-                    <li class="nav-item"><a href="/create">Create an Apple</a></li> <!--Admins only! -->
+                    <li class="nav-item"><a  class="nav-link" href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
+                    <li class="nav-item"><a  class="nav-link" href="/create">Create an Apple</a></li> <!--Admins only! -->
+                
+                </li> <!-- Die Dropdown-Überschrift "Home" "umarmt" alles-->
+                
                 </ul>
+
+                
+
             </div>
           
             <ul class="nav navbar-nav navbar-right">
