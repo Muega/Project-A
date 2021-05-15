@@ -99,16 +99,7 @@
                 More content <br>
                 Loads of content <br>
             </div>
-                <!--Okay this just full-on doesn't work? Seems to not have to do with any formatting either. I fucking hate it. -->
-   
-            <div class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">Harry</a>
-                        <a href="#" class="dropdown-item">Draco</a>
-                </div>
-             </div>
-    
+                <!--Okay this just full-on doesn't work? Seems to not have to do with any formatting either. I fucking hate it. -->  
     </section>
     
 <container class="container-fluid">
@@ -122,13 +113,15 @@
 
                     <h4><%=product.name%></h4>
                     <p><%=product.story%></p>
-                    <p>Price: <%=product.preis%>€</p>
+                    <p id="price">Price: <%=product.preis%>€</p>
             
-                    <% if(nutzername != "Guest"){ %><p style="display: inline;">
+                    <% if(nutzername != "Guest"){ %><p id="abovePrice" style="display: inline;">
                         <div class="input-group">
-                        <form action="detail/<%=product.id%>" method="POST"> <input type="submit" value="view details" class="btn btn-primary " /> </form>
+                        <form action="detail/<%=product.id%>" method="POST" id="f1"> <input type="submit" value="view details" class="btn btn-primary " /> </form>
                         <span class="input-group-btn" style="width:5px;"></span>  <!--Damit die nebeneinander sind-->
-                        <form action="addcart/<%=product.id%>" method="POST"> <input type="submit" value="add to cart" class="btn btn-success " /> </form></div><% }%>
+                        <form action="addcart/<%=product.id%>" method="POST" id="f2"> <input type="submit" value="add to cart" class="btn btn-success " /> </form></div>
+                        </p>
+                        <% }%>
                     <% if(nutzername == "Guest"){ %>
                         <p>Add to cart? <a href="/login">Log in!</a></p><% }%>
                   </div>
