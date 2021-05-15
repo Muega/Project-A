@@ -201,7 +201,13 @@ a:hover {
 .card-image-top {
     width: 100%; /* Das Bild füllt einfach den ganzen container aus */
 }
-
+#logIN a {
+    color: darkslategrey;
+    outline-color: whitesmoke; /*okay warum der Link beim Gast nicht die Farbe ändern will verstehe ich nicht. D. */
+}
+#logIN a:hover {
+    color:whitesmoke;
+}
 
 /* FOOTER ORT */
 

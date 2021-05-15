@@ -26,7 +26,7 @@
                 <button type="button" class="btn navbar-brand" data-target="#demo" data-toggle="collapse" style="margin: 5px; width: 65px; height: 40px; background-color:gray"> </button> -->
                 
                 <ul class="nav navbar-nav">
-                    <!--Das sind die Sachen, die eigentlich im Dropdown sein sollten... -->
+                    <!--Die Frage ist, ob wir einen kopletten dropdown/collapsible button wollen, oder nur ein collapsible beim verkelinern? -->
 
                     <!--
                     <li class="dropdown nav-item"><a  class="dropdown-toggle nav-link" data-toggle="dropdown" id="navID"><strong>BUTTON</strong></a>  Das müsste jetzt der erste Dropdown-Link sein?
@@ -35,7 +35,6 @@
 
                         <li class="nav-item"><a class="nav-link" href="/shop"><strong>Home</strong></a></li> <!--It works if I only have the link <a> with class "dropdown-item"-->
 
-                           
                          <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><strong>Our Apples <span class="caret"></span></strong></a>
                                
@@ -44,21 +43,33 @@
                                     <a class="dropdown-item nav2" href="/detail/1">Horneburger Pfannkuchen <br><span id="apfelFarbeDrop">(red)</span></a> <hr>
                                     <a class="dropdown-item nav2" href="/detail/2">Horneburger Pfannkuchen <br><span id="apfelFarbeDrop">(green)</span></a> <hr>
                                     <a class="dropdown-item nav2" href="/detail/3">Kaiser Wilhelm (green)</a> <hr>
-                                    <a class="dropdown-item nav2" href="/detail/4">Kaiser Wilhelm (red)</a> <hr>
+                                    <a class="dropdown-item nav2" href="/detail/4">Kaiser Wilhelm (red)</a> 
                                </div>
-                               <!-- Aber hier muss wohl das Selbe passieren wie beim Button "View Details", nicht wahr? also ungefähr sowas:
-                               <form action="detail/<%=product.id%>" method="POST" id="f1"> <input type="submit" value="view details" class="btn btn-primary " /> </form>
+                               <!-- Aber hier muss wohl das Selbe passieren wie beim Button "View Details", nicht wahr? 
+                                also ungefähr sowas wie unten bei der form..
+                                Hätte einer von euch (Luis) da einen Durchblick?
                                -->
-                         </li> <!--Das li umarmt nur diesen Äpfel-Teil-->
+                         </li> <!--Das li umarmt das dropdown Ding-->
                         
 
                         <li class="nav-item"><a  class="nav-link" href="/cart"><strong>Shopping Cart</strong></a></li> <!--Kann auch gelöscht werden wegen Warenkorb Icon, aber nicht alle checken das.-->
-                        <li class="nav-item"><a  class="nav-link" href="/about">About Us</a></li>
-                        <!--Hiier eine Liste mit allen einzelnen Paragraphen auf der About Us Seite, collapsed-->
+                        
+                        <li class="nav-item dropdown">
+                            <a  class="nav-link dropdown-toggle"  data-toggle="dropdown" href="">About <span class="caret"></span></a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item nav2" href="/about">About Us</a> <hr>
+                                <a class="dropdown-item nav2" href="/about#story">Our Story</a> <hr>
+                                <a class="dropdown-item nav2" href="/about#apples">About Apples</a> <hr>
+                                <a class="dropdown-item nav2" href="/about#terms">Terms Of Service</a> 
+                            </div>
+                        </li> <!--Das li umarmt das dropdown Ding noch einmal-->
+                        
                         <li class="nav-item"><a  class="nav-link" href="/about#cs">Customer Service</a></li> <!--Scroll to Customer Service Automatically-->
                         
                         <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
-                        weil sie nur von Admins/ Uns zugänglich sein sollen-->
+                        weil sie nur von Admins/ Uns zugänglich sein sollen;
+                        also müsste hier wohl eine if-Abfrage mit der Admin-Variablen erfolgen D.-->
+                        
                         <li class="nav-item"><a  class="nav-link" href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
                         <li class="nav-item"><a  class="nav-link" href="/create">Create an Apple</a></li> <!--Admins only! -->
                     
@@ -70,7 +81,7 @@
 
             </div>
           
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right  ml-auto">
                 <li style="float:right"><a href="/cart"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="20" height="20" style="border-radius: 5%;"></a></li>
                 <!--Hier Logout | Nutzername ODER Login | Register -->    
                 <li style="float:right"><a  href="/Logout">Logout | <%=nutzername%><br></a></li>
@@ -93,11 +104,10 @@
             </div>
     </section>
 </container>  
-
-    <section id="section2"> <!--hier könnte man eine Searchbar einbauen, um nach bestimmten Produkten zu suchen oder so--> 
+<!-- Das ganze hier exisitert nur um den Code zu den Dropdowns oder Collapibles besser accessen zu können. D. 
+    <section id="section2"> 
     <hr>
         <button type="button" data-target="#demo" data-toggle="collapse">Collapse Button</button>
-                
             <div class="collapse" id="demo">
                 Collapsible content <br>
                 More content <br>
@@ -111,8 +121,7 @@
                     <a href="#" class="dropdown-item">nein</a>
                 </div>
             </div>
-    </section>
-    
+    </section> --> 
 <container class="container-fluid">
     <section id="section3" class="col-12"> <!--Das wird die Main Section mit den Produkten-->
 
@@ -134,7 +143,7 @@
                         </p>
                         <% }%>
                     <% if(nutzername == "Guest"){ %>
-                        <p>Add to cart? <a href="/login">Log in!</a></p><% }%>
+                        <p>Add to cart? <a id="logIN" href="/login">Log in!</a></p><% }%>
                   </div>
             </div>
           <% }%>
