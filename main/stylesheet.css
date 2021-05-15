@@ -148,8 +148,8 @@ li .korbdesign:hover {
 
 .thumbnail {
     margin: 10px;
-    max-width: 300px;
-    height: 500px;
+    max-width: 325px; /* Die breite der einzelnen Apfel-Elemente */
+    height: 550px;
     /* yo das mit der Höhe und dem Margin muss ich noch klären.*/
     border-style: hidden;
    
