@@ -37,14 +37,18 @@
 
                            
                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown"><strong>Our Apples <span class="caret"></span></strong></a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><strong>Our Apples <span class="caret"></span></strong></a>
                                
                                 <!--Hier eine Liste mit allen einzelnen Detailseiten, dropdown; Ich weiß nicht warum das nicht funktionieren will :(-->
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="/detail/1">First Apple</a>
-                                    <a class="dropdown-item" href="/detail/2">Second Apple</a>
-                                    <a class="dropdown-item" href="/detail/2">Third Apple</a>
+                                    <a class="dropdown-item nav2" href="/detail/1">Horneburger Pfannkuchen <br><span id="apfelFarbeDrop">(red)</span></a> <hr>
+                                    <a class="dropdown-item nav2" href="/detail/2">Horneburger Pfannkuchen <br><span id="apfelFarbeDrop">(green)</span></a> <hr>
+                                    <a class="dropdown-item nav2" href="/detail/3">Kaiser Wilhelm (green)</a> <hr>
+                                    <a class="dropdown-item nav2" href="/detail/4">Kaiser Wilhelm (red)</a> <hr>
                                </div>
+                               <!-- Aber hier muss wohl das Selbe passieren wie beim Button "View Details", nicht wahr? also ungefähr sowas:
+                               <form action="detail/<%=product.id%>" method="POST" id="f1"> <input type="submit" value="view details" class="btn btn-primary " /> </form>
+                               -->
                          </li> <!--Das li umarmt nur diesen Äpfel-Teil-->
                         
 
@@ -99,7 +103,14 @@
                 More content <br>
                 Loads of content <br>
             </div>
-                <!--Okay this just full-on doesn't work? Seems to not have to do with any formatting either. I fucking hate it. -->  
+
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">ja</a>
+                    <a href="#" class="dropdown-item">nein</a>
+                </div>
+            </div>
     </section>
     
 <container class="container-fluid">
@@ -118,7 +129,7 @@
                     <% if(nutzername != "Guest"){ %><p id="abovePrice" style="display: inline;">
                         <div class="input-group">
                         <form action="detail/<%=product.id%>" method="POST" id="f1"> <input type="submit" value="view details" class="btn btn-primary " /> </form>
-                        <span class="input-group-btn" style="width:5px;"></span>  <!--Damit die nebeneinander sind-->
+                        <span class="input-group-btn" style="width:7.5px;"></span>  <!--Damit die nebeneinander sind-->
                         <form action="addcart/<%=product.id%>" method="POST" id="f2"> <input type="submit" value="add to cart" class="btn btn-success " /> </form></div>
                         </p>
                         <% }%>

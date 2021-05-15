@@ -1,7 +1,3 @@
-#section1 {
-    margin: 0px;
-    padding: 0px;
-}
 
 /*
 
@@ -116,6 +112,25 @@ li .korbdesign:hover {
     text-align: center;
 }
 
+/*  NAVIGATIONSBAR */
+.nav2 {
+    text-decoration: none;
+    padding: 15px;
+    color: darkslategray;
+
+}
+a:hover {
+    text-decoration: none;
+}
+
+.dropdown-menu {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-width: 200px;
+}
+#apfelFarbeDrop {
+    padding: 15px;
+}
 
 /* Darias Layout Jumbotron */
 
@@ -147,7 +162,7 @@ li .korbdesign:hover {
 /* Here starts Darias experiment: MAIN SHOP CONTAINER */
 
 .thumbnail {
-    margin: 10px;
+    margin: 5px;
     max-width: 325px; /* Die breite der einzelnen Apfel-Elemente */
     height: 550px;
     /* yo das mit der Höhe und dem Margin muss ich noch klären.*/
@@ -183,13 +198,13 @@ li .korbdesign:hover {
     padding-inline: 10px;
 }
 
-
 .card-image-top {
     width: 100%; /* Das Bild füllt einfach den ganzen container aus */
 }
 
 
 /* FOOTER ORT */
+
 footer {
     background-color:dimgrey;
 }
