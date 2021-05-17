@@ -163,9 +163,9 @@ a:hover {
 /* Here starts Darias experiment: MAIN SHOP CONTAINER */
 
 .thumbnail {
-    margin: 5px;
-    max-width: 325px; /* Die breite der einzelnen Apfel-Elemente */
-    height: 550px;
+    
+    /* Die breite der einzelnen Apfel-Elemente */
+   
     /* yo das mit der Höhe und dem Margin muss ich noch klären.*/
     border-style: hidden;
    

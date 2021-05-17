@@ -117,14 +117,19 @@
                 </div>
             </div>
     </section> --> 
-<container class="container-lg col-md-12">
-
-    <section id="section3" class=""> <!--Das wird die Main Section mit den Produkten-->
+<container class="container col-md-12">
+    <div class="container col-md-1"> </div> <!--Mit diesem Trick habe ich es geschafft sie zu zentrieren!!! D.-->
+    <div  class="container col-md-10 justify-content-md-center">
 
         <% for(product of produkte){ %>
             <% if(product.versteckt == true){ continue;}%> <!--Versteckte überspringen-->
-            <div class="thumbnail col-sm-6 col-lg-3 col-md-4"> <!--Hier werden die Praktisch in Reihen aufgeteilt-->
+           
+            <div class="container col-sm-6 col-lg-3 col-md-4"> <!--Hier werden die Praktisch in Reihen aufgeteilt-->
+               
+            <div  class="thumbnail"> <!--Hier habe ich den Thumbnail in einen drübergestellten Container gepackt -->
+
                 <img class="card-image-top" alt="apple pic" src=<%=product.bild%>>
+                
                 <div class="caption">
 
                     <h4><%=product.name%></h4>
@@ -142,9 +147,10 @@
                         <p>Add to cart? <a id="logIN" href="/login">Log in!</a></p><% }%>
                   </div>
             </div>
+            </div>
           <% }%>
 
-    </section>
+    </div>
 
 </container>
 
