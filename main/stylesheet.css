@@ -162,10 +162,6 @@ a:hover {
 
 /* Here starts Darias experiment: MAIN SHOP CONTAINER */
 
-#bodyBorder {
-    height:auto;
-}
-
 .thumbnail {
     margin: 5px;
     max-width: 325px; /* Die breite der einzelnen Apfel-Elemente */
@@ -206,9 +202,11 @@ a:hover {
 .card-image-top {
     width: 100%; /* Das Bild füllt einfach den ganzen container aus */
 }
+
+/*Funkt Nicht. :( okay warum der Link beim Gast nicht die Farbe ändern will verstehe ich nicht. D. */
 #logIN a {
     color: darkslategrey;
-    outline-color: whitesmoke; /*okay warum der Link beim Gast nicht die Farbe ändern will verstehe ich nicht. D. */
+    outline-color: whitesmoke; 
 }
 #logIN a:hover {
     color:whitesmoke;
