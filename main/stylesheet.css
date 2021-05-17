@@ -163,17 +163,20 @@ a:hover {
 /* Here starts Darias experiment: MAIN SHOP CONTAINER */
 
 .thumbnail {
-    
+    min-height: 500px;
+    max-width: max-content;
     /* Die breite der einzelnen Apfel-Elemente */
-   
+   min-width: 250px;
+   max-width: 550px;
     /* yo das mit der Höhe und dem Margin muss ich noch klären.*/
     border-style: hidden;
    
 }
 
 .thumbnail img {
-    padding-bottom: 10px;
+    
     border-radius: 2.5%;
+    padding-bottom: 10px;
 }
 
 .caption {
@@ -181,6 +184,7 @@ a:hover {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     background-color: grey;
     padding:50px;
+    
 }
 .caption h4 {
     font-weight: bold;
