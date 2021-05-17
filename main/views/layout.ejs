@@ -117,12 +117,13 @@
                 </div>
             </div>
     </section> --> 
-<container class="container-lg">
-    <section id="section3" class="col-12"> <!--Das wird die Main Section mit den Produkten-->
+<container class="container-lg col-md-12">
+
+    <section id="section3" class="mx-auto w-50"> <!--Das wird die Main Section mit den Produkten-->
 
         <% for(product of produkte){ %>
             <% if(product.versteckt == true){ continue;}%> <!--Versteckte überspringen-->
-            <div class="thumbnail col-md-3"> <!--Hier werden die Praktisch in Reihen aufgeteilt-->
+            <div class="thumbnail col-sm-6 col-lg-3 col-md-4"> <!--Hier werden die Praktisch in Reihen aufgeteilt-->
                 <img class="card-image-top" alt="apple pic" src=<%=product.bild%>>
                 <div class="caption">
 
@@ -144,12 +145,12 @@
           <% }%>
 
     </section>
+
 </container>
 
 <!--Habe ne class und Breite für den Footer hinzugefügt-->
-<footer>
+<footer class="col-sm-12 col-md-12 col-lg-12">
     <div class="bottom-footer">
-        <div class="col-md-12"> 
             <ul class="footer-nav">
                 <a href="/about">About Us</a><br>
                 
@@ -157,8 +158,8 @@
             
                 <p>Spring 2021</p> <br>
             </ul>
-        </div>
     </div>
 </footer>
+
 </body>
 </html>
