@@ -22,16 +22,12 @@
         <div class="container-fluid">
 
             <div class="navbar-header">
-                <!-- Das hier soll der Button sein, mit dem Man Dinge Öffnen kann kann; kriege ihn nicht funktionsfähig. 
-                <button type="button" class="btn navbar-brand" data-target="#demo" data-toggle="collapse" style="margin: 5px; width: 65px; height: 40px; background-color:gray"> </button> -->
+               
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" style="margin: 5px; width: 65px; height: 40px;">
+                    <span class ="navbar-toggler-icon"></span> </button> 
                 
+                <div  class="collapse navbar-collapse" id="myNavbar"> <!--die div hier ist für das "collapse", also denn Button beim Verkleinern-->
                 <ul class="nav navbar-nav">
-                    <!--Die Frage ist, ob wir einen kopletten dropdown/collapsible button wollen, oder nur ein collapsible beim verkelinern? -->
-
-                    <!--
-                    <li class="dropdown nav-item"><a  class="dropdown-toggle nav-link" data-toggle="dropdown" id="navID"><strong>BUTTON</strong></a>  Das müsste jetzt der erste Dropdown-Link sein?
-                    <div class="dropdown-menu"> 
-                    -->
 
                         <li class="nav-item"><a class="nav-link" href="/shop"><strong>Home</strong></a></li> <!--It works if I only have the link <a> with class "dropdown-item"-->
 
@@ -72,12 +68,9 @@
                         
                         <li class="nav-item"><a  class="nav-link" href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
                         <li class="nav-item"><a  class="nav-link" href="/create">Create an Apple</a></li> <!--Admins only! -->
-                    
-                    <!-- 
-                    </div>
-                    </li> Die Dropdown-Überschrift "Home" "umarmt" alles-->
                 
                 </ul>
+                </div>
 
             </div>
           
@@ -122,7 +115,7 @@
                 </div>
             </div>
     </section> --> 
-<container class="container-fluid">
+<container class="container-lg">
     <section id="section3" class="col-12"> <!--Das wird die Main Section mit den Produkten-->
 
         <% for(product of produkte){ %>
