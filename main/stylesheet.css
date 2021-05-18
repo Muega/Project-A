@@ -233,6 +233,10 @@ footer {
     text-decoration: none;
 }
 
+#uglyFooter {
+    margin-top: 55vh;
+}
+
 /* Home Seite Styling D.*/
 
 #homeContainer {
@@ -250,8 +254,21 @@ footer {
 
 /* LOGIN und REGISTER FORMS */
 
-#formBorder {
-    border-color: navy;
-    border-width: 2px;
-    border-style: double;
+.border {
+    border-color: grey;
+}
+
+#appleExperience {
+    font-size: 40px;
+    padding-bottom: 20px;
+}
+
+aside p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+asideImg {
+    height: 30px;
 }

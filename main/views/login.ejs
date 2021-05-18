@@ -16,33 +16,57 @@
   </head>
 
 
-  <body>
+  <body class="">
 
-    <div class="col-md-1"></div>
+  <div id="formHalf" class="col-lg-6 col-md-6 col-sm-10"> <!--This will mark the first half of the page with the form -->
 
-    <container id="formBorder" class="border border-success col-md-5">
-      <h2>Please log in:</h2>
+      <div class="col-lg-1 col-md-1 col-sm-0"> </div> <!-- Das ist der Abstand -->
 
-      <aside>
-        <p>cheesy quote here</p>
-      </aside>
+      <container class="col-sm-8">
+          <h2  id="appleExperience">Are you ready for<br> the next apple<br> experience?</h2>
+        
+          <div class="dataForm"> <!-- the same as the register one-->
+            <form class="" action="/login_eingabe" method="POST"> 
+              <p class="">
+                <div class="form-group row col-sm-10">
+                <label for="nutzername" class="col-form-label">Username or Email:</label>
+                <input class="form-control" type="text" name="nutzername" required>
+                </div>
+                <div class="form-group row col-sm-10">
+                <label for="passwort" class="col-form-label">Password:</label> 
+                <input class="form-control" type="password" name="passwort" required>
+                </div>
+              </p>
 
-      <div class="dataForm form-group col-md-7"> <!-- the same as the register one-->
-        <form action="/login_eingabe" method="POST"> 
-          <p class="col-form-label">
-            Username or Email: <input class="form-control" type="text" name="nutzername" required>
-            <br>
-            Password: <input class="form-control" type="password" name="passwort" required>
-          </p>
-          <input class="btn" type="submit" value="Log In">
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">Forgot password?</a>
-          <br> <%=nachricht%> <br>
-          <a href=/home>Back</a>
-        </form> 
-      </div>
-    </container>
+              <div class="row col-sm-12">
+              <input class="btn" type="submit" value="Log In" style="width: 100px;"> <span > </span>
+              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">Forgot password?</a>
+              <br> <%=nachricht%> <br>
+              <a href=/home>Back</a>
+              </div>
+            </form> 
+          </div>
 
-    <footer class="col-sm-12 col-md-12 col-lg-12">
+          <div class="col-lg-1 col-md-1 col-sm-0"> </div>
+
+      </container>
+  
+  </div>
+
+  <div id="otherHalf"  class="col-lg-6 col-md-4 col-sm-0">
+    <div><img class="asideImg" src="/public/promo5.jpg"></div>
+    <div><img></div>
+    <aside>
+      <p>an apple a day keeps the doctor away</p>
+    </aside>
+    <div><img class="asideImg" src="/public/promo2.jpg"></div>
+    <aside>
+      <p>forgive all your past selves</p>
+    </aside>
+    <div><img class="asideImg" src="/public/promo3.jpg"></div>
+  </div>
+
+    <footer id="uglyFooter" class="col-sm-12 col-md-12 col-lg-12">
       <div class="bottom-footer fixed-bottom">
               <ul class="footer-nav">
                   <a href="/about">About Us</a><br>
