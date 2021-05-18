@@ -22,8 +22,8 @@
 
       <div class="col-lg-1 col-md-1 col-sm-0"> </div> <!-- Das ist der Abstand -->
 
-      <container class="col-sm-8">
-          <h2  id="appleExperience">Are you ready for<br> the next apple<br> experience?</h2>
+      <container id="actualFormStuff" class="container col-sm-8">
+          <h2  id="appleExperience">Are you ready for<br> the next apple experience?</h2>
         
           <div class="dataForm"> <!-- the same as the register one-->
             <form class="" action="/login_eingabe" method="POST"> 
@@ -39,7 +39,7 @@
               </p>
 
               <div class="row col-sm-12">
-              <input class="btn" type="submit" value="Log In" style="width: 100px;"> <span > </span>
+              <input class="btn" type="submit" value="Log In" style="width: 100px; border: 2px;"> <span > </span>
               <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">Forgot password?</a>
               <br> <%=nachricht%> <br>
               <a href=/home>Back</a>
@@ -54,16 +54,19 @@
   </div>
 
   <div id="otherHalf"  class="col-lg-6 col-md-4 col-sm-0">
-    <div><img class="asideImg" src="/public/promo5.jpg"></div>
-    <div><img></div>
-    <aside>
-      <p>an apple a day keeps the doctor away</p>
+    <div class="asides"><img  src="/public/promo4.jpg" style="min-height: 35vh; max-height: 40vh; width: 45vw; object-fit: cover;"></div>
+    <aside class="asides">
+      <p>"share the love and it will multiply"</p>
     </aside>
-    <div><img class="asideImg" src="/public/promo2.jpg"></div>
-    <aside>
-      <p>forgive all your past selves</p>
+    <div class="asides"><img  src="/public/sexyApple.jpg" style="min-height: 35vh; max-height: 40vh; width: 45vw; object-fit: cover;"></div>
+    <aside class="asides">
+      <p>"an apple a day keeps the doctor away"</p>
     </aside>
-    <div><img class="asideImg" src="/public/promo3.jpg"></div>
+    <div class="asides"><img  src="/public/promo2.jpg" style="min-height: 35vh; max-height: 40vh; width: 45vw; object-fit: cover;"></div>
+    <aside class="asides">
+      <p>"forgive all your past selves"</p>
+    </aside>
+    <div class="asides"><img  src="/public/redAndGreenApples.jpg" style="min-height: 35vh; max-height: 40vh; width: 45vw; object-fit: cover;"></div>
   </div>
 
     <footer id="uglyFooter" class="col-sm-12 col-md-12 col-lg-12">

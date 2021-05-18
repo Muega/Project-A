@@ -234,7 +234,7 @@ footer {
 }
 
 #uglyFooter {
-    margin-top: 55vh;
+    margin-top: 25vh;
 }
 
 /* Home Seite Styling D.*/
@@ -243,19 +243,29 @@ footer {
    width: 100%;
 }
 #homeContainer h2 {
-    
+    width:100%
 }
 #homeContainer img {
    max-width: 1500px;
 }
 #homeButtons {
-
+    width:100%
 }
 
 /* LOGIN und REGISTER FORMS */
 
-.border {
-    border-color: grey;
+#formHalf {
+    background-color: none;
+}
+
+#otherHalf {
+    margin-top: 65px;
+}
+
+#actualFormStuff {
+    background-color:palegoldenrod;
+    margin: 75px 10px 10px 10px;
+    padding-left: 50px 10px 10px 10px;
 }
 
 #appleExperience {
@@ -269,6 +279,10 @@ aside p {
     justify-content: center;
 }
 
-asideImg {
-    height: 30px;
+.asides {
+    margin: 5px;
+}
+.asides p {
+    padding: 10px;
+    font-size: 18px;
 }
