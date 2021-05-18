@@ -250,7 +250,7 @@ footer {
 
 /* LOGIN und REGISTER FORMS */
 #formHalf {
-    background-color: none;
+    margin-top: 65px;
 }
 
 #otherHalf {
@@ -259,7 +259,7 @@ footer {
 
 #actualFormStuff {
     background-color:palegoldenrod;
-    margin: 75px 10px 10px 10px;
+    margin: 5px 10px 10px 10px;
     padding-left: 50px 10px 10px 10px;
 }
 
