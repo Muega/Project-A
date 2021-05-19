@@ -158,7 +158,7 @@
 </container>
 
 <!--Habe ne class und Breite für den Footer hinzugefügt-->
-<footer class="col-sm-12 col-md-12 col-lg-12">
+<footer id="uglyFooter" class= "fixed-bottom col-sm-12 col-md-12 col-lg-12">
     <div class="bottom-footer">
             <ul class="footer-nav">
                 <a href="/about">About Us</a><br>
@@ -172,3 +172,81 @@
 
 </body>
 </html>
+
+
+
+
+
+
+<!--Alter Code!!! Gelöscht!
+
+    /*
+   
+  <container class="container">
+    <section id="section1">
+            <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)
+    </section>
+</container> 
+
+<!--Seitenüberschrift
+<container class="container">
+  <section id="section2">
+    <br>
+    <%= aktion %>.<br> <!--Was ist das hier, bzw wo führt aktion hin? Daria [Aktion die in der Server jason übergeben wird als String: bsp: Sie haben sich erfolgreich eingelooged. Luis]
+
+      <h3>Welcome to Applezone <%= nutzername %>!</h3>
+      <p>From Juicy to Crunchy - here you can find the Apple <span><em>you</em></span> deserve!</p>
+      <br>
+      <% if(nutzername == "Guest"){ %>
+      <div style="text-align: center;">
+        <h3>Want to buy something? <a href="/register">REGISTER NOW!</a></h3>
+        <p><a href="/login">or Login</a></p>
+      </div><% }%>
+      <!--TESTWEISE UM COOKIE HIER EINZUBLENDEN
+      <h3><%= cartCookie %></h3>
+  </section>
+</container>  
+
+
+<container class="container"> 
+<section id="section3"> <!--Das wird die Main Section mit den Produkten
+    
+  <!-- Diese for-Schleife liest alle Produkte in dem Bootstraplayout aus
+  <% for(product of produkte){ %>
+    <% if(product.versteckt == true){ continue;}%> <!--Versteckte überspringen
+    <div class="thumbnail">
+        <img src=<%=product.bild%> class="card-image-top" style=" width: 20%;" alt="apple pic"> <!--hier hab ich vorerst den style so geändert, muss später anders werden
+        <div class="caption">
+            <h4><%=product.name%></h4>
+            <p><%=product.story%></p>
+            <p>Price: <%=product.preis%>€</p>
+            <p>Available: <%=product.anzahl%></p>
+            <p>Crispyness: <%=product.knackig%>%</p>
+            <p>Juicyness: <%=product.saftig%>%</p>
+            <p>Color: <%=product.farbe%></p>
+            <p>Weight: <%=product.gewicht%>g</p>
+            <% if(nutzername != "Guest"){ %><p><form action="detail/<%=product.id%>" method="POST"><input type="submit" value="view details" class="btn btn-primary" /> </form>
+            <form action="addcart/<%=product.id%>" method="POST"> <input type="submit" value="put in cart" class="btn btn-success" /> </form></p><% }%>
+            <% if(nutzername == "Guest"){ %><p>Add to cart? <a href="/login">Login</a></p><% }%>
+            <!--Bei Link zum Detail fehlt die id, weil das Probleme bereitet D.--><!--Die detail Probleme sind endgültig gefixt -Stefko mefko 
+          </div>
+    </div>
+  <% }%>
+</section>
+</container>
+
+
+
+<footer>
+  <a href="/about">About Us</a>
+  <br>
+  <a href="/about">Terms of Service</a>
+  <br>
+  <p>Spring 2021</p>
+</footer>
+</body>
+</html>
+
+*/
+
+-->
