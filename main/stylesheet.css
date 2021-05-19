@@ -123,10 +123,14 @@ a:hover {
     text-decoration: none;
 }
 
-.dropdown-menu {
+.dropdown-menu{
     padding-top: 20px;
     padding-bottom: 20px;
-    min-width: 200px;
+    height: auto;
+    max-height: 400px;
+    max-width: auto;
+    white-space: nowrap;
+    overflow-y: auto;
 }
 #apfelFarbeDrop {
     padding: 15px;

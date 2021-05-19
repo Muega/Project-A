@@ -29,26 +29,28 @@
                   <div  class="collapse navbar-collapse" id="myNavbar"> <!--die div hier ist für das "collapse", also denn Button beim Verkleinern-->
                   <ul class="nav navbar-nav">
   
-                          <li class="nav-item"><a class="nav-link" href="/shop"><strong>Home</strong></a></li> <!--It works if I only have the link <a> with class "dropdown-item"-->
+                          <li class="nav-item"><a class="nav-link" href="/shop">Home</a></li> <!--It works if I only have the link <a> with class "dropdown-item"-->
   
                            <li class="nav-item dropdown">
-                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><strong>Our Apples <span class="caret"></span></strong></a>
+                              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Our Apples <span class="caret"></span></a>
                                  
                                   <!--Hier eine Liste mit allen einzelnen Detailseiten, dropdown; Ich weiß nicht warum das nicht funktionieren will :(-->
-                                  <div class="dropdown-menu">
-                                      <a class="dropdown-item nav2" href="/detail/1">Horneburger Pfannkuchen <br><span id="apfelFarbeDrop">(red)</span></a> <hr>
-                                      <a class="dropdown-item nav2" href="/detail/2">Horneburger Pfannkuchen <br><span id="apfelFarbeDrop">(green)</span></a> <hr>
-                                      <a class="dropdown-item nav2" href="/detail/3">Kaiser Wilhelm (green)</a> <hr>
-                                      <a class="dropdown-item nav2" href="/detail/4">Kaiser Wilhelm (red)</a> 
-                                 </div>
-                                 <!-- Aber hier muss wohl das Selbe passieren wie beim Button "View Details", nicht wahr? 
-                                  also ungefähr sowas wie unten bei der form..
-                                  Hätte einer von euch (Luis) da einen Durchblick?
-                                 -->
+                                <div class="dropdown-menu">
+                                  <% for(product of produkte){ %>
+                                    <% if(product.versteckt == true){ continue;}%> <!--Versteckte überspringen-->
+                                        <% if(nutzername != "Guest"){ %>
+                                            <a class="dropdown-item nav2" href="/detail/<%=product.id%>"><%=product.name%></a> <hr>
+                                        <% }%>
+                                        <% if(nutzername == "Guest"){ %>
+                                            <p>Want more details?<a id="logIN" href="/login"> Log in!</a></p>
+                                            <%break%>
+                                        <% }%>
+                                <% }%>
+                                </div>
                            </li> <!--Das li umarmt das dropdown Ding-->
                           
   
-                          <li class="nav-item"><a  class="nav-link" href="/cart"><strong>Shopping Cart</strong></a></li> <!--Kann auch gelöscht werden wegen Warenkorb Icon, aber nicht alle checken das.-->
+                          <!-- <li class="nav-item"><a  class="nav-link" href="/cart"><strong>Shopping Cart</strong></a></li> Kann auch gelöscht werden wegen Warenkorb Icon, aber nicht alle checken das.-->
                           
                           <li class="nav-item dropdown">
                               <a  class="nav-link dropdown-toggle"  data-toggle="dropdown" href="">About <span class="caret"></span></a>
@@ -65,9 +67,10 @@
                           <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
                           weil sie nur von Admins/ Uns zugänglich sein sollen;
                           also müsste hier wohl eine if-Abfrage mit der Admin-Variablen erfolgen D.-->
-                          
-                          <li class="nav-item"><a  class="nav-link" href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
-                          <li class="nav-item"><a  class="nav-link" href="/create">Create an Apple</a></li> <!--Admins only! -->
+                            <% if(rolle == 1){ %>
+                                <li class="nav-item"><a  class="nav-link" href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
+                                <li class="nav-item"><a  class="nav-link" href="/create">Create an Apple</a></li> <!--Admins only! -->
+                            <% }%>
                   
                   </ul>
                   </div>
