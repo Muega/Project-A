@@ -139,7 +139,7 @@
             
                     <% if(nutzername != "Guest"){ %><p id="abovePrice" style="display: inline;">
                         <div class="input-group">
-                        <form action="detail/<%=product.id%>" method="POST" id="f1"> <input type="submit" value="view details" class="btn btn-primary " /> </form>
+                        <form action="detail/<%=product.id%>" method="POST" id="f1"> <input type="submit" value="view details" class="btn btn-secondary " /> </form>
                         <span class="input-group-btn" style="width:7px;"></span>  <!--Damit die nebeneinander sind-->
                         <form action="addcart/<%=product.id%>" method="POST" id="f2"> <input type="submit" value="add to cart" class="btn btn-success " /> </form>
                         </div>

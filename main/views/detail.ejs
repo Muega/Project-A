@@ -17,35 +17,45 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
        --> 
 
-        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheet.css"> <!--"unable to read stylesheet css"-->
 
         <title><%=produkte[0].name%></title>
     </head>
     <body>
         
 
-        <container>
-        <article class="container-fluid">
-            <section class="col-6">
-            <h2><%=produkte[0].name%></h2>
-                <img width="400px" src="<%= produkte[0].bild %>">
-            </section>
-            <section class="col-6">
-                <h3>Price: <%=produkte[0].preis%>€</h3>
+        <container class="container">
+        <div class="row"></div>
 
-                <p><%=produkte[0].story%></p>
+            <div class="container col-lg-6">
+                <section class="imgLeft">
+                    
+                    <img width="500px" src="<%= produkte[0].bild %>">
+                    
+                </section>
+            </div>
+            
+            <div class="container col-lg-6"> 
+                <section class="textRight">
+                    <h2><%=produkte[0].name%></h2>
+                   
+                    <p id="story"><%=produkte[0].story%></p> 
 
-                <p>In stock: <%=produkte[0].anzahl%></p>
-                <p>Crispness: <%=produkte[0].knackig%>%</p>
-                <p>Juiciness: <%=produkte[0].saftig%>%</p>
-                <p>Color: <%=produkte[0].farbe%></p>
-                <p>Weight: <%=produkte[0].gewicht%>g</p>
-            </section>
-            <aside></aside>
-        </article>
+                    <p>In stock: <%=produkte[0].anzahl%></p>
+                    <p>Crispness: <%=produkte[0].knackig%>%</p>
+                    <p>Juiciness: <%=produkte[0].saftig%>%</p>
+                    <p>Color: <%=produkte[0].farbe%></p>
+                    <p>Weight: <%=produkte[0].gewicht%>g</p>
+
+                    <p id="price">Price: <%=produkte[0].preis%>€</p>
+                </section>
+                <aside></aside>
+            </div>
+
+        </div>
         </container>
 
-        <footer class="col-sm-12 col-md-12 col-lg-12">
+        <footer id="uglyFooter" class= "fixed-bottom col-sm-12 col-md-12 col-lg-12">
             <div class="bottom-footer">
                     <ul class="footer-nav">
                         <a href="/about">About Us</a><br>
