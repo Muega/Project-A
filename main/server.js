@@ -435,34 +435,30 @@ app.post("/onupdate/:id", function(req, res){
 
 //Ist die funktion für den put in cart button
 app.post("/addcart/:id", function(req,res) {
+    
     //nimmt alten cookie wert und zwischenspeichert ihn
     fruits = req.cookies.cart;
-    //fügt in die liste vom cookie neuen wert hinzu
-    //fruits.push("apple");
-    let test;
+
     db.all(  //holt die werte von dem apfel ()
         `SELECT * FROM produkte WHERE id = ${req.params.id}`,
         function(err, rows){
             console.log(err);
-            test = rows;
-            //console.log(test);//müssen das objekt irgendwie aus der callback methode kriegen!
             done(rows);
         } 
     );
+
+    //Benutze den Callback, weil der Code sonst asynchron abläuft, und diese funktion wartet auf die db.all Abfrage
     function done(rows){
         
+        //Füge das Datenbankobj in das Array hinzu
         fruits.push(rows);
+        //versuche irgendwie die werte ausgeben zu lassen
         console.log(fruits);
+
+        //überschreibt alten cookie mit dem wert vom alten + das hinzugefügte!
         res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
         res.redirect("/shop");
     };
-    
-    //versuche irgendwie die werte ausgeben zu lassen
-    //console.log(fruits);
-        
-    //überschreibt alten cookie mit dem wert vom alten + das hinzugefügte!
-    //res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
-    //res.redirect("/shop");
 });
 
 //Server starten
