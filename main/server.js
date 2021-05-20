@@ -445,18 +445,24 @@ app.post("/addcart/:id", function(req,res) {
         function(err, rows){
             console.log(err);
             test = rows;
-            console.log(test);//müssen das objekt irgendwie aus der callback methode kriegen!
-            
+            //console.log(test);//müssen das objekt irgendwie aus der callback methode kriegen!
+            done(rows);
         } 
     );
-    fruits.push(test);
+    function done(rows){
+        
+        fruits.push(rows);
+        console.log(fruits);
+        res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
+        res.redirect("/shop");
+    };
     
     //versuche irgendwie die werte ausgeben zu lassen
-    console.log(fruits);
+    //console.log(fruits);
         
     //überschreibt alten cookie mit dem wert vom alten + das hinzugefügte!
-    res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
-    res.redirect("/shop");
+    //res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
+    //res.redirect("/shop");
 });
 
 //Server starten
