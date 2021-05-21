@@ -51,8 +51,10 @@
 
     <section id="warenkorb"> <!--Hier can man Die Warenkorb-Tabelle einfügen-->
         <div>
-
+            
             <table  style="width: 90%; border-width: 5px; border-style: double;">
+                
+                
                 <tr>
                     <th>pic</th> <!--Hier kommt das Bild-->
                     <th>Name</th> <!---->
@@ -62,28 +64,32 @@
                     <th>Intermediate price</th> <!--Total prize x Number of Apples, vllt kann man hier ne Funktion schreiben-->
                     <th>Total price</th>
                 </tr>
+                <% let sum = 0 %>
+                <% for(product of cartCookie) { %>
                 <tr>
                     <td>
-                    <img style="width: 40px" src="/public/Blue_Apple.jpg"> <!-- hier muss man natürlich auch mit ejs das richtige Bild zeigen -->
+                    <img style="width: 40px" src=<%=product[0][0].bild %>>
                     </td>
                     <td>
-                    <!-- <%= // name %> -->
+                    <%=product[0][0].name%>
                     </td>
                     <td>
-                    <a href="/detail/ <!-- <%= //id %> -->"> link zur detailpage  <!-- <%= // name %> --> </a>
+                    <a href="/detail/<%=product[0][0].id%>"> link zur detailpage</a>
                     </td>
                     <td>
-                    <!-- <%= // preis %> --> €
+                    <%=product[0][0].preis%> €
                     </td>
                     <td>
-                     Anzahl, z.B. 20
+                        <%=product[1]%>
                     </td>
                     <td>
-                     für jede Reihe: unit price * number of apples €
+                        <%=product[0][0].preis * product[1]  %>€
                     </td>
                     <td>
                     </td>
                 </tr>
+                <% sum = sum + (product[0][0].preis * product[1]) %>
+                <% } %>
                 <tr>
                     <td></td>
                     <td></td>
@@ -91,7 +97,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>total price: sum of all intermediate prices €</td>
+                    <td>total price: <%=sum%>€</td>
                 </tr>
             </table>
         
@@ -101,11 +107,6 @@
     <section id="buttons">
         <button><a href="/shop">Not ready yet?</a></button>
         <button><a href="/purchase">BUY</a></button>
-        <!--TESTWEISE UM COOKIE HIER EINZUBLENDEN-->
-        <% for(var i = 0; i < cartCookie.length; i++) { %>
-            <h3><%= cartCookie[i] %></h3>
-            
-        <% } %>
     </section>
 </container>
 

@@ -178,8 +178,6 @@ app.get("/produktliste", function(req, res){
 
 app.get("/shop", function(req, res){
     if (!req.session.sessionValue || req.session.sessionValue.sessionNutzer == "Guest"){ //Abfrage ob eine Session besteht
-        var fruits = ['Apple','Bannana'];
-        res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
         db.all(
             `SELECT * FROM produkte`,
             function(err,rows){
@@ -250,8 +248,7 @@ app.post("/register_eingabe", function(req,res){
     const passwort = req.body.passwort;
     const passwort_repeat = req.body.passwort_repeat;
     const email = req.body.email;
-    var fruits = ['Apple','Bannana'];
-    res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
+    
 
     if (nutzername != "" && passwort != ""){
         if (passwort.length > 32 || passwort.length < 8){
@@ -437,7 +434,7 @@ app.post("/onupdate/:id", function(req, res){
 app.post("/addcart/:id", function(req,res) {
     
     //nimmt alten cookie wert und zwischenspeichert ihn
-    fruits = req.cookies.cart;
+    let fruits = req.cookies.cart;
 
     db.all(  //holt die werte von dem apfel ()
         `SELECT * FROM produkte WHERE id = ${req.params.id}`,
@@ -449,11 +446,33 @@ app.post("/addcart/:id", function(req,res) {
 
     //Benutze den Callback, weil der Code sonst asynchron abläuft, und diese funktion wartet auf die db.all Abfrage
     function done(rows){
+        let isIncluded = false;
         
-        //Füge das Datenbankobj in das Array hinzu
-        fruits.push(rows);
-        //versuche irgendwie die werte ausgeben zu lassen
-        console.log(fruits);
+        /* console.log("<fruits , rows __________________________>");
+        console.log(fruits, rows);
+        console.log("<end __________________________>");*/
+
+        //Füge das Datenbankobj in das Array hinzu - entweder wird die Anzahl erhöht oder ein neues Objekt hinzugefügt M.
+
+        if(fruits != undefined){
+            for (fruit of fruits){
+                /* console.log("<fruit, fruit id, rows id __________________________>");
+                console.log(fruit, fruit[0][0].id, rows[0].id);
+                console.log("<end __________________________>"); */
+                if (fruit[0][0].id == rows[0].id){
+                        fruits[fruits.indexOf(fruit)][1] += 1;
+                        isIncluded = true;
+                }
+            }
+        }
+        if (!isIncluded){
+            let product = [rows,1];
+                fruits.push(product); 
+        }
+        
+        /*console.log("<fruits gerendert __________________________>");
+        console.log(fruits)
+        console.log("<end __________________________>"); */
 
         //überschreibt alten cookie mit dem wert vom alten + das hinzugefügte!
         res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
