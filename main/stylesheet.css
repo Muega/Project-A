@@ -208,7 +208,6 @@ a:hover {
 }
 form .btn { /* Das sind die Buttons selbst */
     display:inline-flex;
-    width: 95px; 
 }
 
 .card-image-top {
