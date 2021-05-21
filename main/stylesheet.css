@@ -142,7 +142,7 @@ a:hover {
 
 /* Darias Layout Jumbotron */
 .jumbotron {
-    background-image:url("/public/promo5.jpg");
+    background-image:url("/public/promo4.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -169,27 +169,27 @@ a:hover {
 
 /* Here starts Darias experiment: MAIN SHOP CONTAINER */
 .thumbnail {
-    min-height: 500px;
+    min-width: 250px;
     max-width: max-content;
     /* Die breite der einzelnen Apfel-Elemente */
-   min-width: 250px;
-   max-width: 550px;
     /* yo das mit der Höhe und dem Margin muss ich noch klären.*/
     border-style: hidden;
-   
 }
 .thumbnail img {
-    
     border-radius: 2.5%;
     padding-bottom: 10px;
+}
+.thumbnail #thumbnailInner {
+    margin-bottom: 2.5px;
 }
 
 .caption {
     /* Hier könnt ihr eine font einsetzen die euch gefällt. */
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     background-color: grey;
-    padding:50px;
-    
+    /* Hier wird die Größe der grauen Box mit Text bestimmt */
+    height: 190px;
+       
 }
 .caption h4 {
     font-weight: bold;
@@ -199,13 +199,16 @@ a:hover {
     padding-inline: 10px;
 }
 
-#abovePrice {
-    margin-top: 0px;
-    padding-top: 0px;
-}
-
-.input-group {
+.input-group { /* Hier geht es um die details und cart Buttons bei der Shopseite */
+    min-width: 20%; /* btw I'm really proud of this D. */
+    max-width: 80%;
+    text-align:start;
     padding-inline: 10px;
+    display:inline-flexbox;
+}
+form .btn { /* Das sind die Buttons selbst */
+    display:inline-flex;
+    width: 95px; 
 }
 
 .card-image-top {
