@@ -242,15 +242,14 @@ footer {
 
 /* Home Seite Styling D.*/
 #homeContainer {
-    width: 70vw; 
+    width: 100vw; 
     position: relative;
 }
 #introPicture {
     height: 800px;
-    width: 100vw;
     object-fit:contain;
 }
-#homeContainer .topText {
+.topText {
     position: absolute; /* Damit kann der Text auf dem Bild Sein, man bestimmt sein Verhältnis zur Seite selbst. */
     top: 35px;
     left: 10vw;
@@ -259,6 +258,9 @@ footer {
     color: blanchedalmond;
 }
 
+#homeButtons {
+    padding: 15px 5px 5px 35px;
+}
 
 /* LOGIN und REGISTER FORMS */
 #formHalf {
