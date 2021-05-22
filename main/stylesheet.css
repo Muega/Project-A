@@ -242,22 +242,22 @@ footer {
 
 /* Home Seite Styling D.*/
 #homeContainer {
-    width: 100vw;
-   
+    width: 70vw; 
+    position: relative;
 }
 #introPicture {
-    /* The image used */
-  background-image: url("../public/promo10.jpg");
-
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+    height: 800px;
+    width: 100vw;
+    object-fit:contain;
 }
-.topText
+#homeContainer .topText {
+    position: absolute; /* Damit kann der Text auf dem Bild Sein, man bestimmt sein Verhältnis zur Seite selbst. */
+    top: 35px;
+    left: 10vw;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 45px;
+    color: blanchedalmond;
+}
 
 
 /* LOGIN und REGISTER FORMS */
