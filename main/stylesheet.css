@@ -242,17 +242,23 @@ footer {
 
 /* Home Seite Styling D.*/
 #homeContainer {
-   width: 100%;
+    width: 100vw;
+   
 }
-#homeContainer h2 {
-    width:100%
+#introPicture {
+    /* The image used */
+  background-image: url("../public/promo10.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-#homeContainer img {
-   max-width: 1500px;
-}
-#homeButtons {
-    width:100%
-}
+.topText
+
 
 /* LOGIN und REGISTER FORMS */
 #formHalf {
@@ -286,6 +292,9 @@ aside p {
 .asides p {
     padding: 10px;
     font-size: 18px;
+}
+.asides img {
+    min-width: 525px;
 }
 
 /* DETAIL SEITE */
