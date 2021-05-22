@@ -22,33 +22,34 @@
 
       <div class="col-lg-1 col-md-1 col-sm-0"> </div> <!-- Das ist der Abstand -->
 
-      <container id="actualFormStuff" class="container col-sm-8">
+      <container class="container col-lg-8 col-md-10 col-sm-12">
+        <div id="actualFormStuff">
+
           <h2  id="appleExperience">Are you ready for<br> the next apple experience?</h2>
         
           <div class="dataForm"> <!-- the same as the register one-->
             <form class="" action="/login_eingabe" method="POST"> 
-              <p class="">
-                <div class="form-group row col-sm-10">
+              <p>
+                <div class="form-group row col-sm-12">
                 <label for="nutzername" class="col-form-label">Username or Email:</label>
                 <input class="form-control" type="text" name="nutzername" required>
                 </div>
-                <div class="form-group row col-sm-10">
+                <div class="form-group row col-sm-12">
                 <label for="passwort" class="col-form-label">Password:</label> 
                 <input class="form-control" type="password" name="passwort" required>
                 </div>
               </p>
 
-              <div class="row col-sm-12">
-              <input class="btn" type="submit" value="Log In" style="width: 100px; border: 2px;"> <span > </span>
-              <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">Forgot password?</a>
-              <br> <%=nachricht%> <br>
-              <a href=/home>Back</a>
+              <div>
+                <input class="btn" type="submit" value="Log In" style="font-display:inherit;"> <span style="display:inline-block;width: 10px;"> </span>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">Forgot password?</a>
+                <br> <%=nachricht%> <br>
+                <a href="/home"><span class="glyphicon glyphicon-triangle-left"></span>back</a>
               </div>
             </form> 
           </div>
 
-          <div class="col-lg-1 col-md-1 col-sm-0"> </div>
-
+        </div>   
       </container>
   
   </div>

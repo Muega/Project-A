@@ -243,7 +243,7 @@ footer {
 /* Home Seite Styling D.*/
 #homeContainer {
     width: 100vw; 
-    position: relative;
+    
 }
 #introPicture {
     height: 800px;
@@ -266,20 +266,36 @@ footer {
 #formHalf {
     margin-top: 65px;
 }
-
 #otherHalf {
     margin-top: 65px;
 }
 
 #actualFormStuff {
-    background-color:palegoldenrod;
+    background-color: rgba(160, 160, 160, 0.712);
     margin: 5px 10px 10px 10px;
-    padding-left: 50px 10px 10px 10px;
+    padding: 15px 10px 15px 15px;
+    border-radius: 5px;
+    height: 100%
+    
 }
-
 #appleExperience {
     font-size: 40px;
-    padding-bottom: 20px;
+    font-weight: bold;
+    color: darkslategrey;
+    padding: 0px 10px 20px 10px;
+}
+.dataForm {
+    padding: 0px 10px 15px 10px;
+}
+.dataForm .btn{
+    color:white;
+    background-color: darkslategrey;
+    margin-bottom: 0px;
+}
+.dataForm a {
+    color: darkslategray;
+    margin: 0px 0px 10px 0px;
+    font-size: 16px;
 }
 
 aside p {
