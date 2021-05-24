@@ -356,7 +356,13 @@ aside p {
     padding-top: 5px;
 }
 
-.back-Button {
-    margin-top: 380px;
-    margin-left: 460px;
+.backButton {
+    float: right;
+    margin: auto;
+    width: 50%;
+    padding: 15px; }
+.backButton #f1 {
+    float: right;
+    padding-inline-end: 10px;
+    color: black;
 }

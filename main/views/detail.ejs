@@ -25,14 +25,15 @@
         
 
         <container class="container">
-        <div class="row"></div>
+        <div class="row">
 
             <div class="container col-lg-6">
                 <section class="imgLeft">
-                    
                     <img width="500px" src="<%= produkte[0].bild %>">
                     
-                    
+                    <div class="backButton">
+                        <a href="/shop" id="f1"> <input type="button" value="Back" class="btn btn-secondary"/> </a>
+                    </div>
                 </section>
             </div>
             
@@ -50,15 +51,21 @@
                     <p>Weight: <%=produkte[0].gewicht%>g</p>
 
                     <p id="price">Price: <%=produkte[0].preis%>€</p>
+
+                    <form> <!--okay hier wird man wohl eine Funktion schreiben müssen-->
+                        <label for="quantity">How many apples? </label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="<%=produkte[0].anzahl%>" style="width: 55px">
+                    </form>
+
+                    <p id="price">Total price: <%=produkte[0].preis%>€</p> <!--Hier auch.-->
                 </section>
+
                 <aside></aside>
             </div>
 
         </div>
-        <div class="back-Button">
-            <a href="/shop" id="f1"> <input type="button" value="Back" class="btn btn-secondary " /> </a>
-        </div>
         </container>
+
 
         <footer id="uglyFooter" class= "fixed-bottom col-sm-12 col-md-12 col-lg-12">
             <div class="bottom-footer">

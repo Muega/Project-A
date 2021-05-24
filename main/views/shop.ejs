@@ -81,7 +81,12 @@
                   
                   <li style="float:right"><a href="/cart"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="20" height="20" style="border-radius: 5%;"></a></li>
                   <!--Hier Logout | Nutzername ODER Login | Register -->    
+                  <% if(nutzername != "Guest"){ %>
                   <li style="float:right"><a  href="/Logout">Logout | <%=nutzername%><br></a></li>
+                  <% }%>
+                  <% if(nutzername == "Guest"){ %>
+                  <li style="float:right"><a  href="/home">Login | Register<br></a></li>
+                  <% }%>
                   <!-- <li style="float: right"> <a  id="logReg" href="/Login">Login</a> | <a id="logReg" href="/Register">Register</a><br></li> -->
                   
                   <button type="button" class="navbar-toggle navbar-toggler" data-toggle="collapse" data-target="#myNavbar" style="float:left; width: 55px; height: 35px; background-color: gray; margin-left: 15px; padding:5px;">
