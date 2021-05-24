@@ -331,7 +331,6 @@ aside p {
     float: right;
     margin-top: 65px;
     margin-inline-end: 10px;
-    background-color:lightcoral;
 }
 
 div .textRight {
@@ -351,7 +350,8 @@ div .textRight {
     line-height: 130%;
 }
 .textRight #story {
-    padding: 10px 0px 5px 0px;
+    padding: 10px 10px 5px 0px;
+    width: 450px;
 }
 .textRight #price {
     font-weight: bold;
