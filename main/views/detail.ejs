@@ -50,14 +50,18 @@
                     <p>Color: <%=produkte[0].farbe%></p>
                     <p>Weight: <%=produkte[0].gewicht%>g</p>
 
-                    <p id="price">Price: <%=produkte[0].preis%>€</p>
+                    <p id="price">Price: <%=produkte[0].preis%>€</p> 
 
-                    <form> <!--okay hier wird man wohl eine Funktion schreiben müssen-->
-                        <label for="quantity">How many apples? </label>
-                        <input type="number" id="quantity" name="quantity" min="1" max="<%=produkte[0].anzahl%>" style="width: 55px">
-                    </form>
-
-                    <p id="price">Total price: <%=produkte[0].preis%>€</p> <!--Hier auch.-->
+                    <div id="anzahlPreis">
+                        <form> <!--okay hier wird man wohl eine Funktion schreiben müssen-->
+                            <label for="quantity" style="margin: 0px 0px 1px 0px;font-weight: lighter;">How many apples? </label>
+                            <input type="number" id="quantity" name="quantity" min="1" max="<%=produkte[0].anzahl%>" style="width: 55px">
+                        </form>
+                        <p id="price">Total price: <%=produkte[0].preis%>€</p> <!--Hier auch.--> 
+                        <div class="cartButton">
+                            <a href=""> <input type="button" value="add to cart" class="btn btn-success btn-lg" style="margin-inline-start: 3px;"/> </a>
+                        </div>
+                    </div>
                 </section>
 
                 <aside></aside>

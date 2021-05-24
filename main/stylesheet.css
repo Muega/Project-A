@@ -330,14 +330,17 @@ aside p {
     justify-content: space-evenly;
     float: right;
     margin-top: 65px;
-    margin-inline-end: 15px;
-    padding-left: 35px;
-
+    margin-inline-end: 10px;
+    background-color:lightcoral;
 }
 
+div .textRight {
+   border-left: solid;
+   border-left-color: darkslategray;
+}
 .textRight {
     margin-top: 65px;                                       
-    margin-inline-start: 10px;
+    padding-inline-start: 40px;
 }
 .textRight h2{
     padding-top:5px;
@@ -353,7 +356,7 @@ aside p {
 .textRight #price {
     font-weight: bold;
     font-size: 22px;
-    padding-top: 5px;
+    padding: 5px 0px 5px 0px;
 }
 
 .backButton {
@@ -363,6 +366,9 @@ aside p {
     padding: 15px; }
 .backButton #f1 {
     float: right;
-    padding-inline-end: 10px;
     color: black;
+}
+
+#anzahlPreis {
+    margin-top: 80px;
 }
