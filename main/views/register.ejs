@@ -17,10 +17,10 @@
 
   <body> <!--Weil es Probleme mit der Formattierung gibt, habe ich erst einmal alle bootsrap col (column/grid) class attribute entfernt-->
 
-    <div id="formHalf" class=""> <!--This will mark the first half of the page with the form -->
+    <div id="formHalf" class="col-lg-6"> <!--This will mark the first half of the page with the form -->
       <div class=""> <!-- Das ist der Abstand -->
 
-        <container  class="container">
+        <container  class="container col-lg-8 col-md-8 col-sm-10"">
           <div id="actualFormStuff">
           
               <h2 id="appleExperience">Join our wonderful customerbase today.</h2>
@@ -29,27 +29,28 @@
                 <form action="/register_eingabe" method="POST"> 
                   
                   <p>
-                    <div class="form-group row">
+                    <div class="form-group row  col-sm-12">
                       <label for="nutzername" class="col-form-label">
                       Username:</label> <input class="form-control" type="text" name="nutzername" required minlength="4" maxlength="16">
                     </div> 
-                    <div class="form-group row">
+                    <div class="form-group row col-sm-12">
                       <label for="email" class="col-form-label">
                       Email:</label> <input class="form-control" type="text" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                     </div>
-                    <div class="form-group row"> 
+                    <div class="form-group row  col-sm-12"> 
                       <label for="passwort" class="col-form-label">
                       Password:</label> <input class="form-control" type="password" name="passwort" required minlength="8" maxlength="32">
                     </div>
-                    <div class="form-group row"> 
+                    <div class="form-group row  col-sm-12"> 
                       <label for="passwort_repeat" class="col-form-label">
                       Repeat password:</label> <input class="form-control" type="password" name="passwort_repeat" required minlength="8" maxlength="32">
                     </div>
                   </p>
 
-                  <input type="submit" value="Register" class="btn">
+                  <input type="submit" value="Register" class="btn"> <span style="display:inline-block;width: 10px;"></span>
+                  <a href="/login">Sign in instead?</a>
                   <br> <%=nachricht%> <br>
-                  <a href=/home><span class="glyphicon glyphicon-triangle-left"></span>back</a>
+                  <a href=/home><span class="glyphicon glyphicon-triangle-left"></span>Back</a>
 
                 </form>
               </div>
@@ -60,21 +61,14 @@
     
 
     <!--Die zweite Hälfte ist eiskalt von Login kopiert-->
-    <div id="otherHalf"  class="">
-        <div class="asides"><img  src="/public/promo9 - i.jpg" style="min-height: 35vh; max-height: 40vh; width: 45vw; object-fit: cover;"></div>
+    <div id="otherHalf"  class="col-lg-6">
+        <div class="asides reg"><img  src="/public/promo8 - i.jpg" style="height: 80vh; width: 30vw; object-fit: cover;"></div>
         <aside class="asides">
-          <p>"share the love and it will multiply"</p>
-        </aside>
-        <div class="asides"><img  src="/public/promo1 - i.jpg" style="min-height: 35vh; max-height: 40vh; width: 45vw; object-fit: cover;"></div>
-        <aside class="asides">
-          <p>"an apple a day keeps the doctor away"</p>
-        </aside>
-        <div class="asides"><img  src="/public/promo8 - i.jpg" style="min-height: 35vh; max-height: 40vh; width: 45vw; object-fit: cover;"></div>
-        <aside class="asides">
-          <p>"forgive all your past selves"</p>
-        </aside>
-        <div class="asides"><img  src="/public/promo6 - i.jpg" style="min-height: 35vh; max-height: 40vh; width: 45vw; object-fit: cover;"></div>
-    </div>
+        <p style="font-weight: bold;">keep up the growth and<br> the steps forwards will<br> outweigh the setbacks</p>
+        </aside> 
+        <div class="asides reg"><img  src="/public/promo9 - i.jpg" style="height: 30vh; width: 30vw; object-fit: cover;"></div>
+      </aside> 
+      </div>
 
 
     <footer style="margin-top: 10px;" class="fixed-bottom col-sm-12 col-md-12 col-lg-12">
