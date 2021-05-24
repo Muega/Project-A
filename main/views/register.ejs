@@ -17,10 +17,10 @@
 
   <body> <!--Weil es Probleme mit der Formattierung gibt, habe ich erst einmal alle bootsrap col (column/grid) class attribute entfernt-->
 
-    <div id="formHalf" class="col-lg-6"> <!--This will mark the first half of the page with the form -->
-      <div class=""> <!-- Das ist der Abstand -->
+    <div id="formHalf" class="col-lg-6 col-md-10 col-sm-12"> <!--This will mark the first half of the page with the form -->
+      <div class="col-lg-1 col-md-1 col-sm-0"> </div> <!-- Das ist der Abstand -->
 
-        <container  class="container col-lg-8 col-md-8 col-sm-10"">
+        <container  class="container row col-lg-8 col-md-10 col-sm-10"">
           <div id="actualFormStuff">
           
               <h2 id="appleExperience">Join our wonderful customerbase today.</h2>
@@ -29,7 +29,7 @@
                 <form action="/register_eingabe" method="POST"> 
                   
                   <p>
-                    <div class="form-group row  col-sm-12">
+                    <div class="form-group row col-sm-12">
                       <label for="nutzername" class="col-form-label">
                       Username:</label> <input class="form-control" type="text" name="nutzername" required minlength="4" maxlength="16">
                     </div> 
@@ -37,11 +37,11 @@
                       <label for="email" class="col-form-label">
                       Email:</label> <input class="form-control" type="text" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                     </div>
-                    <div class="form-group row  col-sm-12"> 
+                    <div class="form-group row col-sm-12"> 
                       <label for="passwort" class="col-form-label">
                       Password:</label> <input class="form-control" type="password" name="passwort" required minlength="8" maxlength="32">
                     </div>
-                    <div class="form-group row  col-sm-12"> 
+                    <div class="form-group row col-sm-12"> 
                       <label for="passwort_repeat" class="col-form-label">
                       Repeat password:</label> <input class="form-control" type="password" name="passwort_repeat" required minlength="8" maxlength="32">
                     </div>
@@ -61,13 +61,17 @@
     
 
     <!--Die zweite Hälfte ist eiskalt von Login kopiert-->
-    <div id="otherHalf"  class="col-lg-6">
-        <div class="asides reg"><img  src="/public/promo8 - i.jpg" style="height: 80vh; width: 30vw; object-fit: cover;"></div>
-        <aside class="asides">
-        <p style="font-weight: bold;">keep up the growth and<br> the steps forwards will<br> outweigh the setbacks</p>
-        </aside> 
-        <div class="asides reg"><img  src="/public/promo9 - i.jpg" style="height: 30vh; width: 30vw; object-fit: cover;"></div>
-      </aside> 
+    <div id="otherHalf"  class="col-lg-6 col-md-0 col-sm-0">
+
+      <div class="col-lg-1 col-md-1 col-sm-1"><span style="width: 10px;"></span></div>
+        
+      <div id="verpackung col-sm-12">
+          <div class="asides"><img  src="/public/promo8 - i.jpg" style="max-height: 750px;"></div>
+          <aside class="asides">
+            <p style="font-weight: bold;">keep up the growth and<br> the steps forwards will<br> outweigh the setbacks</p>
+          </aside> 
+          <div class="asides"><img  src="/public/promo9 - i.jpg"></div>
+        </div>
       </div>
 
 
