@@ -100,49 +100,54 @@
             </nav>
         </header>
       
+
+  
+        <div class="container col-lg-3 col-md-2 col-sm-1"></div>
           
-          <!--oberer Abstand-->
-        <container class="container">
-            <section id="section1">
-                <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)-->
-            </section>
-        </container>
+    <container class="container col-lg-6 col-md-8 col-sm-10">
 
-
-        <article>
+        <article id="aboutPage">
+            <aside>
+                <img src="/public/HAW-Logo-trans.png">
+            </aside>
             <section id="about">
                 <h3>ABOUT US</h3>
-                <p>we're a group of students trying to create a almost fully functonal but still fake shop</p>
+                <p>we're a team of students trying to create a almost fully functonal but still fake shop.</p>
+                <p>we are studying Media Systems at the HAW Hamburg and we are passionate about Programming and Video Games, but also fruit.</p>
             </section>
             <section id="story">
                 <h3>OUR STORY</h3>
-                <p>we have a passion for web design and fruit, especially for apples</p>
+                <p>we have a passion for web design and fruit, especially for apples.</p>
+                <p>we wanted to make a shop, and one of us said "how about we sell fruit?" and then we thought that apples are the most accessible fruit of all.</p>
+                <p>and thus, Applezone was created, along with our original apples the Karakuchi Apple and the Blue Apple, which you can't find anywhere else.</p>
             </section>
             <section id="apples">
                 <h3>ABOUT APPLES</h3>
-                <p>apples are the absolutely most versatile fruit. they are just the bestest. they can be red, yellow, green, and even blue, when they have been manufactured by us. you can make apple pie, or apple juice, or apple stuffing, and that is just the icing on top. apples are love. gimme them apples any time, any day. an apple a day keeps the doctor away. </p>
+                <p>apples are the absolutely most versatile fruit. they are just the bestest. they can be red, yellow, green, and even blue, when they have been manufactured by us. you can make apple pie, or apple juice, or apple stuffing, and that is just the icing on top.</p> 
+                <p>apples are love. gimme them apples any time, any day. an apple a day keeps the doctor away. </p>
             </section>
             <aside>
-                <img width="500px" src="/public/Blue_Apple.jpg">
+                <img src="/public/promo6 - i.jpg">
             </aside>
             <section id="cs">
-                <h3>Customer Service</h3>
+                <h3>CUSTOMER SERVICE</h3>
                 <p>we here at Applezone want you to feel heard. we care deeply about what you have to say. <br>
                    if you have questions, requests or complaints, please leave a comment below.</p>
                 <form action="/onComment" method="POST"> <!--Das /oncomment existiert noch nicht-->
-                    <textarea rows="7" cols="49">please use this box</textarea> 
-                    <input type="submit" value="Submit">
+                    <textarea style="min-width: 500px; min-height: 80px; margin: 5px;">please use this box</textarea>  <br>
+                    <input type="submit" value="Submit" class="btn btn-default">
                 </form>
             </section>
-            <section id="terms">
+            <section id="terms" style="padding-bottom: 45px;">
                 <h3>TERMS OF SERVICE</h3>
                 <p>names and adresses of the people responsible for this mess</p>
             </section>
         </article>
 
-        <footer>
+    </container>
+
+        <footer style="margin-top: 0px;" class="fixed-bottom col-sm-12 col-md-12 col-lg-12">
             <div class="bottom-footer">
-                <div class="col-md-12"> 
                     <ul class="footer-nav">
                         <a href="/about">About Us</a><br>
                         
@@ -150,7 +155,6 @@
                     
                         <p>Spring 2021</p> <br>
                     </ul>
-                </div>
             </div>
         </footer>
     </body>

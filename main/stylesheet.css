@@ -335,7 +335,7 @@ aside p {
 
 div .textRight {
    border-left: solid;
-   border-left-color: darkslategray;
+   border-left-color: gray;
 }
 .textRight {
     margin-top: 65px;                                       
@@ -363,7 +363,8 @@ div .textRight {
     float: right;
     margin: auto;
     width: 50%;
-    padding: 15px; }
+    padding: 15px; 
+}
 .backButton #f1 {
     float: right;
     color: black;
@@ -371,4 +372,24 @@ div .textRight {
 
 #anzahlPreis {
     margin-top: 80px;
+}
+
+/* ABOUT PAGE */
+
+#aboutPage {
+    padding-top: 55px;
+    background-color: lavender;
+    padding-bottom:  0px;
+}
+#aboutPage section {
+    margin: 35px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+#aboutPage aside img {
+    max-width: 500px;
+}
+#aboutPage aside {
+    display: flex;
+    justify-content: center;
 }
