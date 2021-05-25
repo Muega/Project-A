@@ -241,25 +241,28 @@ footer {
 }
 
 /* Home Seite Styling D.*/
-#homeContainer {
-    width: 100vw; 
-    
-}
+#homeContainer 
+.mid 
 #introPicture {
     height: 800px;
     object-fit:contain;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .topText {
-    position: absolute; /* Damit kann der Text auf dem Bild Sein, man bestimmt sein Verhältnis zur Seite selbst. */
+     /* Damit kann der Text auf dem Bild Sein, man bestimmt sein Verhältnis zur Seite selbst. */
     top: 35px;
-    left: 10vw;
+    text-align: center;
+    padding-inline: 15px;
+    background-color: rgba(128, 128, 128, 0.445);
+    border-radius: 5px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 45px;
     color: blanchedalmond;
 }
 
-#homeButtons {
-    padding: 15px 5px 5px 35px;
+#homeButtons p {
+    padding: 20px 5px 10px 5px;
 }
 
 /* LOGIN und REGISTER FORMS */
@@ -322,6 +325,7 @@ aside p {
     width: 45vw;
     min-width: 500px;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 
@@ -331,6 +335,7 @@ aside p {
     float: right;
     margin-top: 65px;
     margin-inline-end: 10px;
+    border-radius: 5px;
 }
 
 div .textRight {
@@ -374,8 +379,8 @@ div .textRight {
     margin-top: 80px;
 }
 
-/* ABOUT PAGE */
 
+/* ABOUT PAGE */
 #aboutPage {
     padding-top: 55px;
     background-color: lavender;
