@@ -25,27 +25,26 @@ Von hier aus kann man sich registrieren, einloggen, oder als Gast fortfahren-->
 </header>
 
 
-    <!-- Hey Maurice! Du wolltest ja so einen Slider mit Bildern? Hier ein Link wie das mit Bootstrap gehen könnte:
-    https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-carousel.php
-    -->
-    <div id="homeContainer" class="row">
-      <div class="col-sm-12">
-        <img  id="introPicture" src="/public/promo6 - i.jpg" alt="Applezone Promo Picture" >
-        <div class="topText">Welcome to Applezone!</div>
+    <div id="homeContainer" class="col-sm-12 col-md-12 col-lg-12" style="background-color: blanchedalmond;">
+      <div class="row row-no-gutters">
+        <img  id="introPicture" src="/public/IntroPic.jpg" alt="Applezone Promo Picture" style="max-height: 950px;">
       </div>
-  
-
-
-      <p id="homeButtons" class="col-lg-12 col-sm-12 btn-group-lg">
-          <a href="/login"><input type="button" value="Log in" class="btn btn-success btn-lg"></a>
-          <a href="/register"><input type="button" value="Register here" class="btn btn-success btn-lg"></a>
-          <a href="/shop"><input type="button" value="Continue as Guest" class="btn btn-success btn-lg"></a> 
-          <%= nachricht %>
-      </p>
-    </div>
-
-
       
+      <div id="fixedBox" class="col-lg-12 col-sm-12"> <!--Die könnte man hier in diesen Block zussammenfassen, und den dann nur "fixed" machen-->
+        <div class="topText"><h1 style="font-size: 45px; margin-top: 10px;">Welcome to Applezone!</h1>
+            <p>We here at Applezone have the tastiest and most unique apples. </p>
+            <p>Join us on our mission to applefy the world -- today!</p>
+        </div>
+    
+        <p id="homeButtons" class="btn-group-lg">
+            <a href="/login"><input type="button" value="Log in" class="btn btn-success btn-lg"></a>
+            <a href="/register"><input type="button" value="Register here" class="btn btn-success btn-lg"></a>
+            <a href="/shop"><input type="button" value="Continue as Guest" class="btn btn-success btn-lg"></a> 
+            <%= nachricht %>
+        </p>
+      </div>
+    </div>
+ 
 
       
       <footer class="col-sm-12 col-md-12 col-lg-12 fixed-bottom">

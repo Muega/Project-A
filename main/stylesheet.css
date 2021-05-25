@@ -242,28 +242,45 @@ footer {
 
 /* Home Seite Styling D.*/
 #homeContainer 
-.mid 
 #introPicture {
-    height: 800px;
     object-fit:contain;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    float: right;
 }
+
+#fixedBox {
+    position: fixed;
+    top: 55px;
+    left: 45px;
+    margin-right: 25px;
+    max-width: 625px;
+}
+
 .topText {
-     /* Damit kann der Text auf dem Bild Sein, man bestimmt sein Verhältnis zur Seite selbst. */
-    top: 35px;
-    text-align: center;
-    padding-inline: 15px;
-    background-color: rgba(128, 128, 128, 0.445);
-    border-radius: 5px;
+    max-width: 595px;
+    padding: 15px 25px 15px 25px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 45px;
     color: blanchedalmond;
+    background-color: rgba(105, 105, 105, 0.76);
+    border-radius: 5px;
+    margin-left: 5px;
+}
+.topText p {
+    font-size: 22px;
 }
 
-#homeButtons p {
-    padding: 20px 5px 10px 5px;
+#homeButtons {
+    color: blanchedalmond;
+    text-align: center;
+    margin-top: 10px;
 }
+#homeButtons input {
+    width: 185px; 
+    height: 75px;
+    margin: 5px;
+   
+}
+
 
 /* LOGIN und REGISTER FORMS */
 #formHalf {
