@@ -45,7 +45,7 @@
                                        
                                         <!--Hier muss Luis wieder zaubern? Weil er die ejs-Dinge nicht mag; hab die erstmal auskommentiert mit /* */ D.-->
                                       <div class="dropdown-menu">
-                                        <% /* for(product of produkte){ %>
+                                        <% for(product of produkte){ %>
                                           <% if(product.versteckt == true){ continue;}%> <!--Versteckte überspringen-->
                                               <% if(nutzername != "Guest"){ %>
                                                   <a class="dropdown-item nav2" href="/detail/<%=product.id%>"><%=product.name%></a> <hr>
@@ -74,7 +74,7 @@
                                   <% if(rolle == 1){ %>
                                       <li class="nav-item"><a  class="nav-link" href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
                                       <li class="nav-item"><a  class="nav-link" href="/create">Create an Apple</a></li> <!--Admins only! -->
-                                  <% } */ %>
+                                  <% } %>
                         </ul>
                         </div>
                     </div>

@@ -106,11 +106,22 @@ app.get("/layout", function(req, res){
 
 //weitere Seiten (About Us, Warenkorb/Cart, Purchase, Completion, shopGuest, Detail)
 app.get("/about", function(req, res){
-    if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
-        return res.render("aboutUs", {"nutzername": "Guest", "aktion": ""}); 
+    if (!req.session.sessionValue || req.session.sessionValue.sessionNutzer == "Guest"){ //Abfrage ob eine Session besteht
+        db.all(
+            `SELECT * FROM produkte`,
+            function(err,rows){
+                res.render("aboutUs", {"produkte": rows, "nutzername": "Guest", "rolle": "Guest", "aktion": "", "cartCookie": req.cookies.cart}); //Produktlisten Array an produktliste.ejs übergeben
+            }
+        );
     }else{
-        return res.render("aboutUs", {"nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""});
-    }
+         // Frage mich ob diese else unnötig ist weil die wird garnicht benutzt, sondern die von Log in und Register-Eingabe!!
+        db.all(
+            `SELECT * FROM produkte`,
+            function(err,rows){
+                res.render("aboutUs", {"produkte": rows, "cartCookie": req.cookies.cart, "nutzername": req.session.sessionValue.sessionNutzer, "rolle": req.session.sessionValue.rolle, "aktion": ""}); //Produktlisten Array an produktliste.ejs übergeben
+            }
+        );
+    } 
 });
 
 app.get("/cart", function(req, res){ //hierzu muss man auf die Daten zugreifen etc.
@@ -198,19 +209,27 @@ app.get("/shop", function(req, res){
 //Detail von einem Produkt
 app.post("/detail/:id", function(req, res){
 
-    
-    db.all(
-        `SELECT * FROM produkte WHERE id = ${req.params.id}`, //er mag etwas an diesem param_id nicht
-        function(err, rows){
+    if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
+        return res.render("home", {"nachricht": "Access Denied. Please Register!"}); //Gast kann den Warenkorb nicht nutzen
+    }else{
 
-            console.log(err);
-            console.log(rows);
+        db.all(
+            `SELECT * FROM produkte WHERE id = ${req.params.id}`, //er mag etwas an diesem param_id nicht
+            function(err, rows){
 
-            res.render("detail", {"produkte" : rows}); 
-        } 
-    );
+                console.log(err);
+                //console.log(rows);
+                //console.log(req.session.sessionValue.sessionNutzer);
+                done(rows);
+            } 
+        );
+
+        function done(rows){
+            res.render("detail", {"produkte" : rows, "nutzername": req.session.sessionValue.sessionNutzer,"rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart});
+        }
+    }
+
 });
-
 
 //Login POST-Formular
 app.post("/login_eingabe", function(req,res){
@@ -477,7 +496,7 @@ app.post("/addcart/:id", function(req,res) {
         //überschreibt alten cookie mit dem wert vom alten + das hinzugefügte!
         res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
         res.redirect("/shop");
-    };
+    }
 });
 
 //Server starten

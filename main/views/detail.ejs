@@ -22,6 +22,81 @@
         <title><%=produkte[0].name%></title>
     </head>
     <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+    
+                <div class="navbar-header">
+                   
+                    <div  class="collapse navbar-collapse" id="myNavbar"> <!--die div hier ist für das "collapse", also denn Button beim Verkleinern-->
+                    <ul class="nav navbar-nav">
+    
+                            <li class="nav-item"><a class="nav-link" href="/shop">Home</a></li> <!--It works if I only have the link <a> with class "dropdown-item"-->
+    
+                             <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Our Apples <span class="caret"></span></a>
+                                   
+                                    <!--Hier eine Liste mit allen einzelnen Detailseiten, dropdown; Ich weiß nicht warum das nicht funktionieren will :(-->
+                                  <div class="dropdown-menu">
+                                    <% for(product of produkte){ %>
+                                        <% if(product.versteckt == true){ continue;}%> <!--Versteckte überspringen-->
+                                        <% if(nutzername != "Guest"){ %>
+                                            <a class="dropdown-item nav2" href="/detail/<%=product.id%>"><%=product.name%></a> <hr>
+                                        <% }%>
+                                        <% if(nutzername == "Guest"){ %>
+                                            <p>Want more details?<a id="logIN" href="/login"> Log in!</a></p>
+                                            <%break%>
+                                        <% }%>
+                                  <% }%>
+                                  </div>
+                             </li> <!--Das li umarmt das dropdown Ding-->
+                            
+    
+                            <!-- <li class="nav-item"><a  class="nav-link" href="/cart"><strong>Shopping Cart</strong></a></li> Kann auch gelöscht werden wegen Warenkorb Icon, aber nicht alle checken das.-->
+                            
+                            <li class="nav-item dropdown">
+                                <a  class="nav-link dropdown-toggle"  data-toggle="dropdown" href="">About <span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item nav2" href="/about">About Us</a> <hr>
+                                    <a class="dropdown-item nav2" href="/about#story">Our Story</a> <hr>
+                                    <a class="dropdown-item nav2" href="/about#apples">About Apples</a> <hr>
+                                    <a class="dropdown-item nav2" href="/about#terms">Terms Of Service</a> 
+                                </div>
+                            </li> <!--Das li umarmt das dropdown Ding noch einmal-->
+                            
+                            <li class="nav-item"><a  class="nav-link" href="/about#cs">Customer Service</a></li> <!--Scroll to Customer Service Automatically-->
+                            
+                            <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
+                            weil sie nur von Admins/ Uns zugänglich sein sollen;
+                            also müsste hier wohl eine if-Abfrage mit der Admin-Variablen erfolgen D.-->
+                              <% if(rolle == 1){ %>
+                                  <li class="nav-item"><a  class="nav-link" href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
+                                  <li class="nav-item"><a  class="nav-link" href="/create">Create an Apple</a></li> <!--Admins only! -->
+                              <% }%>
+                    
+                    </ul>
+                    </div>
+    
+                </div>
+              
+                <ul class="nav navbar-nav navbar-right  ml-auto">
+                    
+                    <li style="float:right"><a href="/cart"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="20" height="20" style="border-radius: 5%;"></a></li>
+                    <!--Hier Logout | Nutzername ODER Login | Register -->    
+                    <% if(nutzername != "Guest"){ %>
+                    <li style="float:right"><a  href="/Logout">Logout | <%=nutzername%><br></a></li>
+                    <% }%>
+                    <% if(nutzername == "Guest"){ %>
+                    <li style="float:right"><a  href="/home">Login | Register<br></a></li>
+                    <% }%>
+                    <!-- <li style="float: right"> <a  id="logReg" href="/Login">Login</a> | <a id="logReg" href="/Register">Register</a><br></li> -->
+                    
+                    <button type="button" class="navbar-toggle navbar-toggler" data-toggle="collapse" data-target="#myNavbar" style="float:left; width: 55px; height: 35px; background-color: gray; margin-left: 15px; padding:5px;">
+                        Menu
+                    </button>
+                </ul>
+                
+            </div>
+      </nav>
         
         <container class="container">
         <div class="row">
@@ -44,7 +119,7 @@
                     <p id="story"><%=produkte[0].story%></p> 
 
                     <p>In stock: <%=produkte[0].anzahl%></p>
-                    <p>Crispness: <%=produkte[0].knackig%>%</p>
+                    <p>Crunchiness: <%=produkte[0].knackig%>%</p>
                     <p>Juiciness: <%=produkte[0].saftig%>%</p>
                     <p>Color: <%=produkte[0].farbe%></p>
                     <p>Weight: <%=produkte[0].gewicht%>g</p>
@@ -62,7 +137,7 @@
                                 
                                 <form action="addcart/<%=product.id%>" method="POST" id="f2"> <input type="submit" value="add to cart" class="btn btn-lg btn-success"  style="margin-inline-start: 3px;" /> </form> -->
                                 <form action="/addcart/<%=produkte[0].id%>" method="POST" id="f2"> <input type="submit" value="add to cart" class="btn btn-lg btn-success" style="margin-inline-start: 3px;" /> </form>
-                            
+                                
                         </div>
                     </div>
                 </section>
