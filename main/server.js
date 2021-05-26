@@ -463,14 +463,13 @@ app.post("/onupdate/:id", function(req, res){
 //Ist die funktion für den put in cart button
 app.post("/addcart/:id", function(req,res) {
     
-    /*
     let anzahl = parseInt(req.body.anzahl);
     console.log(anzahl);
     if (isNaN(anzahl)){
         console.log("if anzahl hat keine Zahl");
         anzahl = 1}
     console.log("Anzahl: " + anzahl +" Type:" + typeof(anzahl));
-    */
+
     //nimmt alten cookie wert und zwischenspeichert ihn
     let fruits = req.cookies.cart;
 
