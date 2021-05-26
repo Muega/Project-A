@@ -20,7 +20,7 @@
   </head>
 
   <body> 
-<header>
+    <header>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
 
@@ -95,8 +95,8 @@
             </ul>
             
         </div>
-  </nav>
-</header> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
+    </nav>
+    </header> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
     
 <container class="container">
     <section id="section1">
@@ -140,7 +140,7 @@
                         <%=product[1]%>
                     </td>
                     <td>
-                        <%=product[0][0].preis * product[1]  %>€
+                        <%=(product[0][0].preis * product[1]).toFixed(2) %>€
                     </td>
                     <td>
                     <form>
@@ -166,7 +166,7 @@
                     </tr>
                     
                     <th>Total price</th>
-                    <td><%=sum%>€</td>
+                    <td><%=sum.toFixed(2)%>€</td>
                     <td></td>
                     <td></td>
                     <td></td>

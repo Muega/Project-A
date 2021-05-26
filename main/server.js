@@ -64,7 +64,12 @@ app.get("/create", function(req, res){
         return res.render("home", {"nachricht": "Access Denied. Please Register!"});
     }
     if (req.session.sessionValue.rolle == 1){ //Abfrage ob eine Session besteht
-        return res.render("create", {"nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""});
+        db.all(
+            `SELECT * FROM produkte`,
+            function(err,rows){
+                return res.render("create", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); //Produktlisten Array an produktliste.ejs übergeben
+            }
+        );
     }
     if (req.session.sessionValue.rolle == 0){ //Wenn Kunde auf die Seite will
         return res.redirect("/shop");
@@ -142,7 +147,12 @@ app.get("/purchase", function(req,res){ //kann nicht ohne Produkte aufgerufen we
     if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
         return res.render("home", {"nachricht": "Access Denied. Please Register!"}); //Gast kann nichts kaufen
     }else{
-        return res.render("purchase", {"nutzername": req.session.sessionValue.sessionNutzer, "aktion": ""});
+        db.all(
+            `SELECT * FROM produkte`,
+            function(err,rows){
+                return res.render("purchase", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); //Produktlisten Array an produktliste.ejs übergeben
+            }
+        );
     } //Hier müssen die Produktdaten übergeben werden 
 });
 
@@ -157,8 +167,7 @@ app.get("/detail/:id", function(req, res){
         `SELECT * FROM produkte`, //er mag etwas an diesem param_id nicht
         function(err, rows){
             console.log(err);
-            console.log(rows);
-            return res.render("detail", {"apfelid": req.params.id, "produkte" : rows, "nutzername": req.session.sessionValue.sessionNutzer,"rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); 
+            return res.render("detail", {"apfelid": req.params.id-1, "produkte" : rows, "nutzername": req.session.sessionValue.sessionNutzer,"rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); 
         });
     }else{
         return res.render("home", {"nachricht": "Access Denied. Please Register!"});//Wenn Gast auf die Seite gelangen will
@@ -227,7 +236,7 @@ app.post("/detail/:id", function(req, res){
         );
 
         function done(rows){
-            return res.render("detail", {"apfelid": req.params.id, "produkte" : rows, "nutzername": req.session.sessionValue.sessionNutzer,"rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); 
+            return res.render("detail", {"apfelid": req.params.id-1, "produkte" : rows, "nutzername": req.session.sessionValue.sessionNutzer,"rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); 
         }
     }
 
