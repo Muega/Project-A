@@ -135,7 +135,7 @@
                     <a href="/detail/<%=product[0][0].id%>"> link zur detailpage</a>
                     </td>
                     <td>
-                    <%=product[0][0].preis%> €
+                    <%=product[0][0].preis.toFixed(2)%> €
                     </td>
                     <td>
                         <form action="onCountMutation" method="POST">

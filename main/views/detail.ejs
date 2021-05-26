@@ -119,7 +119,7 @@
                     <p>Color: <%=produkte[apfelid].farbe%></p>
                     <p>Weight: <%=produkte[apfelid].gewicht%>g</p>
 
-                    <p id="price">Price: <%=produkte[apfelid].preis%>€</p> 
+                    <p id="price">Price: <%=produkte[apfelid].preis%.toFixed(2)>€</p> 
 
                     <div id="anzahlPreis">
                         <form action="/addcart/<%=produkte[apfelid].id%>" method="POST" id="f2">  <!--okay hier wird man wohl eine Funktion schreiben müssen-->

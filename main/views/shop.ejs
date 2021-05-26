@@ -129,7 +129,7 @@
 
                     <h4 id="<%=product.id%>"><%=product.name%></h4>
                     <p><%=product.story%></p>
-                    <p id="price">Price: <%=product.preis%>€</p>
+                    <p id="price">Price: <%=product.preis.toFixed(2)%>€</p>
             
                     <% if(nutzername != "Guest"){ %>
                         <div class="input-group">
