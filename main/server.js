@@ -184,7 +184,7 @@ app.get("/produktliste", function(req, res){
         db.all(
             `SELECT * FROM produkte`,
             function(err,rows){
-                return res.render("produktliste", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "aktion": "", "cartCookie": req.cookies.cart}); //Produktlisten Array an produktliste.ejs übergeben
+                return res.render("produktliste", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer,"rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); //Produktlisten Array an produktliste.ejs übergeben
             }
         );
     }
