@@ -446,3 +446,11 @@ div .textRight {
     margin-left: 20px;
     padding: 20px 20px 20px 20px; 
 }
+
+#listeForm {
+    padding: 65px 0px 25px 0px;
+}
+#listeForm td {
+    padding-inline: 10px;
+    padding-block: 10px;
+}
