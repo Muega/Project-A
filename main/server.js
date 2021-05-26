@@ -466,7 +466,7 @@ app.post("/addcart/:id", function(req,res) {
     let anzahl = parseInt(req.body.anzahl);
     console.log(anzahl);
     if (isNaN(anzahl)){
-        console.log("if anzahl hat keine Zahl");
+        console.log("anzahl hat keine Zahl");
         anzahl = 1}
     console.log("Anzahl: " + anzahl +" Type:" + typeof(anzahl));
 
@@ -490,7 +490,11 @@ app.post("/addcart/:id", function(req,res) {
         if(fruits != undefined){
             for (fruit of fruits){
                 if (fruit[0][0].id == rows[0].id){
+                        if (parseInt(fruits[fruits.indexOf(fruit)][1]) + parseInt(anzahl) > fruit[0][0].anzahl){
+                            fruits[fruits.indexOf(fruit)][1] = parseInt(fruit[0][0].anzahl);
+                        }else{     
                         fruits[fruits.indexOf(fruit)][1] = parseInt(fruits[fruits.indexOf(fruit)][1]) + parseInt(anzahl);
+                        }
                         isIncluded = true;
                 }
             }
@@ -527,13 +531,18 @@ app.post("/onCountMutationButton", function(req, res){
     let minus = req.body.minusOne;
     let deleteFruit = req.body.delete;
     let anzahl = 0;
+    let maxAnzahl = req.body.maxAnzahl;
     let deleteIt = false;
 
     if (deleteFruit == undefined ){
         if (plus == undefined){
             anzahl = minus;
         }else{
-            anzahl=plus;
+            if (plus<maxAnzahl){
+                anzahl=plus;
+            }else{
+                anzahl=maxAnzahl;
+            }
         }
     }else{
         anzahl = deleteFruit;

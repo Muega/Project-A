@@ -141,6 +141,7 @@
                         <form action="onCountMutation" method="POST">
                         <input type="number" name="anzahl" value=<%=product[1]%> min=1 max=<%=product[0][0].anzahl%> id="">
                         <input type="hidden" name="productId" value=<%=product[0][0].id%>>
+                        <input type="hidden" name="maxAnzahl" value=<%=product[0][0].anzahl%>>
                         <input type="submit" value="update">
                     </form>
                     </td>
@@ -150,6 +151,7 @@
                     <td>
                         <form action="onCountMutationButton" method="POST">
                             <input type="hidden" name="productId" value=<%=product[0][0].id%>>
+                            <input type="hidden" name="maxAnzahl" value=<%=product[0][0].anzahl%>>
                             <button type="submit" name="plusOne" value=<%=product[1] - (-1) %>>+</button>
                             <button type="submit" name="minusOne" value=<%=product[1] - 1 %>>-</button>
                             <button type="submit" name="delete" value=0><img style="width: 20px" src="/public/delete.png" alt="delete product" ></button>
