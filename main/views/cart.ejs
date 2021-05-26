@@ -121,11 +121,12 @@
                     <th>Intermediate price</th> <!--Total prize x Number of Apples, vllt kann man hier ne Funktion schreiben-->
                     <th></th> <!--Für den Löschbutton o.ä.-->
                 </tr>
+                
                 <% let sum = 0 %>
                 <% for(product of cartCookie) { %>
                 <tr>
                     <td>
-                    <img style="width: 40px" src=<%=product[0][0].bild %>>
+                    <a href="/detail/<%=product[0][0].id%>"> <img style="width: 40px" src=<%=product[0][0].bild %> ></a>
                     </td>
                     <td>
                     <%=product[0][0].name%>
@@ -137,16 +138,21 @@
                     <%=product[0][0].preis%> €
                     </td>
                     <td>
-                        <%=product[1]%>
+                        <form action="onCountMutation" method="POST">
+                        <input type="number" name="anzahl" value=<%=product[1]%> min=1 max=<%=product[0][0].anzahl%> id="">
+                        <input type="hidden" name="productId" value=<%=product[0][0].id%>>
+                        <input type="submit" value="update">
+                    </form>
                     </td>
                     <td>
                         <%=(product[0][0].preis * product[1]).toFixed(2) %>€
                     </td>
                     <td>
-                    <form>
-                        <input type="submit" value="+">
-                        <input type="submit" value=" - ">
-                        <input type="submit" value="löschen">
+                        <form action="onCountMutationButton" method="POST">
+                            <input type="hidden" name="productId" value=<%=product[0][0].id%>>
+                            <button type="submit" name="plusOne" value=<%=product[1] - (-1) %>>+</button>
+                            <button type="submit" name="minusOne" value=<%=product[1] - 1 %>>-</button>
+                            <button type="submit" name="delete" value=0>delete</button>
                     </form>
                     </td>
                 </tr>
@@ -173,6 +179,7 @@
                     <td></td>
                     <td></td>
                 </tr>
+                </form>
             </table>
         
         </div>
