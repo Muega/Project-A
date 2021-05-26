@@ -152,7 +152,7 @@
                             <input type="hidden" name="productId" value=<%=product[0][0].id%>>
                             <button type="submit" name="plusOne" value=<%=product[1] - (-1) %>>+</button>
                             <button type="submit" name="minusOne" value=<%=product[1] - 1 %>>-</button>
-                            <button type="submit" name="delete" value=0>delete</button>
+                            <button type="submit" name="delete" value=0><img style="width: 20px" src="/public/delete.png" alt="delete product" ></button>
                     </form>
                     </td>
                 </tr>
@@ -191,12 +191,16 @@
     </section>
 </container>
 
-<footer>
-    <a href="/about">About Us</a>
-    <br>
-    <a href="/about">Terms of Service</a>
-    <br>
-    <p>Spring 2021</p>
+<footer class="fixed-bottom col-sm-12 col-md-12 col-lg-12">
+    <div class="bottom-footer">
+            <ul class="footer-nav">
+                <a href="/about">About Us</a><br>
+                
+                <a href="/about#terms"> Terms of Service</a> <br>
+            
+                <p>Spring 2021</p> <br>
+            </ul>
+    </div>
 </footer>
 </body>
 </html>
