@@ -302,11 +302,10 @@ footer {
 
 /* LOGIN und REGISTER FORMS */
 #formHalf {
-    margin-top: 65px;
+    margin-top: 20vh;
 }
 #otherHalf {
     margin-top: 65px;
-
 }
 
 #actualFormStuff {
