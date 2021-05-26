@@ -149,13 +149,11 @@ app.get("/detail/:id", function(req, res){
 
     if(req.session.sessionValue){
         db.all(
-        `SELECT * FROM produkte WHERE id = ${req.params.id}`, //er mag etwas an diesem param_id nicht
+        `SELECT * FROM produkte`, //er mag etwas an diesem param_id nicht
         function(err, rows){
-
             console.log(err);
             console.log(rows);
-
-            return res.render("detail", {"produkte" : rows}); 
+            return res.render("detail", {"apfelid": req.params.id, "produkte" : rows, "nutzername": req.session.sessionValue.sessionNutzer,"rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); 
         });
     }else{
         return res.render("home", {"nachricht": "Access Denied. Please Register!"});//Wenn Gast auf die Seite gelangen will
@@ -214,18 +212,17 @@ app.post("/detail/:id", function(req, res){
     }else{
 
         db.all(
-            `SELECT * FROM produkte WHERE id = ${req.params.id}`, //er mag etwas an diesem param_id nicht
+            `SELECT * FROM produkte`, //er mag etwas an diesem param_id nicht
             function(err, rows){
 
                 console.log(err);
                 //console.log(rows);
-                //console.log(req.session.sessionValue.sessionNutzer);
                 done(rows);
             } 
         );
 
         function done(rows){
-            res.render("detail", {"produkte" : rows, "nutzername": req.session.sessionValue.sessionNutzer,"rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart});
+            return res.render("detail", {"apfelid": req.params.id, "produkte" : rows, "nutzername": req.session.sessionValue.sessionNutzer,"rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); 
         }
     }
 

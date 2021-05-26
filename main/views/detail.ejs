@@ -12,12 +12,10 @@
         https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application
         laut dem Link müsste es funktionieren? D.-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-       <!--  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-       --> 
-
-        <link rel="stylesheet" type="text/css" href="/stylesheet.css"> <!--"unable to read stylesheet css"-->
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/stylesheet.css"> 
 
         <title><%=produkte[0].name%></title>
     </head>
@@ -65,9 +63,6 @@
                             
                             <li class="nav-item"><a  class="nav-link" href="/about#cs">Customer Service</a></li> <!--Scroll to Customer Service Automatically-->
                             
-                            <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
-                            weil sie nur von Admins/ Uns zugänglich sein sollen;
-                            also müsste hier wohl eine if-Abfrage mit der Admin-Variablen erfolgen D.-->
                               <% if(rolle == 1){ %>
                                   <li class="nav-item"><a  class="nav-link" href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
                                   <li class="nav-item"><a  class="nav-link" href="/create">Create an Apple</a></li> <!--Admins only! -->
@@ -103,7 +98,7 @@
 
             <div class="container col-lg-6">
                 <section class="imgLeft">
-                    <img width="500px" src="<%= produkte[0].bild %>">
+                    <img width="500px" src="<%= produkte[apfelid].bild %>">
                     
                     <div class="backButton">
                         <a href="/shop" id="f1"> <input type="button" value="Back" class="btn btn-secondary"/> </a>
@@ -114,29 +109,29 @@
 
             <div class="container col-lg-6"> 
                 <section class="textRight">
-                    <h2><%=produkte[0].name%></h2>
+                    <h2><%=produkte[apfelid].name%></h2>
                    
-                    <p id="story"><%=produkte[0].story%></p> 
+                    <p id="story"><%=produkte[apfelid].story%></p> 
 
-                    <p>In stock: <%=produkte[0].anzahl%></p>
-                    <p>Crunchiness: <%=produkte[0].knackig%>%</p>
-                    <p>Juiciness: <%=produkte[0].saftig%>%</p>
-                    <p>Color: <%=produkte[0].farbe%></p>
-                    <p>Weight: <%=produkte[0].gewicht%>g</p>
+                    <p>In stock: <%=produkte[apfelid].anzahl%></p>
+                    <p>Crunchiness: <%=produkte[apfelid].knackig%>%</p>
+                    <p>Juiciness: <%=produkte[apfelid].saftig%>%</p>
+                    <p>Color: <%=produkte[apfelid].farbe%></p>
+                    <p>Weight: <%=produkte[apfelid].gewicht%>g</p>
 
-                    <p id="price">Price: <%=produkte[0].preis%>€</p> 
+                    <p id="price">Price: <%=produkte[apfelid].preis%>€</p> 
 
                     <div id="anzahlPreis">
                         <form> <!--okay hier wird man wohl eine Funktion schreiben müssen-->
                             <label for="quantity" style="margin: 0px 0px 1px 0px;font-weight: lighter;">How many apples? </label>
-                            <input type="number" id="quantity" name="quantity" min="1" max="<%=produkte[0].anzahl%>" style="width: 55px">
+                            <input type="number" id="quantity" value="1"name="quantity" min="1" max="<%=produkte[apfelid].anzahl%>" style="width: 55px">
                         </form>
-                        <p id="price">Total price: <%=produkte[0].preis%>€</p> <!--Hier auch.--> 
+                        <p id="price">Total price: <%=produkte[apfelid].preis%>€</p> <!--Hier auch.--> 
                         <div class="cartButton">
                             <!-- Es gibt hier scheinbar Probleme mit dem Warenkorb button (und auch der Navbar)
                                 
                                 <form action="addcart/<%=product.id%>" method="POST" id="f2"> <input type="submit" value="add to cart" class="btn btn-lg btn-success"  style="margin-inline-start: 3px;" /> </form> -->
-                                <form action="/addcart/<%=produkte[0].id%>" method="POST" id="f2"> <input type="submit" value="add to cart" class="btn btn-lg btn-success" style="margin-inline-start: 3px;" /> </form>
+                                <form action="/addcart/<%=produkte[apfelid].id%>" method="POST" id="f2"> <input type="submit" value="add to cart" class="btn btn-lg btn-success" style="margin-inline-start: 3px;" /> </form>
                                 
                         </div>
                     </div>
