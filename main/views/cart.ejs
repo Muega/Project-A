@@ -119,7 +119,7 @@
                     <th>Unit price</th> <!--Einzelpreis-->
                     <th>Number of apples</th> <!--Anzahl-->
                     <th>Intermediate price</th> <!--Total prize x Number of Apples, vllt kann man hier ne Funktion schreiben-->
-                    <th>Total price</th>
+                    <th></th> <!--Für den Löschbutton o.ä.-->
                 </tr>
                 <% let sum = 0 %>
                 <% for(product of cartCookie) { %>
@@ -143,18 +143,35 @@
                         <%=product[0][0].preis * product[1]  %>€
                     </td>
                     <td>
+                    <form>
+                        <input type="submit" value="+">
+                        <input type="submit" value=" - ">
+                        <input type="submit" value="löschen">
+                    </form>
                     </td>
                 </tr>
-                <% sum = sum + (product[0][0].preis * product[1]) %>
-                <% } %>
-                <tr>
+
+
+                    <% sum = sum + (product[0][0].preis * product[1]) %>
+                    <% } %>
+                                
+                    <tr>
+                        <td><hr></td>
+                        <td><hr></td>
+                        <td><hr></td>
+                        <td><hr></td>
+                        <td><hr></td>
+                        <td><hr></td>
+                        <td><hr></td>
+                    </tr>
+                    
+                    <th>Total price</th>
+                    <td><%=sum%>€</td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td>total price: <%=sum%>€</td>
                 </tr>
             </table>
         

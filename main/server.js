@@ -496,6 +496,7 @@ app.post("/addcart/:id", function(req,res) {
         console.log("<end __________________________>"); */
 
         //überschreibt alten cookie mit dem wert vom alten + das hinzugefügte!
+        console.log(fruits[0]);
         res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
         res.redirect("/shop");
     }
