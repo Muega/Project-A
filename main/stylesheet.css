@@ -140,6 +140,19 @@ a:hover {
     display: inline-block;
 }
 
+#menuToggle {
+    float:left; 
+    width: 55px; 
+    height: 35px; 
+    background-color: gray; 
+    margin-left: 20px; 
+    padding:5px; 
+    color: white; 
+    font-variant: small-caps;
+    letter-spacing: 1px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
 /* Darias Layout Jumbotron */
 .jumbotron {
     background-image:url("/public/promo4.jpg");
@@ -151,7 +164,6 @@ a:hover {
     width: 100%;
     margin: 20px 0px 20px 0px;
 }
-
 #section1 {
     width: 100%;
 }
