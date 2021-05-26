@@ -147,17 +147,22 @@ a:hover {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: 235px;
+    height: 30vh;
     width: 100%;
-    margin-top: 30px;
+    margin: 20px 0px 20px 0px;
+}
+
+#section1 {
+    width: 100%;
 }
 
 .jText {
     text-align: left;
-    position: absolute;
-    padding: 0px 15px 0px 15px;
+    position: relative;
     color:white;
-    background: padding-box, rgba(128, 128, 128, 0.315);
+    border-radius: 5px;
+    padding-inline: 15px;
+    margin: 20px 0px 20px 0px;
 }
 
 .jText h2 {
