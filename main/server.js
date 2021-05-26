@@ -463,6 +463,14 @@ app.post("/onupdate/:id", function(req, res){
 //Ist die funktion für den put in cart button
 app.post("/addcart/:id", function(req,res) {
     
+    /*
+    let anzahl = parseInt(req.body.anzahl);
+    console.log(anzahl);
+    if (isNaN(anzahl)){
+        console.log("if anzahl hat keine Zahl");
+        anzahl = 1}
+    console.log("Anzahl: " + anzahl +" Type:" + typeof(anzahl));
+    */
     //nimmt alten cookie wert und zwischenspeichert ihn
     let fruits = req.cookies.cart;
 
@@ -478,38 +486,83 @@ app.post("/addcart/:id", function(req,res) {
     function done(rows){
         let isIncluded = false;
         
-        /* console.log("<fruits , rows __________________________>");
-        console.log(fruits, rows);
-        console.log("<end __________________________>");*/
-
         //Füge das Datenbankobj in das Array hinzu - entweder wird die Anzahl erhöht oder ein neues Objekt hinzugefügt M.
 
         if(fruits != undefined){
             for (fruit of fruits){
-                /* console.log("<fruit, fruit id, rows id __________________________>");
-                console.log(fruit, fruit[0][0].id, rows[0].id);
-                console.log("<end __________________________>"); */
                 if (fruit[0][0].id == rows[0].id){
-                        fruits[fruits.indexOf(fruit)][1] += 1;
+                        fruits[fruits.indexOf(fruit)][1] = parseInt(fruits[fruits.indexOf(fruit)][1]) + parseInt(anzahl);
                         isIncluded = true;
                 }
             }
         }
         if (!isIncluded){
-            let product = [rows,1];
+            let product = [rows, parseInt(anzahl)];
                 fruits.push(product); 
         }
-        
-        /*console.log("<fruits gerendert __________________________>");
-        console.log(fruits)
-        console.log("<end __________________________>"); */
 
         //überschreibt alten cookie mit dem wert vom alten + das hinzugefügte!
-        console.log(fruits[0]);
         res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
         res.redirect("/shop");
     }
 });
+
+app.post("/onCountMutation", function(req, res){
+    let anzahl = req.body.anzahl;
+    let productId = req.body.productId;
+    fruits = req.cookies.cart;
+    console.log(anzahl);
+    console.log(productId);
+    for (fruit of fruits){
+        if (fruit[0][0].id == productId){
+                fruits[fruits.indexOf(fruit)][1] = anzahl;
+        }
+    }
+    res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
+    res.redirect("/cart");
+});
+
+app.post("/onCountMutationButton", function(req, res){
+    let productId = req.body.productId;
+    let plus = req.body.plusOne;
+    let minus = req.body.minusOne;
+    let deleteFruit = req.body.delete;
+    let anzahl = 0;
+    let deleteIt = false;
+
+    if (deleteFruit == undefined ){
+        if (plus == undefined){
+            anzahl = minus;
+        }else{
+            anzahl=plus;
+        }
+    }else{
+        anzahl = deleteFruit;
+        deleteIt = true;
+    }
+
+    fruits = req.cookies.cart;
+
+    /*
+    console.log(req.body.productId);
+    console.log(req.body.plusOne);
+    console.log(req.body.minusOne);
+    console.log(req.body.delete); 
+    */
+    for (fruit of fruits){
+        if (fruit[0][0].id == productId){
+            if(deleteIt || anzahl <= 0){
+                fruits.splice(fruits.indexOf(fruit),1);
+            }else{
+                fruits[fruits.indexOf(fruit)][1] = anzahl;
+            }
+            break;
+        }
+    }
+    res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
+    res.redirect("/cart");
+}); 
+
 
 //Server starten
 app.listen(3000, function(){
