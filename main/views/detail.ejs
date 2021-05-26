@@ -61,7 +61,8 @@
                             <!-- Es gibt hier scheinbar Probleme mit dem Warenkorb button (und auch der Navbar)
                                 
                                 <form action="addcart/<%=product.id%>" method="POST" id="f2"> <input type="submit" value="add to cart" class="btn btn-lg btn-success"  style="margin-inline-start: 3px;" /> </form> -->
-                            <a href=""> <input type="button" value="add to cart" class="btn btn-success btn-lg" style="margin-inline-start: 3px;"/> </a>
+                                <form action="/addcart/<%=produkte[0].id%>" method="POST" id="f2"> <input type="submit" value="add to cart" class="btn btn-lg btn-success" style="margin-inline-start: 3px;" /> </form>
+                            
                         </div>
                     </div>
                 </section>
