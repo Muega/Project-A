@@ -11,16 +11,18 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         
-        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheet.css">
     <title>Produkt</title>
   </head>
 
   <body>
 
-  <div>
-    <form class="form-group"  id="updateForm" action="/onupdate/<%=id%>" method="POST" enctype="multipart/form-data">  <!--Ins ganze form müssen noch labels rein-->
+  <div  class="container">
+  <div  id="updateForm" >
+    <h3>Bearbeite diesen Apfel</h3><br>
+    <form  class="form-group" action="/onupdate/<%=id%>" method="POST" enctype="multipart/form-data">  <!--Ins ganze form müssen noch labels rein-->
         
-       <input type="hidden" name="MAX_FILE_SIZE" value="8388608" />  <!--Uploadlimit-->
+        <input type="hidden" name="MAX_FILE_SIZE" value="8388608" />  <!--Uploadlimit-->
         <label for="id">Produkt ID</label><br>
         <input type="text" name="id" readonly id="id" value="<%=id%>"> <br><br>
         Name des Produktes: <br>
@@ -51,10 +53,10 @@
         <button type="submit">Speichern</button>
 
     </form>
-    
-    <br>
     <a href="/produktliste">Abbrechen</a>
+  </div> 
   </div>
+  
   
   </body>
 </html>
