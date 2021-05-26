@@ -463,6 +463,13 @@ app.post("/onupdate/:id", function(req, res){
 //Ist die funktion für den put in cart button
 app.post("/addcart/:id", function(req,res) {
     
+    let anzahl = parseInt(req.body.anzahl);
+    console.log(anzahl);
+    if (isNaN(anzahl)){
+        console.log("if anzahl hat keine Zahl");
+        anzahl = 1}
+    console.log("Anzahl: " + anzahl +" Type:" + typeof(anzahl));
+
     //nimmt alten cookie wert und zwischenspeichert ihn
     let fruits = req.cookies.cart;
 
@@ -478,34 +485,22 @@ app.post("/addcart/:id", function(req,res) {
     function done(rows){
         let isIncluded = false;
         
-        /* console.log("<fruits , rows __________________________>");
-        console.log(fruits, rows);
-        console.log("<end __________________________>");*/
-
         //Füge das Datenbankobj in das Array hinzu - entweder wird die Anzahl erhöht oder ein neues Objekt hinzugefügt M.
 
         if(fruits != undefined){
             for (fruit of fruits){
-                /* console.log("<fruit, fruit id, rows id __________________________>");
-                console.log(fruit, fruit[0][0].id, rows[0].id);
-                console.log("<end __________________________>"); */
                 if (fruit[0][0].id == rows[0].id){
-                        fruits[fruits.indexOf(fruit)][1] += 1;
+                        fruits[fruits.indexOf(fruit)][1] = parseInt(fruits[fruits.indexOf(fruit)][1]) + parseInt(anzahl);
                         isIncluded = true;
                 }
             }
         }
         if (!isIncluded){
-            let product = [rows,1];
+            let product = [rows, parseInt(anzahl)];
                 fruits.push(product); 
         }
-        
-        /*console.log("<fruits gerendert __________________________>");
-        console.log(fruits)
-        console.log("<end __________________________>"); */
 
         //überschreibt alten cookie mit dem wert vom alten + das hinzugefügte!
-        console.log(fruits[0]);
         res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
         res.redirect("/shop");
     }
