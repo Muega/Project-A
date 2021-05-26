@@ -128,7 +128,12 @@ app.get("/cart", function(req, res){ //hierzu muss man auf die Daten zugreifen e
     if (!req.session.sessionValue){ //Abfrage ob eine Session besteht
         return res.render("home", {"nachricht": "Access Denied. Please Register!"}); //Gast kann den Warenkorb nicht nutzen
     }else{
-        return res.render("cart", {"nutzername": req.session.sessionValue.sessionNutzer, "aktion": "", "cartCookie": req.cookies.cart});
+        db.all(
+            `SELECT * FROM produkte`,
+            function(err,rows){
+                return res.render("cart", {"produkte": rows, "nutzername": req.session.sessionValue.sessionNutzer, "rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); //Produktlisten Array an produktliste.ejs übergeben
+            }
+        );
     }
     
 });
