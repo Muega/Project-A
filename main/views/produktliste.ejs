@@ -114,7 +114,7 @@
                 <td><%= produkte[i].id %></td>
                 <td><form action="/detail/<%=produkte[i].id%>" method="POST"><input type="image" src="<%= produkte[i].bild %>" width="150" alt="Empty"></form></td>
                 <td><%= produkte[i].name %></td>
-                <td><%= produkte[i].preis %>€</td>
+                <td><%= produkte[i].preis.toFixed(2) %>€</td>
                 <td><%= produkte[i].anzahl %> Stk.</td>
                 <td><%= produkte[i].knackig %>%</td>
                 <td><%= produkte[i].versteckt %></td>
