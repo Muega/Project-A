@@ -163,7 +163,7 @@ a:hover {
     position: relative;
     height: 30vh;
     width: 100%;
-    margin: 20px 0px 20px 0px;
+    margin: 30px 0px 20px 0px;
 }
 #section1 {
     width: 100%;
@@ -171,13 +171,13 @@ a:hover {
 
 .jText {
     text-align: left;
-    position: relative;
+    position: absolute;
     color:white;
     border-radius: 5px;
     padding-inline: 15px;
-    margin: 20px 0px 20px 0px;
+    bottom: 2.5vh;
+    margin-top: 2.5vh;
 }
-
 .jText h2 {
     font-size: 40px;
 }
@@ -268,24 +268,23 @@ footer {
 #fixedBox {
     position: fixed;
     top: 15vh;
-    left: 10vw;
-    margin-right: 25px;
+    left: 12.5vw;
+    margin-right: 30px;
     max-width: 625px;
     padding-bottom: 20px;
 }
 
 .topText {
-    max-width: 590px;
-    padding: 15px 25px 15px 25px;
+    padding: 15px 35px 15px 35px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 45px;
     color: blanchedalmond;
     background-color: rgba(105, 105, 105, 0.904);
     border-radius: 5px;
-    margin-left: 5px;
+    text-align: center;
 }
 .topText p {
-    font-size: 22px;
+    padding-top: 5px;
+    font-size: 24px;
 }
 
 #homeButtons {
