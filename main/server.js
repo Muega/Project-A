@@ -472,7 +472,7 @@ app.post("/addcart/:id", function(req,res) {
 
     //nimmt alten cookie wert und zwischenspeichert ihn
     let fruits = req.cookies.cart;
-
+        
     db.all(  //holt die werte von dem apfel ()
         `SELECT * FROM produkte WHERE id = ${req.params.id}`,
         function(err, rows){
@@ -489,6 +489,7 @@ app.post("/addcart/:id", function(req,res) {
 
         if(fruits != undefined){
             for (fruit of fruits){
+                console.log(fruit);
                 if (fruit[0][0].id == rows[0].id){
                         if (parseInt(fruits[fruits.indexOf(fruit)][1]) + parseInt(anzahl) > fruit[0][0].anzahl){
                             fruits[fruits.indexOf(fruit)][1] = parseInt(fruit[0][0].anzahl);
@@ -503,6 +504,15 @@ app.post("/addcart/:id", function(req,res) {
             let product = [rows, parseInt(anzahl)];
                 fruits.push(product); 
         }
+
+        /*   !!--!! Orientierung; Wie sind Objekte im Cookie zu erreichen bzw. wie ist der Cookie aufgebaut !!--!!
+        
+        console.log(fruits); //Liste mit Listen (alle Äpfel) von Objekt und Anzahl
+        console.log(fruits[0]); //Liste mit Liste von Apfel und Anzahl
+        console.log(fruits[0][0]); //Liste mit einem Apfel(Objekt)
+        console.log(fruits[0][1])  //Anzahl von 0-tem Apfel
+        console.log(fruits[0][0][0]); //Apfelobjekt
+        */
 
         //überschreibt alten cookie mit dem wert vom alten + das hinzugefügte!
         res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
