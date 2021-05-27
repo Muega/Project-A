@@ -578,15 +578,19 @@ app.post("/buy", function(req,res){
     if(fruits.length == 0){
         res.redirect("/cart");
     }else{
-
+        let e = 0;
         for(a = 0; a <= fruits.length-1; a++){
         db.run(
             `UPDATE produkte SET anzahl = anzahl-${fruits[a][1]} WHERE id = ${fruits[a][0][0].id}`,
             function(err){
                 console.log(err);
+                console.log(a, "a");
+                if(a == fruits.length){
                 done();
-            } 
-        )}
+                }
+            }
+            )}
+        
 
 
 
