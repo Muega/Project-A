@@ -255,7 +255,7 @@ footer {
 }
 
 #uglyFooter {
-    margin-top: 45vh;
+    margin-top: 25vh;
 }
 
 /* Home Seite Styling D.*/
@@ -367,33 +367,37 @@ footer {
 }
 
 /* DETAIL SEITE */
+.imgLeft {
+    padding-inline-end: 10px;
+    margin-top: 20px;
+}
 .imgLeft img {
-    justify-content: space-evenly;
     float: right;
-    margin-top: 20vh;
-    margin-inline-end: 10px;
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 div .textRight {
    border-left: solid;
    border-left-color: gray;
 }
-.textRight {
-    margin-top: 65px;                                       
+.textRight {                                   
     padding-inline-start: 40px;
+    padding-top: 15px;
+    padding-bottom: 45px;
+    max-width: 610px;
+    min-width: 305px;
 }
 .textRight h2{
-    padding-top:5px;
     font-size: 35px;
+    margin-top: 5px; 
 }
 .textRight p {
     font-size: 18px;
     line-height: 130%;
 }
 .textRight #story {
-    padding: 10px 10px 5px 0px;
-    width: 450px;
+    padding: 15px 0px 25px 0px;
 }
 .textRight #price {
     font-weight: bold;
@@ -402,10 +406,11 @@ div .textRight {
 }
 
 .backButton {
+    position: absolute;
     float: right;
-    margin: auto;
-    width: 50%;
-    padding: 15px; 
+    right: 25px;
+    bottom: -45px;
+    width: 100%;
 }
 .backButton #f1 {
     float: right;

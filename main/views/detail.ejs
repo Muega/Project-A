@@ -73,7 +73,7 @@
     
                 </div>
               
-                <ul class="nav navbar-nav navbar-right  ml-auto">
+                <ul class="nav navbar-nav navbar-right ml-auto">
                     
                     <li style="float:right"><a href="/cart"><img class="korbdesign" src="../public/korb.png" alt="Warenkorb" width="20" height="20" style="border-radius: 5%;"></a></li>
                     <!--Hier Logout | Nutzername ODER Login | Register -->    
@@ -93,12 +93,12 @@
             </div>
       </nav>
         
-        <container class="container">
-        <div class="row">
+        <container>
+        <div class="row" style=" margin-top: 20vh;">
 
-            <div class="container col-lg-6">
+            <div class="container-fluid col-lg-6 col-md-6 col-sm-12">
                 <section class="imgLeft">
-                    <img width="500px" src="<%= produkte[apfelid].bild %>">
+                    <img width="610px" src="<%= produkte[apfelid].bild %>">
                     
                     <div class="backButton">
                         <a href="/shop" id="f1"> <input type="button" value="Back" class="btn btn-secondary"/> </a>
@@ -107,7 +107,7 @@
             </div>
             
 
-            <div class="container col-lg-6"> 
+            <div class="container-fluid col-lg-6 col-md-6 col-sm-12"> 
                 <section class="textRight">
                     <h2><%=produkte[apfelid].name%></h2>
                    
@@ -122,11 +122,11 @@
                     <p id="price">Price: <%=produkte[apfelid].preis.toFixed(2)%>€</p> 
 
                     <div id="anzahlPreis">
-                        <form action="/addcart/<%=produkte[apfelid].id%>" method="POST" id="f2">  <!--okay hier wird man wohl eine Funktion schreiben müssen-->
+                        <form action="/addcart/<%=produkte[apfelid].id%>" method="POST" id="f2"> 
                             <label for="quantity" style="margin: 0px 0px 1px 0px;font-weight: lighter;">Add to cart</label>
                             <input type="number" id="quantity" value=1 name="anzahl" min=1 max="<%=produkte[apfelid].anzahl%>" style="width: 55px">
                         
-                            <p id="price">Total price: <%=produkte[apfelid].preis%>€</p> <!--Hier auch.--> 
+                            <p id="price">Total price: <%=produkte[apfelid].preis%>€</p> 
                             <div class="cartButton">
                              <!-- Es gibt hier scheinbar Probleme mit dem Warenkorb button (und auch der Navbar)
                                 
