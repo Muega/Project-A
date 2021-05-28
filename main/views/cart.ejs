@@ -108,10 +108,10 @@
     <section id="warenkorb"> <!--Hier can man Die Warenkorb-Tabelle einfügen-->
         <div>
             
-            <table class="table">
+            <table class="table table-hover">
                 
                 
-                <tr>
+                <tr id="cartHeadings">
                     <th></th> <!--Hier kommt das Bild-->
                     <th>Name</th> <!---->
                     <th>Details</th> <!-- Hier kommt scheinbar ein Link zur Detailseite?-->
@@ -153,12 +153,14 @@
                     </td>
                     <td id="lilButtons">
                         <form action="onCountMutationButton" method="POST">
+                            
                             <input type="hidden" name="productId" value=<%=product[0][0].id%>>
                             <input type="hidden" name="maxAnzahl" value=<%=product[0][0].anzahl%>>
                             <button class="btn btn-default" type="submit" name="plusOne" value=<%=product[1] - (-1) %>>+</button>
                             <button class="btn btn-default" type="submit" name="minusOne" value=<%=product[1] - 1 %>>-</button>
-                            <button class="btn btn-default" type="submit" name="delete" value=0><img style="width: 18px" src="/public/delete.png" alt="delete product" ></button>
-                    </form>
+                            <button class="btn btn-default" type="submit" name="delete" value=0><img style="width: 16px" src="/public/delete.png" alt="delete product" ></button>
+                            
+                        </form>
                     </td>
                 </tr>
 

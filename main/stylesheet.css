@@ -500,3 +500,15 @@ div .textRight {
     border-style: solid;
     border-width: 3px;
 }
+
+#anzahl input {
+    min-width: 70px;
+}
+#cartHeadings th {
+    min-width: 110px;
+    background-color: rgb(184, 183, 183);
+    padding-top: 12px;
+    padding-bottom: 10px;
+}
+
+
