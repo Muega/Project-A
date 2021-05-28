@@ -338,12 +338,12 @@ footer {
     font-size: 16px;
 }
 
-#quoteStuff {
+#quoteStuff { /* Quotes/Zitate/Sprüche HIER */
     
     max-width: 510px;
     background-color: rgb(160, 160, 160);
     border-radius: 7.5px;
-    height:fit-content;
+    height: auto;
     margin-top: 5vh;
     margin-bottom: 5vh;
     padding: 15px;
@@ -463,3 +463,5 @@ div .textRight {
     padding-inline: 10px;
     padding-block: 10px;
 }
+
+/* WARENKORB */
