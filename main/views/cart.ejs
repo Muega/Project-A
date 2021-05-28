@@ -98,22 +98,21 @@
     </nav>
     </header> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
     
-<container class="container">
-    <section id="section1">
-            <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)-->
+<container class="container col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 10vh;">
+
+    <section id="section1" style="margin-top: 15vh; margin-bottom: 25px;">
             <h3>Your Shopping Cart</h3>
             <p>here you can see the list of items that are currently in your shopping cart</p>
-            <br>
     </section>
 
     <section id="warenkorb"> <!--Hier can man Die Warenkorb-Tabelle einfügen-->
         <div>
             
-            <table  style="width: 90%; border-width: 5px; border-style: double;">
+            <table class="table">
                 
                 
                 <tr>
-                    <th>pic</th> <!--Hier kommt das Bild-->
+                    <th></th> <!--Hier kommt das Bild-->
                     <th>Name</th> <!---->
                     <th>Details</th> <!-- Hier kommt scheinbar ein Link zur Detailseite?-->
                     <th>Unit price</th> <!--Einzelpreis-->
@@ -125,40 +124,43 @@
                 <% let sum = 0 %>
                 <% for(product of cartCookie) { %>
                 <tr>
-                    <td>
+                    <td id="pic">
                     <a href="/detail/<%=product[0][0].id%>"> <img style="width: 40px" src=<%=product[0][0].bild %> ></a>
                     </td>
-                    <td>
+                    <td id="nomen">
                     <%=product[0][0].name%>
                     </td>
                     <td>
-                    <a href="/detail/<%=product[0][0].id%>"> link zur detailpage</a>
+                    <a href="/detail/<%=product[0][0].id%>"> view details</a>
                     </td>
                     <td>
                     <%=product[0][0].preis.toFixed(2)%> €
                     </td>
-                    <td>
+                    <td id="anzahl">
                         <form action="onCountMutation" method="POST">
-                        <input type="number" name="anzahl" value=<%=product[1]%> min=1 max=<%=product[0][0].anzahl%> id="">
-                        <input type="hidden" name="productId" value=<%=product[0][0].id%>>
-                        <input type="hidden" name="maxAnzahl" value=<%=product[0][0].anzahl%>>
-                        <input type="submit" value="update">
-                    </form>
+                        <div class="input-group">
+                            <input class="form-control" type="number" name="anzahl" value=<%=product[1]%> min=1 max=<%=product[0][0].anzahl%> id="">
+                            <input type="hidden" name="productId" value=<%=product[0][0].id%>>
+                            <input type="hidden" name="maxAnzahl" value=<%=product[0][0].anzahl%>>
+                            <div class="input-group-btn">
+                            <input class="btn btn-default" type="submit" value="update">
+                            </div>
+                        </div>
+                        </form>
                     </td>
                     <td>
                         <%=(product[0][0].preis * product[1]).toFixed(2) %>€
                     </td>
-                    <td>
+                    <td id="lilButtons">
                         <form action="onCountMutationButton" method="POST">
                             <input type="hidden" name="productId" value=<%=product[0][0].id%>>
                             <input type="hidden" name="maxAnzahl" value=<%=product[0][0].anzahl%>>
-                            <button type="submit" name="plusOne" value=<%=product[1] - (-1) %>>+</button>
-                            <button type="submit" name="minusOne" value=<%=product[1] - 1 %>>-</button>
-                            <button type="submit" name="delete" value=0><img style="width: 20px" src="/public/delete.png" alt="delete product" ></button>
+                            <button class="btn btn-default" type="submit" name="plusOne" value=<%=product[1] - (-1) %>>+</button>
+                            <button class="btn btn-default" type="submit" name="minusOne" value=<%=product[1] - 1 %>>-</button>
+                            <button class="btn btn-default" type="submit" name="delete" value=0><img style="width: 18px" src="/public/delete.png" alt="delete product" ></button>
                     </form>
                     </td>
                 </tr>
-
 
                     <% sum = sum + (product[0][0].preis * product[1]) %>
                     <% } %>
@@ -173,8 +175,9 @@
                         <td><hr></td>
                     </tr>
                     
-                    <th>Total price</th>
-                    <td><%=sum.toFixed(2)%>€</td>
+                <tr id="lastLine">
+                    <th>Total price:</th>
+                    <td><strong><%=sum.toFixed(2)%>€</strong></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -183,18 +186,19 @@
                 </tr>
                 </form>
             </table>
+
+            <section id="cartButtons">
+                <button class="btn btn-default"><a href="/shop" style="color: dimgrey;">Not ready yet?</a></button>
+                <form action="purchase" method="GET"><input type="submit" value="BUY" class="btn btn-success" style="padding-inline-start: 45px;"/></form>
+            </section>
         
         </div>
     </section>
 
-    <section id="buttons">
-        <button><a href="/shop">Not ready yet?</a></button>
-        <form action="purchase" method="GET"><input type="submit" value="BUY" /></form>
-        
-    
-    </section>
 </container>
-<footer class="fixed-bottom col-sm-12 col-md-12 col-lg-12">
+
+
+<footer style="margin-top: 25vh" class="fixed-bottom col-sm-12 col-md-12 col-lg-12">
     <div class="bottom-footer">
             <ul class="footer-nav">
                 <a href="/about">About Us</a><br>

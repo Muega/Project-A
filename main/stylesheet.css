@@ -465,3 +465,38 @@ div .textRight {
 }
 
 /* WARENKORB */
+#section1 {
+    text-align: center;
+}
+#warenkorb {
+    display: flex;
+    justify-content:space-evenly;
+}
+#warenkorb table {
+    border-width: 4.5px; 
+    border-style: solid;
+    border-radius: 5px;
+}
+
+#cartButtons {
+    width: inherit;
+    display: flex;
+    justify-content: space-between;
+    
+}
+#cartButtons input {
+    margin-inline-end: 5px;
+    width: 125px;
+    padding: 10px 0px 10px 0px;
+}
+#cartButtons button {
+    margin-inline-start: 5px;
+    width: 125px;
+    padding: 10px 0px 10px 0px;
+}
+
+#lastLine {
+    background-color: blanchedalmond; 
+    border-style: solid;
+    border-width: 3px;
+}
