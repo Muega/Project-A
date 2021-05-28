@@ -161,7 +161,7 @@ a:hover {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: 30vh;
+    height: 33vh;
     width: 100%;
     margin: 30px 0px 20px 0px;
 }
@@ -175,14 +175,14 @@ a:hover {
     color:white;
     border-radius: 5px;
     padding-inline: 15px;
-    bottom: 2.5vh;
-    margin-top: 2.5vh;
+    bottom: 3vh;
+    margin-top: 3vh;
 }
 .jText h2 {
-    font-size: 40px;
+    font-size: 5vh;
 }
 .jText p {
-    font-size: 25px;
+    font-size: 4vh;
 }
 
 /* Here starts Darias experiment: MAIN SHOP CONTAINER */
@@ -260,7 +260,7 @@ footer {
     position: fixed;
     top: 15vh;
     left: 12.5vw;
-    margin-right: 30px;
+    margin-right: 12.5vw;
     max-width: 625px;
     padding-bottom: 20px;
 }
@@ -310,7 +310,6 @@ footer {
  
 #actualFormStuff {
     margin-top: 10vh;
-    margin-bottom: 15vh;
     background-color: rgb(160, 160, 160);
     padding: 15px;
     border-radius: 7.5px;
@@ -344,7 +343,7 @@ footer {
     max-width: 510px;
     background-color: rgb(160, 160, 160);
     border-radius: 7.5px;
-    height: 100%;
+    height:fit-content;
     margin-top: 5vh;
     margin-bottom: 5vh;
     padding: 15px;
@@ -365,6 +364,7 @@ footer {
 .asides img {
     min-height: 35vh; 
     max-height: 40vh; 
+    margin: 10px;
     width: 100%;
     object-fit: cover;
     border-radius: 5px;
