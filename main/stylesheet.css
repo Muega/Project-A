@@ -512,3 +512,39 @@ div .textRight {
 }
 
 
+#Einkauf {
+    margin-top: 10vh;
+    background-color: rgb(182, 180, 180);
+    border-radius: 7px;
+    padding: 25px;
+}
+#Einkauf label {
+    min-width: 85px;
+}
+#Einkauf .form-group {
+    margin: 5px 0px 5px 0px;
+}
+#Einkauf h2 {
+    margin-top: 35px;
+}
+
+
+.radioButton {
+    margin-left: 15px;
+}
+.check {
+    margin-left: 50px;
+}
+
+#productCheck {
+    background-color: papayawhip;
+    margin-top: 7vh;
+    border-radius: 5px;
+}
+
+#disclaimer {
+    background-color: plum;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}

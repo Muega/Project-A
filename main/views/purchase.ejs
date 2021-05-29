@@ -97,103 +97,160 @@
                     
                 </div>
             </nav>
-        </header> <!-- Header mit allen Inhalten muss überarbeitet werden mit neuem Design und Layout-->
-            
-        <container class="container">
-            <section id="section1">
-                    <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)-->
-            </section>
-        </container>  
-
-            <section id="section2"> <!--hier könnte man eine Searchbar einbauen, um nach bestimmten Produkten zu suchen oder so--> 
-            </section>
+        </header>
             
         <!--Main Section mit dem ganzen Formular -->
         <container>
-            <section id="section3"> 
-                <form action="/zahlungsinformationen" method="post"></form>
+
+            <section id="Einkauf" class="container"> 
+
+                <h1>Please enter the following information to complete your purchase:</h1>
+
+                <form action="/zahlungsinformationen" method="post">
 
                     <!--Teil 1 -->
-                    <h2>Billing address</h2>
-                    <br>
-                    <br>
+                    <h2>Billing address:</h2>
                     
+                <div class="form-inline">
+                    <div class="form-group">
                     <label for="firstName">First name*</label>
-                    <input type="text" name="firstName" required>
+                    <input type="text" name="firstName"  class="form-control" required>
+                    </div>
+
+                    <div class="form-group" style="margin-left: 15px;">
                     <label for="name">Last name*</label>
-                    <input type="text" name="name" required><br>
+                    <input type="text" name="name"  class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <div class="form-group">
                     <label for="email">Email*</label>
-                    <input type="email" name="email" required><br>
-                    <label for="name">Company name</label>
-                    <input type="text" name="company" required><br>
+                    <input type="email" name="email" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <div class="form-group">
+                    <label for="name">Company</label>
+                    <input type="text" name="company" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-inline">
+                    <div class="form-group">
                     <label for="street">Street*</label>
-                    <input type="text" name="street" required>
-                    <label for="streetNr">House Number*</label>
-                    <input type="text" name="streetNr" required><br>
+                    <input type="text" name="street" class="form-control" required>
+                    </div>
+
+                    <div class="form-group" style="margin-left: 15px;">
+                    <label for="streetNr">House Nr.*</label>
+                    <input type="text" name="streetNr" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <div class="form-group">
                     <label for="city">City*</label>
-                    <input type="text" name="city" required>
+                    <input type="text" name="city" class="form-control" required>
+                    </div>
+
+                    <div class="form-group" style="margin-left: 15px;">
                     <label for="zip">Postal/ ZIP*</label>
-                    <input type="text" name="zip" required><br>
+                    <input type="text" name="zip" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <div class="form-group">
                     <label for="country">Country*</label>
-                    <select name="country" required>
+                    <select name="country"  class="form-control" required>
                         <option value="germany">Germany</option>
                     </select>
-                    <p>* required</p>
+                    </div>
+                </div>
+
+                   <br> <p>* required</p>
                     
                     <!--Teil 2-->
-                    <h2>Payment method</h2>
-                    <br>
-                    <br>
-                    <label for="payment">Visa</label>
-                    <input type="radio" name="payment" required>
-                    <label for="payment">Master Card</label>
-                    <input type="radio" name="payment" required>
-                    <label for="payment">American Express</label>
-                    <input type="radio" name="payment" required><br>
-                    <label for="cc_name">Cardholders Name</label><label for="cc_number">Credit Card Number</label><br>
-                    <input type="text" name="cc_name" required><input type="text" name="cc_number" required><br>
-                    <label for="cc_exp">Credit Card Exp. Date</label><label for="cvc">CVC</label><br>
-                    <select name="cc_exp_mo" required>
-                        <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    <select name="cc_exp_yr" required>
-                        <option>2021</option>
-                        <option>2022</option>
-                        <option>2023</option>
-                        <option>2024</option>
-                        <option>2025</option>
-                        <option>2026</option>
-                        <option>2027</option>
-                        <option>2028</option>
-                        <option>2029</option>
-                        <option>2030</option>
-                        <option>2031</option>
-                    </select>
-                    <input type="text" name="cvc"><br>
-                    <input type="checkbox" name="agb" required>
-                        <p>I read Applezones <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">Conditions of Use & Sale</a><br> and am willing to accept.
+                    <h2>Payment method:</h2>
+                    
+                    <div>
+                        <label for="payment" class="radio-inline">VISA</label>
+                        <input type="radio" name="payment" class="radioButton" required>
+                    
+                        <label for="payment" class="radio-inline">Master Card</label>
+                        <input type="radio" name="payment" class="radioButton" required>
+                        
+                        <label for="payment" class="radio-inline">American Express</label>
+                        <input type="radio" name="payment" class="radioButton" required>
+                    </div>
+
+                <div class="form-inline" >
+                    <div class="form-group">
+                    <label for="cc_name" style="width: 130px;">Cardholder's Name</label>
+                    <input type="text" name="cc_name" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <div class="form-group">
+                    <label for="cc_number" style="width: 130px;">Credit Card Nr.</label>
+                    <input type="text" name="cc_number" class="form-control" required>
+                    </div>
+                </div>
+                   
+                <div class="form-inline">
+                    <div class="form-group">
+
+                        <label for="cc_exp" style="width: 140px;">Card Exp. Date</label>
+
+                        <select name="cc_exp_mo" class="form-control" required>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+
+                        <select name="cc_exp_yr" class="form-control" required>
+                            <option>2021</option>
+                            <option>2022</option>
+                            <option>2023</option>
+                            <option>2024</option>
+                            <option>2025</option>
+                            <option>2026</option>
+                            <option>2027</option>
+                            <option>2028</option>
+                            <option>2029</option>
+                            <option>2030</option>
+                            <option>2031</option>
+                        </select>
+
+                        <label for="cvc" style="min-width: 45px; margin-left: 55px;">CVC</label>
+                        <input type="text" name="cvc" class="form-control">
+                    </div>
+                </div>
+
+                    <div class="checkbox check">
+                        <input type="checkbox" name="agb" required>
+                            <p>I read Applezones <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">Conditions of Use & Sale</a><br> and am willing to accept.</p>
+                    </div>
+                    <div class="checkbox check">
+                        <input type="checkbox" name="advertisement" required>
+                            <p>I want to receive really annoying regular daily mails<br>about very random apple news.</p>
+                    </div>
+                    <div class="checkbox check">
+                        <input type="checkbox" name="disclaimer" required>
+                        <p>
+                            I understood, that this is not an actual website, but a <br>
+                            university project made by students of the <a href="https://www.haw-hamburg.de/studium/studiengaenge-a-z/studiengaenge-detail/course/courses/show/media-systems/Studieninteressierte/">HAW Hamburg - Media Systems 2</a> course.
                         </p>
-                    <input type="checkbox" name="advertisement" required>
-                        <p>I want to receive really annoying regular daily mails<br>about very random apple news.
-                        </p>
-                    <input type="checkbox" name="disclaimer" required>
-                    <p>
-                        I understood, that this is not an actual website, but a <br>
-                        university project made by students of the <a href="https://www.haw-hamburg.de/studium/studiengaenge-a-z/studiengaenge-detail/course/courses/show/media-systems/Studieninteressierte/">HAW Hamburg - Media Systems 2</a> course.
-                    </p>
-                    <br>
-                    <form action="buy" method="POST"><input type="submit" value="Complete and Pay" /></form>
+                    </div>
+                    <form action="buy" method="POST"> <input type="submit" value="Complete and Pay" class="btn btn-success"/></form>
                 
                 </form>
                 
@@ -202,10 +259,10 @@
         </container>
 
         <!--Aside mit einer Produkteübersicht und Disclaimern, das rechts hovern soll-->
-        <container>
-            <aside>
+        <container class="container col-lg-12 col-md-12 col-sm-12">
+            <section  class="container" id="productCheck">
 
-                <h4>Ihre Produkte:</h4>
+                <h2>Your Apples:</h2>
                 <br>
                 <ul>
                     <!-- let sum = 0 -->
@@ -218,27 +275,33 @@
 
                 </ul>
 
-                <p>Total: <!--sum;-->€</p>
+                <h3>Total: <!--sum;-->€</h3>
 
-                <a href="/produktliste">Shop more</a><a href="/cart">Back to cart</a>
+                <a href="/cart" class="btn btn-default">Back to cart</a>
+                <a href="/produktliste" class="btn btn-info">Shop more</a>
+
 
                 <br>
                 <br>
                 <p>The purchase will be completed with the confirmation <br>
                     sent to you by email.</p>
 
-                <p>
+                <p id="disclaimer">
                     DISCLAIMER!!! YOU WONT RECEIVE ANY REAL APPLES. <br>DONT PROVIDE ANY REAL PERSONAL DATA TO THIS WEBSITE!!! 
                 </p>
-                </aside>
+            </section>
         </container>
 
-        <footer>
-            <a href="/about">About Us</a>
-            <br>
-            <a href="/about"> Terms of Service</a> <!--Hier wird man noch das scrollen zu der richtigen section hinzufügen müssen-->
-            <br>
-            <p>Spring 2021</p>
+        <footer style="margin-top: 25vh" class="fixed-bottom col-sm-12 col-md-12 col-lg-12">
+            <div class="bottom-footer">
+                    <ul class="footer-nav">
+                        <a href="/about">About Us</a><br>
+                        
+                        <a href="/about#terms"> Terms of Service</a> <br>
+                    
+                        <p>Spring 2021</p> <br>
+                    </ul>
+            </div>
         </footer>
     </body>
 </html>
