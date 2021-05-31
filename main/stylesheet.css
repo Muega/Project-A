@@ -548,3 +548,15 @@ div .textRight {
     border-radius: 5px;
     font-weight: bold;
 }
+
+/* letzte Seite */
+#purchaseComplete {
+    width: 100%;
+}
+#lastPics #rechts{
+    float:right;
+}
+#purchaseButtons {
+    display: flex;
+    justify-content:space-evenly;
+}
