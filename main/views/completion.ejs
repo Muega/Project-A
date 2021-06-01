@@ -94,63 +94,72 @@
             </div>
       </nav>
         
-      <container id="wholeThing" class="container col-sm-12 col-md-12 col-lg-12">
-       
-            <section id="purchaseComplete" class="container"> 
-                <h1>Purchase successful!</h1>
-                <br>
-                <p>(Disclaimer: this was not a real purchase)</p>
-            </section>
-       
-
-        <!--Section 4: Mittelteil der Seite mit divs der verschiedenen Bilder/ Texte-->
-       
-            <section id="lastPics" class="container">
-                <div>
+      <container id="wholeThing">
+      
+        <div class="row">
+            
+            <div id="purchaseComplete">
+            <h1>Your purchase was successful!</h1>
+            <p>(Disclaimer: This was not a real purchase.)</p>
+            </div>
+        
+        </div>
+    
+        <!--Section 5: Die drei Links unten-->
+        <div class="row">
+            <div id="purchaseButtons"  class="container">
+                    <a href="/shop" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-triangle-left" style="vertical-align:text-top;"></span>Back to shop</a>
+                    <a href="/about#apples" class="btn btn-info btn-lg">Learn more about apples	<span class="glyphicon glyphicon-apple"></span></a>
+                    <a href="/about" class="btn btn-info btn-lg">Learn more about us 	<span class="glyphicon glyphicon-user"></span></a>
+            </div>
+        </div>
+    
+        
+        <div class="row">
+        <div class="container col-md-2"></div>
+        <div id="lastPics" class="container col-md-8 justify-content-md-center">
+            
+                <div class="container col-sm-6 col-md-6 col-lg-6">
                     <img src="/public/promo10.jpg" alt="Linkes Bild" >
                 </div>
-
-                <div id="rechts">
-                    <div style="height: 15vh; object-fit: contain;">
-                        <img src="/public/sexyApple.jpg" alt="Rechtsoben Bild">
-                    </div>
+        <!--    
+                <div class="container col-sm-6 col-md-6 col-lg-6">
+                    <img src="/public/sexyApple.jpg" alt="Rechtsoben Bild">
+                </div>
+        -->
+                <div id="rechts" class="container row col-sm-6 col-md-6 col-lg-6">
                 
-                    <div style="height: 15vh;">
+                    <div id="textPlace">
                         <h4>Soon on Applezone:</h4>
                         <p>
-                        <em>Pears </em>- Get our finest red pears! <br>
+                        <em><strong>Pears</strong></em> - Get our finest red pears! <br>
                             Now, it's just a matter of time. <br>
                             Come by soon to check it out!
                         </p>
                     </div>
-
-                    <div>
+    
+                    <div style="width:inherit;">
                         <img src="/public/pears-sm.jpg" alt="Untenrechts Bild">
                     </div>
                 </div>
-            <section>
     
-        <!--Section 5: Die drei Links unten-->
-        
-            <section id="purchaseButtons" class="container row">
-                <a href="/shop" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-triangle-left"></span>Back to shop</a>
-                <a href="/aboutApples" class="btn btn-info btn-lg">Learn more about apples</a>
-                <a href="/about" class="btn btn-info btn-lg">Learn more about us</a>
-            </section>
-
-        </container>
-
-        <footer style="margin-top: 25vh" class="fixed-bottom col-sm-12 col-md-12 col-lg-12">
-            <div class="bottom-footer">
-                    <ul class="footer-nav">
-                        <a href="/about">About Us</a><br>
-                        
-                        <a href="/about#terms"> Terms of Service</a> <br>
+        </div>
+        <div class="container col-md-2"></div>
+        </div>
+    
+    </container>
+    
+    <footer class="fixed-bottom col-sm-12 col-md-12 col-lg-12">
+        <div class="bottom-footer fixed-bottom">
+                <ul class="footer-nav">
+                    <a href="/about">About Us</a><br>
                     
-                        <p>Spring 2021</p> <br>
-                    </ul>
-            </div>
-        </footer>
-
+                    <a href="/about#terms"> Terms of Service</a> <br>
+                
+                    <p>Spring 2021</p> <br>
+                </ul>
+        </div>
+    </footer>
+    
     </body>
 </html>
