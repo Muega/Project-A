@@ -117,7 +117,7 @@
     <div  class="container col-md-10 justify-content-md-center">
    
         <% for(product of produkte){ %>
-            <% if(product.versteckt == true){ continue;}%> <!--Versteckte überspringen-->
+            <% if(product.versteckt == true || product.anzahl < 1){ continue;}%> <!--Versteckte überspringen-->
            
             <div class="thumbnail col-sm-6 col-lg-3 col-md-4"> <!--Hier werden die Praktisch in Reihen aufgeteilt-->
                
