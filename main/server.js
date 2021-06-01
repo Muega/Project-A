@@ -576,8 +576,13 @@ app.post("/buy", function(req,res){
     fruits = req.cookies.cart;
     
     if(fruits.length == 0){
+        console.log("if");
+        console.log(fruits);
+        
         res.redirect("/cart");
     }else{
+        console.log("else");
+        console.log(fruits);
         let e = 0;
         for(a = 0; a <= fruits.length-1; a++){
             db.run(

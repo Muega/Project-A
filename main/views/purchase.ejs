@@ -265,17 +265,21 @@
                 <h2>Your Apples:</h2>
                 <br>
                 <ul>
-                    <!-- let sum = 0 -->
+                    <% let sum = 0 %>
+                    <% for(product of cartCookie) { %>
+                        <li><%=product[1]%> x <%=product[0][0].name%></li>
                     <!--for(product of cart){-->
                         
-                    <li><!-- =product.anzahl, product.name%>--></li> <!--Keine Ahnung wie die Syntax geht wenn man einen String in ejs zusammenfügen will-->
+                    <!-- =product.anzahl, product.name%>--> <!--Keine Ahnung wie die Syntax geht wenn man einen String in ejs zusammenfügen will-->
                     <!--sum+=product.price;-->
                     <!-- } -->
+                    <% sum = sum + (product[0][0].preis * product[1]) %>
+                    <% } %>
 
 
                 </ul>
 
-                <h3>Total: <!--sum;-->€</h3>
+                <h3>Total: <%=sum.toFixed(2) %>€</h3>
 
                 <a href="/cart" class="btn btn-default">Back to cart</a>
                 <a href="/produktliste" class="btn btn-info">Shop more</a>
