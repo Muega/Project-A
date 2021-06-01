@@ -156,7 +156,7 @@ a:hover {
 
 /* Darias Layout Jumbotron */
 .jumbotron {
-    background-image:url("/public/promo4.jpg");
+    background-image:url("/public/promo1 - i.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -477,6 +477,9 @@ div .textRight {
     border-style: solid;
     border-radius: 5px;
 }
+#warenkorb table td {
+    vertical-align: middle;
+}
 
 #cartButtons {
     width: inherit;
@@ -512,6 +515,7 @@ div .textRight {
 }
 
 
+/* Purchase */
 #Einkauf {
     margin-top: 10vh;
     background-color: rgb(182, 180, 180);
