@@ -47,7 +47,7 @@
           <!-- <input type="text" name="story" value="<%=story%>" required><br><br> -->
         </div> 
         <br>
-        <input type="checkbox" id="versteckt" name="versteckt" value="1">
+        <input type="checkbox" id="versteckt" name="versteckt" <% if (versteckt == 1){ %> checked <% } %>  value="1">
         <label for="versteckt">Verstecken?</label>
         <br><br>
         <button type="submit">Speichern</button>
