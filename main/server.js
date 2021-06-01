@@ -536,12 +536,12 @@ app.post("/onCountMutationButton", function(req, res){
 
     if (deleteFruit == undefined ){
         if (plus == undefined){
-            anzahl = minus;
+            anzahl = parseInt(minus);
         }else{
-            if (plus<maxAnzahl){
-                anzahl=plus;
+            if (parseInt(plus)<maxAnzahl){
+                anzahl=parseInt(plus);
             }else{
-                anzahl=maxAnzahl;
+                anzahl=parseInt(maxAnzahl);
             }
         }
     }else{
@@ -580,16 +580,17 @@ app.post("/buy", function(req,res){
     }else{
         let e = 0;
         for(a = 0; a <= fruits.length-1; a++){
-        db.run(
-            `UPDATE produkte SET anzahl = anzahl-${fruits[a][1]} WHERE id = ${fruits[a][0][0].id}`,
-            function(err){
-                console.log(err);
-                console.log(a, "a");
-                if(a == fruits.length){
-                done();
+            db.run(
+                `UPDATE produkte SET anzahl = anzahl-${fruits[a][1]} WHERE id = ${fruits[a][0][0].id}`,
+                function(err){
+                    console.log(err);
+                    console.log(a, "a");
+                    if(a == fruits.length){
+                    done();
+                    }
                 }
-            }
-            )}
+                );
+        }
         
 
 
@@ -598,8 +599,11 @@ app.post("/buy", function(req,res){
             fruits = [];
             console.log(fruits);
             res.cookie('cart', fruits, {"maxAge": 3600 * 1000});
+            db.all(`SELECT * FROM produkte`, function(err, rows){
+                console.log(err);
+                res.render("completion", {"produkte": rows, "cartCookie": req.cookies.cart, "nutzername": req.session.sessionValue.sessionNutzer, "rolle": req.session.sessionValue.rolle, "aktion": ""});
+            });
             
-            res.render("completion");
         }
     }
 });
