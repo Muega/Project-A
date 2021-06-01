@@ -126,7 +126,7 @@
                             <label for="quantity" style="margin: 0px 0px 1px 0px;font-weight: lighter;">Add to cart</label>
                             <input type="number" id="quantity" value=1 name="anzahl" min=1 max="<%=produkte[apfelid].anzahl%>" style="width: 55px">
                         
-                            <p id="price">Total price: <%=produkte[apfelid].preis%>€</p> 
+                            <p id="price" style="color: green;">LIMITED TIME OFFER: <span style="color: black;"><%=produkte[apfelid].preis.toFixed(2)%>€</span></p> 
                             <div class="cartButton">
                              <!-- Es gibt hier scheinbar Probleme mit dem Warenkorb button (und auch der Navbar)
                                 
