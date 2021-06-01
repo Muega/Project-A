@@ -94,50 +94,45 @@
             </div>
       </nav>
         
-      <container id="wholeThing" class="container col-sm-12 col-md-12 col-lg-12">
-       
+        <container>
             <section id="purchaseComplete" class="container"> 
                 <h1>Purchase successful!</h1>
-                <br>
                 <p>(Disclaimer: this was not a real purchase)</p>
             </section>
-       
+        </container>
 
         <!--Section 4: Mittelteil der Seite mit divs der verschiedenen Bilder/ Texte-->
-       
+        <container>
             <section id="lastPics" class="container">
-                <div>
-                    <img src="/public/promo10.jpg" alt="Linkes Bild" >
+                <div style="width: 350px;">
+                    <img src="/public/promo10.jpg" alt="Linkes Bild">
                 </div>
-
-                <div id="rechts">
-                    <div style="height: 15vh; object-fit: contain;">
-                        <img src="/public/sexyApple.jpg" alt="Rechtsoben Bild">
-                    </div>
-                
-                    <div style="height: 15vh;">
-                        <h4>Soon on Applezone:</h4>
-                        <p>
-                        <em>Pears </em>- Get our finest red pears! <br>
-                            Now, it's just a matter of time. <br>
-                            Come by soon to check it out!
-                        </p>
-                    </div>
-
-                    <div>
-                        <img src="/public/pears-sm.jpg" alt="Untenrechts Bild">
-                    </div>
+            <div id="rechts">
+                <div style="height: 15vh; width: 350px; object-fit: contain;">
+                    <img src="/public/sexyApple.jpg" alt="Rechtsoben Bild">
                 </div>
+                <div style="width: 350px;">
+                    <h4>Soon on Applezone:</h4>
+                    <p>
+                       <em>Pears </em>- Get our finest red pears! <br>
+                        Now, it's just a matter of time. <br>
+                        Come by soon to check it out!
+                    </p>
+                </div>
+                <div style="width: 350px;">
+                    <img src="/public/pears-sm.jpg" alt="Untenrechts Bild">
+                </div>
+            </div>
             <section>
-    
+        </container>
+
         <!--Section 5: Die drei Links unten-->
-        
-            <section id="purchaseButtons" class="container row">
-                <a href="/shop" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-triangle-left"></span>Back to shop</a>
+        <container>
+            <section id="purchaseButtons" class="container">
+                <a href="/shop" class="btn btn-default btn-lg">Back to shop</a>
                 <a href="/aboutApples" class="btn btn-info btn-lg">Learn more about apples</a>
                 <a href="/about" class="btn btn-info btn-lg">Learn more about us</a>
             </section>
-
         </container>
 
         <footer style="margin-top: 25vh" class="fixed-bottom col-sm-12 col-md-12 col-lg-12">
@@ -151,6 +146,5 @@
                     </ul>
             </div>
         </footer>
-
     </body>
 </html>
