@@ -555,10 +555,24 @@ div .textRight {
 
 /* letzte Seite */
 #purchaseComplete {
+    margin-top: 20vh;
     width: 100%;
+    
+    display: flex;
+    justify-content:center;
+
+    border-style: double;
+    border-radius: 3px;
+    border-color: dimgrey;
 }
 #lastPics #rechts{
     float:right;
+}
+#lastPics div {
+    max-width: 450px;
+}
+#lastPics img {
+    max-width: 350px;
 }
 #purchaseButtons {
     display: flex;
