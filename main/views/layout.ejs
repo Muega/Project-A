@@ -10,9 +10,10 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" type="text/css" href="stylesheet.css">
+   <link rel="stylesheet" type="text/css" href="/stylesheet.css">
    
     <title>Applezone Shop</title>
+
   </head>
 
   <body>
@@ -59,10 +60,6 @@
                         
                         <li class="nav-item"><a  class="nav-link" href="/about#cs">Customer Service</a></li> <!--Scroll to Customer Service Automatically-->
                         
-                        <!-- Bedenke: die beiden "produktliste" und "create" müssen hier gelöscht werden, 
-                        weil sie nur von Admins/ Uns zugänglich sein sollen;
-                        also müsste hier wohl eine if-Abfrage mit der Admin-Variablen erfolgen D.-->
-                        
                         <li class="nav-item"><a  class="nav-link" href="/produktliste">Update an Apple</a></li> <!--Admins only! -->
                         <li class="nav-item"><a  class="nav-link" href="/create">Create an Apple</a></li> <!--Admins only! -->
                 
@@ -89,77 +86,63 @@
 
 
     
-<container class="col-md-12">
-    <section id="section1">
-            <div class="jumbotron jumbotron-fluid">
-            <div class="container-fluid"> 
-            <div class="jText">
-                <h2><strong>Welcome to Applezone!</strong></h2>
-                <p><strong>Juicy or Crunchy - <br> find the Apple <span><em>you</em></span> deserve!</strong></p>
-            </div>
-            </div>
-            </div>
-    </section>
-</container>  
-<!-- Das ganze hier exisitert nur um den Code zu den Dropdowns oder Collapibles besser accessen zu können. D. 
-    <section id="section2"> 
-    <hr>
-        <button type="button" data-target="#demo" data-toggle="collapse">Collapse Button</button>
-            <div class="collapse" id="demo">
-                Collapsible content <br>
-                More content <br>
-                Loads of content <br>
-            </div>
-
-            <div class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item">ja</a>
-                    <a href="#" class="dropdown-item">nein</a>
-                </div>
-            </div>
-    </section> --> 
-<container class="container col-md-12">
-    <div class="container col-md-1"> </div> <!--Mit diesem Trick habe ich es geschafft sie zu zentrieren!!! D.-->
-    <div  class="container col-md-10 justify-content-md-center">
-   
-        <% for(product of produkte){ %>
-            <% if(product.versteckt == true){ continue;}%> <!--Versteckte überspringen-->
-           
-            <div class="thumbnail col-sm-6 col-lg-3 col-md-4"> <!--Hier werden die Praktisch in Reihen aufgeteilt-->
-               
-            <div id="thumbnailInner" class="thumbnail"> <!--Hier hatte ich den thumbnail in einen drübergestellten thumbnail gepackt, damit die Abstände größer werden ohne alles zu verschieben -->
-
-                <img class="card-image-top" alt="apple pic" src=<%=product.bild%>>
-                
-                <div class="caption">
-
-                    <h4><%=product.name%></h4>
-                    <p><%=product.story%></p>
-                    <p id="price">Price: <%=product.preis%>€</p>
-            
-                    <% if(nutzername != "Guest"){ %>
-                        <div class="input-group">
-                        <form action="detail/<%=product.id%>" method="POST" id="f1"> <input type="submit" value="view details" class="btn btn-sm btn-secondary " /> </form>
-                        <span class="input-group-btn" style="width: 5px;"></span>  <!--Damit die nebeneinander sind-->
-                        <form action="addcart/<%=product.id%>" method="POST" id="f2"> <input type="submit" value="add to cart" class="btn btn-sm btn-success " /> </form>
-                        </div>
-                        </p>
-                        <% }%>
-                    <% if(nutzername == "Guest"){ %>
-                        <p>Add to cart? <a id="logIN" href="/login">Log in!</a></p><% }%>
-                </div>
-            </div>
-            </div>
-          <% }%>
-
+<container id="wholeThing">
+      
+    <div class="row">
+        
+        <div id="purchaseComplete">
+        <h1>Your purchase was successful!</h1>
+        <p>(Disclaimer: This was not a real purchase.)</p>
+        </div>
+    
     </div>
 
+    <!--Section 5: Die drei Links unten-->
+    <div class="row">
+        <div id="purchaseButtons"  class="container">
+                <a href="/shop" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-triangle-left" style="vertical-align:text-top;"></span>Back to shop</a>
+                <a href="/about#apples" class="btn btn-info btn-lg">Learn more about apples	<span class="glyphicon glyphicon-apple"></span></a>
+                <a href="/about" class="btn btn-info btn-lg">Learn more about us 	<span class="glyphicon glyphicon-user"></span></a>
+        </div>
+    </div>
+
+<!--Section 4: Mittelteil der Seite mit divs der verschiedenen Bilder/ Texte-->
+    <div class="row">
+    <div class="container col-md-2"></div>
+    <div id="lastPics" class="container col-md-8 justify-content-md-center">
+        
+
+            <div class="container col-sm-6 col-md-6 col-lg-6">
+                <img src="/public/promo10.jpg" alt="Linkes Bild" >
+            </div>
+
+            <div id="rechts" class="container col-sm-6 col-md-6 col-lg-6">
+                <div style="height: 15vh; object-fit: contain;">
+                    <img src="/public/sexyApple.jpg" alt="Rechtsoben Bild">
+                </div>
+            
+                <div style="height: 15vh;">
+                    <h4>Soon on Applezone:</h4>
+                    <p>
+                    <em><strong>Pears</strong></em> - Get our finest red pears! <br>
+                        Now, it's just a matter of time. <br>
+                        Come by soon to check it out!
+                    </p>
+                </div>
+
+                <div>
+                    <img src="/public/pears-sm.jpg" alt="Untenrechts Bild">
+                </div>
+            </div>
+
+    </div>
+    <div class="container col-md-2"></div>
+    </div>
+    
 </container>
 
-<!--Habe ne class und Breite für den Footer hinzugefügt-->
-<footer class= "fixed-bottom col-sm-12 col-md-12 col-lg-12">
-    <div class="bottom-footer">
+<footer class="fixed-bottom col-sm-12 col-md-12 col-lg-12">
+    <div class="bottom-footer fixed-bottom">
             <ul class="footer-nav">
                 <a href="/about">About Us</a><br>
                 
@@ -170,83 +153,6 @@
     </div>
 </footer>
 
+
 </body>
 </html>
-
-
-
-
-
-
-<!--Alter Code!!! Gelöscht!
-
-    /*
-   
-  <container class="container">
-    <section id="section1">
-            <span id="obererAbstand"> <br> <br> <br> </span> <!--den oberen Abstand (damit die Nav nichts bedeckt kann man später in Css machen)
-    </section>
-</container> 
-
-<!--Seitenüberschrift
-<container class="container">
-  <section id="section2">
-    <br>
-    <%= aktion %>.<br> <!--Was ist das hier, bzw wo führt aktion hin? Daria [Aktion die in der Server jason übergeben wird als String: bsp: Sie haben sich erfolgreich eingelooged. Luis]
-
-      <h3>Welcome to Applezone <%= nutzername %>!</h3>
-      <p>From Juicy to Crunchy - here you can find the Apple <span><em>you</em></span> deserve!</p>
-      <br>
-      <% if(nutzername == "Guest"){ %>
-      <div style="text-align: center;">
-        <h3>Want to buy something? <a href="/register">REGISTER NOW!</a></h3>
-        <p><a href="/login">or Login</a></p>
-      </div><% }%>
-      <!--TESTWEISE UM COOKIE HIER EINZUBLENDEN
-      <h3><%= cartCookie %></h3>
-  </section>
-</container>  
-
-
-<container class="container"> 
-<section id="section3"> <!--Das wird die Main Section mit den Produkten
-    
-  <!-- Diese for-Schleife liest alle Produkte in dem Bootstraplayout aus
-  <% for(product of produkte){ %>
-    <% if(product.versteckt == true){ continue;}%> <!--Versteckte überspringen
-    <div class="thumbnail">
-        <img src=<%=product.bild%> class="card-image-top" style=" width: 20%;" alt="apple pic"> <!--hier hab ich vorerst den style so geändert, muss später anders werden
-        <div class="caption">
-            <h4><%=product.name%></h4>
-            <p><%=product.story%></p>
-            <p>Price: <%=product.preis%>€</p>
-            <p>Available: <%=product.anzahl%></p>
-            <p>Crispyness: <%=product.knackig%>%</p>
-            <p>Juicyness: <%=product.saftig%>%</p>
-            <p>Color: <%=product.farbe%></p>
-            <p>Weight: <%=product.gewicht%>g</p>
-            <% if(nutzername != "Guest"){ %><p><form action="detail/<%=product.id%>" method="POST"><input type="submit" value="view details" class="btn btn-primary" /> </form>
-            <form action="addcart/<%=product.id%>" method="POST"> <input type="submit" value="put in cart" class="btn btn-success" /> </form></p><% }%>
-            <% if(nutzername == "Guest"){ %><p>Add to cart? <a href="/login">Login</a></p><% }%>
-            <!--Bei Link zum Detail fehlt die id, weil das Probleme bereitet D.--><!--Die detail Probleme sind endgültig gefixt -Stefko mefko 
-          </div>
-    </div>
-  <% }%>
-</section>
-</container>
-
-
-
-<footer>
-  <a href="/about">About Us</a>
-  <br>
-  <a href="/about">Terms of Service</a>
-  <br>
-  <p>Spring 2021</p>
-</footer>
-</body>
-</html>
-
-*/
-
--->
