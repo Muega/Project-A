@@ -578,7 +578,7 @@ div .textRight {
     border-radius: 5px;
     border-color: dimgrey;
     height: fit-content;
-    background-color: rgb(80, 207, 80);
+    background-color: rgb(92, 228, 92);
     margin: 15vh 5vw 15px 5vw;
     padding: 10px 15px 15px 35px;
   
@@ -599,6 +599,14 @@ div .textRight {
     justify-content: space-evenly;
     min-width: fit-content;
     padding: 25px 0px 25px 0px;
+}
+
+#textPlace {
+    background-color: blanchedalmond;
+    padding: 15px 15px 15px 20px;
+    width:  375px;
+    font-size: 20px;
+    border-radius: 5px;
 }
 
 #wholeThing {

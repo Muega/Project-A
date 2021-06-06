@@ -167,7 +167,7 @@ app.get("/detail/:id", function(req, res){
         `SELECT * FROM produkte`, //er mag etwas an diesem param_id nicht
         function(err, rows){
             console.log(err);
-            return res.render("detail", {"apfelid": req.params.id-1, "produkte" : rows, "nutzername": req.session.sessionValue.sessionNutzer,"rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); 
+            return res.render("detail", {"apfelid": req.params.id, "produkte" : rows, "nutzername": req.session.sessionValue.sessionNutzer,"rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); 
         });
     }else{
         return res.render("home", {"nachricht": "Access Denied. Please Register!"});//Wenn Gast auf die Seite gelangen will
@@ -236,7 +236,7 @@ app.post("/detail/:id", function(req, res){
         );
 
         function done(rows){
-            return res.render("detail", {"apfelid": req.params.id-1, "produkte" : rows, "nutzername": req.session.sessionValue.sessionNutzer,"rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); 
+            return res.render("detail", {"apfelid": req.params.id, "produkte" : rows, "nutzername": req.session.sessionValue.sessionNutzer,"rolle": req.session.sessionValue.rolle, "aktion": "", "cartCookie": req.cookies.cart}); 
         }
     }
 

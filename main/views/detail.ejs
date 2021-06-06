@@ -17,7 +17,13 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/stylesheet.css"> 
 
-        <title><%=produkte[0].name%></title>
+        <title> <% for(product of produkte){ %>
+                    <% if(product.id == apfelid){ %>
+                        <%=product.name%>
+                    <% }%>
+                <% }%>
+        </title>
+
     </head>
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
@@ -44,7 +50,7 @@
                                             <p>Want more details?<a id="logIN" href="/login"> Log in!</a></p>
                                             <%break%>
                                         <% }%>
-                                  <% }%>
+                                    <% }%>
                                   </div>
                              </li> <!--Das li umarmt das dropdown Ding-->
                             
@@ -96,37 +102,39 @@
         <container>
         <div class="row" style=" margin-top: 17.5vh;">
 
+            <% for(product of produkte){ %>
+            <% if(product.id == apfelid){ %>
             <div class="container-fluid col-lg-6 col-md-6 col-sm-12">
                 <section class="imgLeft">
-                    <img width="610px" src="<%= produkte[apfelid].bild %>">
+                    <img width="610px" src="<%= product.bild %>">
                     
                     <div class="backButton">
                         <a href="/shop" id="f1"> <input type="button" value="Back" class="btn btn-secondary"/> </a>
                     </div>
                 </section>
             </div>
-            
+
 
             <div class="container-fluid col-lg-6 col-md-6 col-sm-12"> 
                 <section class="textRight">
-                    <h2><%=produkte[apfelid].name%></h2>
+                    <h2><%=product.name%></h2>
                    
-                    <p id="story"><%=produkte[apfelid].story%></p> 
+                    <p id="story"><%=product.story%></p> 
 
-                    <p>In stock: <%=produkte[apfelid].anzahl%></p>
-                    <p>Crunchiness: <%=produkte[apfelid].knackig%>%</p>
-                    <p>Juiciness: <%=produkte[apfelid].saftig%>%</p>
-                    <p>Color: <%=produkte[apfelid].farbe%></p>
-                    <p>Weight: <%=produkte[apfelid].gewicht%>g</p>
+                    <p>In stock: <%=product.anzahl%></p>
+                    <p>Crunchiness: <%=product.knackig%>%</p>
+                    <p>Juiciness: <%=product.saftig%>%</p>
+                    <p>Color: <%=product.farbe%></p>
+                    <p>Weight: <%=product.gewicht%>g</p>
 
-                    <p id="price">Price: <%=produkte[apfelid].preis.toFixed(2)%>€</p> 
+                    <p id="price">Price: <%=product.preis.toFixed(2)%>€</p> 
 
                     <div id="anzahlPreis">
-                        <form action="/addcart/<%=produkte[apfelid].id%>" method="POST" id="f2"> 
+                        <form action="/addcart/<%=product.id%>" method="POST" id="f2"> 
                             <label for="quantity" style="margin: 0px 0px 1px 0px;font-weight: lighter;">Add to cart</label>
-                            <input type="number" id="quantity" value=1 name="anzahl" min=1 max="<%=produkte[apfelid].anzahl%>" style="width: 55px">
+                            <input type="number" id="quantity" value=1 name="anzahl" min=1 max="<%=product.anzahl%>" style="width: 55px">
                         
-                            <p id="price" style="color: green;">LIMITED TIME OFFER: <span style="color: black;"><%=produkte[apfelid].preis.toFixed(2)%>€</span></p> 
+                            <p id="price" style="color: green;">LIMITED TIME OFFER: <span style="color: black;"><%=product.preis.toFixed(2)%>€</span></p> 
                             <div class="cartButton">
                              <!-- Es gibt hier scheinbar Probleme mit dem Warenkorb button (und auch der Navbar)
                                 
@@ -141,6 +149,8 @@
 
                 <aside></aside>
             </div>
+            <% }%>
+            <% }%>
 
         </div>
         </container>
